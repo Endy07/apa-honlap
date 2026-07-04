@@ -437,23 +437,6 @@
             sharedData.ratings = JSON.parse(localStorage.getItem('apa_osszefoglalo_ratings')) || {};
             sharedData.blacklist = JSON.parse(localStorage.getItem('apa_osszefoglalo_blacklist')) || [];
             
-            // Migráció a régi verzióból ha van
-            let oldData = JSON.parse(localStorage.getItem('kriszi_pioca_ratings')) || {};
-            if (Object.keys(oldData).length > 0 && Object.keys(sharedData.ratings).length === 0) {
-                for (const [key, val] of Object.entries(oldData)) {
-                    sharedData.ratings[key] = {
-                        scoreEndi: val.score,
-                        scoreKriszi: null,
-                        comment: val.comment,
-                        status: val.status
-                    };
-                }
-            }
-            let oldBlacklist = JSON.parse(localStorage.getItem('kriszi_pioca_blacklist')) || [];
-            if (oldBlacklist.length > 0 && sharedData.blacklist.length === 0) {
-                sharedData.blacklist = oldBlacklist;
-            }
-
             await loadHtmlFiles();
             return;
         }
