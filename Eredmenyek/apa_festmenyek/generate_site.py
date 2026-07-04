@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Kárai Mihály Festőművész Weboldal - Generátor"""
+
+import os
+
+output_path = r"C:\xampp\htdocs\2026\Hermes\apa_festmenyek\apa_festmenyek.html"
+
+# ============================================================================
+# PART 1: HTML head, CSS variables, themes, base styles
+# ============================================================================
+part1 = r'''<!DOCTYPE html>
 <html lang="hu" data-theme="vaszon">
 <head>
 <meta charset="UTF-8">
@@ -1019,7 +1030,12 @@ body * {
 </style>
 </head>
 <body>
+'''
 
+# ============================================================================
+# PART 2: Body content — Preloader, Cursor, Nav, Hero, About
+# ============================================================================
+part2 = r'''
 <!-- Preloader -->
 <div class="preloader" id="preloader">
   <div class="preloader-title">Kárai Mihály</div>
@@ -1099,7 +1115,12 @@ body * {
     <p class="reveal reveal-delay-4">A festmények témái a sivatagi naplementétől a városi tükröződésen át a női alak torzójáig terjednek, mindegyik egyedi atmoszférát teremtve a színek és textúrák varázslatával.</p>
   </div>
 </section>
+'''
 
+# ============================================================================
+# PART 3: Gallery with all paintings
+# ============================================================================
+part3 = r'''
 <!-- Gallery -->
 <section class="gallery-section" id="gallery">
   <div class="section-label reveal">Művek</div>
@@ -1156,7 +1177,12 @@ body * {
     <p id="lightboxMeta"></p>
   </div>
 </div>
+'''
 
+# ============================================================================
+# PART 4: JavaScript — Painting data, theme engine, animations, interactions
+# ============================================================================
+part4 = r'''
 <script>
 // ═══════════════════════════════════════════════════════════
 // PAINTING DATA — 12 festmény a mappából
@@ -1541,4 +1567,14 @@ document.querySelectorAll('.gallery-item').forEach(item => {
 </script>
 </body>
 </html>
+'''
 
+# Write all parts
+with open(output_path, 'w', encoding='utf-8') as f:
+    f.write(part1)
+    f.write(part2)
+    f.write(part3)
+    f.write(part4)
+
+print(f"✅ File written: {output_path}")
+print(f"   Size: {os.path.getsize(output_path):,} bytes")
