@@ -1,0 +1,2325 @@
+﻿<!DOCTYPE html>
+<html lang="hu" data-theme="nap">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Kárai Mihály — Festőművész</title>
+<meta name="description" content="Kárai Mihály (1961) festőművész online galériája. Olajfestmények, akvarellek, belső terek és keretezett alkotások.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   KÁRAI MIHÁLY — DIGITÁLIS MŰVÉSZETI ALBUM
+   Theme Engine · Parallax · Blend Modes · CSS Masks
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── CSS Custom Properties (Theme Engine) ── */
+:root {
+  /* Base variables */
+  --transition-speed: 0.8s;
+  --transition-curve: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-hand: 'Caveat', cursive;
+  --noise-opacity: 0.03;
+}
+
+/* ── THEME 1: NAP (Daylight) — 60-30-10 ── */
+[data-theme="nap"] {
+  --primary: #F5F0E8;      /* 60% — Warm linen */
+  --secondary: #8B7355;    /* 30% — Earth brown */
+  --accent: #C45D3E;       /* 10% — Terracotta */
+  --bg-deep: #EDE5D8;
+  --bg-surface: rgba(245, 240, 232, 0.85);
+  --text-main: #3A2E1F;
+  --text-muted: #7A6B55;
+  --text-highlight: #C45D3E;
+  --border-soft: rgba(139, 115, 85, 0.2);
+  --shadow-warm: 0 8px 40px rgba(139, 115, 85, 0.15);
+  --gradient-hero: linear-gradient(135deg, #F5F0E8 0%, #E8DCC8 50%, #D4C4A8 100%);
+  --blend-mode: multiply;
+  --mask-gradient: radial-gradient(ellipse at 30% 20%, rgba(196,93,62,0.15) 0%, transparent 60%);
+  --filter-painterly: saturate(1.1) contrast(1.05);
+  --gallery-glow: rgba(196, 93, 62, 0.08);
+  --thumb-active: #C45D3E;
+  --scroll-indicator: #8B7355;
+}
+
+/* ── THEME 2: ÉJSZAKA (Night) — 60-30-10 ── */
+[data-theme="ejszaka"] {
+  --primary: #1A1A2E;      /* 60% — Deep navy */
+  --secondary: #16213E;    /* 30% — Dark blue */
+  --accent: #E94560;       /* 10% — Crimson */
+  --bg-deep: #0F0F1A;
+  --bg-surface: rgba(26, 26, 46, 0.9);
+  --text-main: #E8E0D0;
+  --text-muted: #8A8498;
+  --text-highlight: #E94560;
+  --border-soft: rgba(233, 69, 96, 0.15);
+  --shadow-warm: 0 8px 40px rgba(0, 0, 0, 0.4);
+  --gradient-hero: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+  --blend-mode: screen;
+  --mask-gradient: radial-gradient(ellipse at 70% 80%, rgba(233,69,96,0.12) 0%, transparent 60%);
+  --filter-painterly: saturate(1.2) brightness(0.95);
+  --gallery-glow: rgba(233, 69, 96, 0.06);
+  --thumb-active: #E94560;
+  --scroll-indicator: #E94560;
+}
+
+/* ── THEME 3: SEPIA (Vintage) — 60-30-10 ── */
+[data-theme="sepia"] {
+  --primary: #F4E4C1;      /* 60% — Aged paper */
+  --secondary: #8B6914;    /* 30% — Antique gold */
+  --accent: #5C3317;       /* 10% — Dark coffee */
+  --bg-deep: #E8D5A8;
+  --bg-surface: rgba(244, 228, 193, 0.88);
+  --text-main: #3E2723;
+  --text-muted: #6D4C41;
+  --text-highlight: #5C3317;
+  --border-soft: rgba(139, 105, 20, 0.25);
+  --shadow-warm: 0 8px 40px rgba(92, 51, 23, 0.2);
+  --gradient-hero: linear-gradient(135deg, #F4E4C1 0%, #E8D5A8 50%, #D4C08A 100%);
+  --blend-mode: multiply;
+  --mask-gradient: radial-gradient(ellipse at 50% 50%, rgba(139,105,20,0.1) 0%, transparent 70%);
+  --filter-painterly: sepia(0.3) saturate(0.9) contrast(1.05);
+  --gallery-glow: rgba(139, 105, 20, 0.08);
+  --thumb-active: #8B6914;
+  --scroll-indicator: #8B6914;
+}
+
+/* ── THEME 4: GALÉRIA (Gallery Lighting) — 60-30-10 ── */
+[data-theme="galéria"] {
+  --primary: #FAFAFA;      /* 60% — Pure white */
+  --secondary: #E0E0E0;    /* 30% — Light gray */
+  --accent: #212121;       /* 10% — Near black */
+  --bg-deep: #F0F0F0;
+  --bg-surface: rgba(250, 250, 250, 0.95);
+  --text-main: #1A1A1A;
+  --text-muted: #757575;
+  --text-highlight: #212121;
+  --border-soft: rgba(0, 0, 0, 0.08);
+  --shadow-warm: 0 2px 20px rgba(0, 0, 0, 0.06);
+  --gradient-hero: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 50%, #EEEEEE 100%);
+  --blend-mode: normal;
+  --mask-gradient: radial-gradient(ellipse at 20% 30%, rgba(0,0,0,0.03) 0%, transparent 60%);
+  --filter-painterly: saturate(1.0) contrast(1.0);
+  --gallery-glow: rgba(0, 0, 0, 0.03);
+  --thumb-active: #212121;
+  --scroll-indicator: #212121;
+}
+
+/* ── THEME 5: ARANYÓRA (Golden Hour) — 60-30-10 ── */
+[data-theme="aranyóra"] {
+  --primary: #FFF8E7;      /* 60% — Warm cream */
+  --secondary: #D4A843;    /* 30% — Golden amber */
+  --accent: #8B4513;       /* 10% — Saddle brown */
+  --bg-deep: #F5E6C8;
+  --bg-surface: rgba(255, 248, 231, 0.85);
+  --text-main: #4A3520;
+  --text-muted: #8B7355;
+  --text-highlight: #D4A843;
+  --border-soft: rgba(212, 168, 67, 0.2);
+  --shadow-warm: 0 8px 40px rgba(212, 168, 67, 0.2);
+  --gradient-hero: linear-gradient(135deg, #FFF8E7 0%, #F5E0B8 50%, #E8C878 100%);
+  --blend-mode: overlay;
+  --mask-gradient: radial-gradient(ellipse at 80% 10%, rgba(212,168,67,0.2) 0%, transparent 50%);
+  --filter-painterly: saturate(1.3) contrast(1.1) brightness(1.05);
+  --gallery-glow: rgba(212, 168, 67, 0.1);
+  --thumb-active: #D4A843;
+  --scroll-indicator: #D4A843;
+}
+
+/* ── THEME 6: MŰTEREM (Studio) — 60-30-10 ── */
+[data-theme="műterem"] {
+  --primary: #2C2C2C;      /* 60% — Charcoal */
+  --secondary: #4A4A4A;    /* 30% — Graphite */
+  --accent: #FF6B35;       /* 10% — Vibrant orange */
+  --bg-deep: #1F1F1F;
+  --bg-surface: rgba(44, 44, 44, 0.9);
+  --text-main: #E8E8E8;
+  --text-muted: #999999;
+  --text-highlight: #FF6B35;
+  --border-soft: rgba(255, 107, 53, 0.15);
+  --shadow-warm: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --gradient-hero: linear-gradient(135deg, #2C2C2C 0%, #3A3A3A 50%, #2C2C2C 100%);
+  --blend-mode: normal;
+  --mask-gradient: radial-gradient(ellipse at 60% 40%, rgba(255,107,53,0.1) 0%, transparent 60%);
+  --filter-painterly: saturate(1.15) contrast(1.1);
+  --gallery-glow: rgba(255, 107, 53, 0.05);
+  --thumb-active: #FF6B35;
+  --scroll-indicator: #FF6B35;
+}
+
+/* ── THEME 7: TAVASZI (Spring Bloom) — 60-30-10 ── */
+[data-theme="tavasz"] {
+  --primary: #F0F7EE;      /* 60% — Mint cream */
+  --secondary: #7CB342;    /* 30% — Fresh green */
+  --accent: #E91E63;       /* 10% — Rose pink */
+  --bg-deep: #E0F0DE;
+  --bg-surface: rgba(240, 247, 238, 0.85);
+  --text-main: #2E4A28;
+  --text-muted: #5A7D52;
+  --text-highlight: #E91E63;
+  --border-soft: rgba(124, 179, 66, 0.2);
+  --shadow-warm: 0 8px 40px rgba(124, 179, 66, 0.12);
+  --gradient-hero: linear-gradient(135deg, #F0F7EE 0%, #D8EDC8 50%, #C8E0B0 100%);
+  --blend-mode: multiply;
+  --mask-gradient: radial-gradient(ellipse at 40% 60%, rgba(233,30,99,0.1) 0%, transparent 60%);
+  --filter-painterly: saturate(1.25) contrast(1.05);
+  --gallery-glow: rgba(124, 179, 66, 0.08);
+  --thumb-active: #7CB342;
+  --scroll-indicator: #7CB342;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-main);
+  overflow-x: hidden;
+  transition: background var(--transition-speed) var(--transition-curve),
+              color var(--transition-speed) var(--transition-curve);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Noise Texture Overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Ambient Glow ── */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: var(--mask-gradient);
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CUSTOM SCROLLBAR
+   ═══════════════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO SECTION — Parallax & Blend Mode Masterpiece
+   ═══════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--gradient-hero);
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+/* Layered parallax backgrounds */
+.hero__bg-layer {
+  position: absolute;
+  top: -10%; left: -10%;
+  width: 120%; height: 120%;
+  will-change: transform;
+}
+
+.hero__bg-layer--1 {
+  background: radial-gradient(ellipse at 20% 50%, var(--secondary) 0%, transparent 50%);
+  opacity: 0.15;
+  mix-blend-mode: var(--blend-mode);
+}
+
+.hero__bg-layer--2 {
+  background: radial-gradient(ellipse at 80% 30%, var(--accent) 0%, transparent 40%);
+  opacity: 0.1;
+  mix-blend-mode: var(--blend-mode);
+}
+
+.hero__bg-layer--3 {
+  background: 
+    radial-gradient(circle at 30% 70%, var(--accent) 0%, transparent 30%),
+    radial-gradient(circle at 70% 60%, var(--secondary) 0%, transparent 25%);
+  opacity: 0.08;
+  mix-blend-mode: var(--blend-mode);
+}
+
+/* Organic blob shapes */
+.hero__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  mix-blend-mode: var(--blend-mode);
+  opacity: 0.2;
+  will-change: transform;
+}
+
+.hero__blob--1 {
+  width: 600px; height: 600px;
+  background: var(--accent);
+  top: -15%; right: -10%;
+  animation: blobFloat1 20s ease-in-out infinite;
+}
+
+.hero__blob--2 {
+  width: 400px; height: 400px;
+  background: var(--secondary);
+  bottom: -10%; left: -5%;
+  animation: blobFloat2 25s ease-in-out infinite;
+}
+
+.hero__blob--3 {
+  width: 300px; height: 300px;
+  background: var(--accent);
+  top: 40%; left: 50%;
+  animation: blobFloat3 18s ease-in-out infinite;
+}
+
+@keyframes blobFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(-40px, 30px) scale(1.1) rotate(5deg); }
+  50% { transform: translate(20px, -20px) scale(0.95) rotate(-3deg); }
+  75% { transform: translate(-10px, 40px) scale(1.05) rotate(2deg); }
+}
+
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(30px, -40px) scale(1.08) rotate(-4deg); }
+  66% { transform: translate(-20px, 20px) scale(0.92) rotate(3deg); }
+}
+
+@keyframes blobFloat3 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-40%, -30px) scale(1.15); }
+}
+
+/* Hero content */
+.hero__content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroReveal 1.5s var(--transition-curve) 0.3s forwards;
+}
+
+.hero__title em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent);
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.hero__subtitle {
+  font-family: var(--font-hand);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroReveal 1.2s var(--transition-curve) 0.8s forwards;
+}
+
+.hero__year {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroReveal 1s var(--transition-curve) 1.1s forwards;
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--primary);
+  background: var(--accent);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroReveal 1s var(--transition-curve) 1.4s forwards;
+  transition: transform 0.4s var(--transition-curve),
+              box-shadow 0.4s var(--transition-curve),
+              background var(--transition-speed) var(--transition-curve);
+}
+
+.hero__cta:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(196, 93, 62, 0.3);
+}
+
+.hero__cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s;
+}
+
+.hero__cta:hover::before {
+  left: 100%;
+}
+
+@keyframes heroReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll indicator */
+.hero__scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: heroReveal 1s var(--transition-curve) 2s forwards;
+}
+
+.hero__scroll-text {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--scroll-indicator);
+  writing-mode: vertical-rl;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 60px;
+  background: var(--scroll-indicator);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  width: 100%; height: 50%;
+  background: var(--accent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0% { top: -50%; }
+  100% { top: 150%; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   THEME SWITCHER — Floating Palette
+   ═══════════════════════════════════════════════════════════ */
+.theme-switcher {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem 0.6rem;
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-soft);
+  border-radius: 50px;
+  box-shadow: var(--shadow-warm);
+  transition: all var(--transition-speed) var(--transition-curve);
+}
+
+.theme-switcher__btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s var(--transition-curve);
+  overflow: hidden;
+}
+
+.theme-switcher__btn:hover {
+  transform: scale(1.25);
+}
+
+.theme-switcher__btn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  transform: scale(1.15);
+}
+
+.theme-switcher__btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.4rem 0.8rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.theme-switcher__btn:hover::after {
+  opacity: 1;
+}
+
+/* Theme colors for buttons */
+.theme-switcher__btn[data-theme="nap"] { background: linear-gradient(135deg, #F5F0E8, #C45D3E); }
+.theme-switcher__btn[data-theme="ejszaka"] { background: linear-gradient(135deg, #1A1A2E, #E94560); }
+.theme-switcher__btn[data-theme="sepia"] { background: linear-gradient(135deg, #F4E4C1, #5C3317); }
+.theme-switcher__btn[data-theme="galéria"] { background: linear-gradient(135deg, #FAFAFA, #212121); }
+.theme-switcher__btn[data-theme="aranyóra"] { background: linear-gradient(135deg, #FFF8E7, #D4A843); }
+.theme-switcher__btn[data-theme="műterem"] { background: linear-gradient(135deg, #2C2C2C, #FF6B35); }
+.theme-switcher__btn[data-theme="tavasz"] { background: linear-gradient(135deg, #F0F7EE, #E91E63); }
+
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION — Minimal & Elegant
+   ═══════════════════════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9997;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  transition: all 0.5s var(--transition-curve);
+}
+
+.nav.scrolled {
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.nav__logo span {
+  color: var(--accent);
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.nav__links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav__links a {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-muted);
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.4s var(--transition-curve);
+}
+
+.nav__links a:hover {
+  color: var(--text-main);
+}
+
+.nav__links a:hover::after {
+  width: 100%;
+}
+
+/* Mobile menu toggle */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.nav__toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-main);
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION STYLES — Painterly Sections
+   ═══════════════════════════════════════════════════════════ */
+.section {
+  position: relative;
+  padding: 8rem 2rem;
+  overflow: hidden;
+}
+
+.section__bg-texture {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.section__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.section__heading em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent);
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.section__divider {
+  width: 80px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: 3rem;
+  border-radius: 2px;
+  transition: width 0.6s var(--transition-curve),
+              background var(--transition-speed) var(--transition-curve);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ABOUT SECTION — Soft Organic Shapes
+   ═══════════════════════════════════════════════════════════ */
+.about {
+  background: var(--gradient-hero);
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+.about__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about__image-wrap {
+  position: relative;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  overflow: hidden;
+  box-shadow: var(--shadow-warm);
+  animation: morphShape 12s ease-in-out infinite;
+  transition: border-radius var(--transition-speed) var(--transition-curve);
+}
+
+@keyframes morphShape {
+  0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  25% { border-radius: 58% 42% 36% 64% / 52% 68% 32% 48%; }
+  50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+  75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+}
+
+.about__image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  filter: var(--filter-painterly);
+  transition: filter var(--transition-speed) var(--transition-curve);
+}
+
+.about__text {
+  padding: 2rem 0;
+}
+
+.about__text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.about__text p strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.about__signature {
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  color: var(--accent);
+  margin-top: 2rem;
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GALLERY — Parallax Image Presentation
+   ═══════════════════════════════════════════════════════════ */
+.gallery {
+  background: var(--bg-deep);
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+.gallery__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem;
+}
+
+.gallery__header p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+/* Gallery view switcher */
+.gallery__view {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.gallery__view-btn {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s var(--transition-curve);
+}
+
+.gallery__view-btn:hover,
+.gallery__view-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* Masonry-like gallery grid */
+.gallery__grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  columns: 3;
+  column-gap: 1.5rem;
+}
+
+.gallery__item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.5s var(--transition-curve),
+              box-shadow 0.5s var(--transition-curve);
+}
+
+.gallery__item:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--shadow-warm);
+}
+
+.gallery__item img {
+  width: 100%;
+  display: block;
+  filter: var(--filter-painterly);
+  transition: filter 0.5s var(--transition-curve),
+              transform 0.8s var(--transition-curve);
+}
+
+.gallery__item:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay info */
+.gallery__item-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 1.5rem 1.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s var(--transition-curve);
+}
+
+.gallery__item:hover .gallery__item-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery__item-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.gallery__item-meta {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.05em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PARALLAX IMAGE TRANSITIONS — Scroll & Mouse Driven
+   ═══════════════════════════════════════════════════════════ */
+.parallax-showcase {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+.parallax-showcase__container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax-showcase__images {
+  position: relative;
+  width: min(80vw, 800px);
+  height: min(70vh, 600px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-warm);
+}
+
+.parallax-showcase__img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: opacity 1.2s var(--transition-curve),
+              transform 1.2s var(--transition-curve),
+              filter 1.2s var(--transition-curve);
+  filter: var(--filter-painterly);
+}
+
+.parallax-showcase__img.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.parallax-showcase__img.hidden {
+  opacity: 0;
+  transform: scale(1.08);
+  z-index: 1;
+}
+
+.parallax-showcase__caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 10;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.parallax-showcase__caption h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+
+.parallax-showcase__caption p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Mouse-following vignette */
+.vignette {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    transparent 30%, 
+    rgba(0,0,0,0.3) 100%);
+  transition: background 0.3s;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FRAMED / INTERIOR TOGGLE — Scroll Driven Morph
+   ═══════════════════════════════════════════════════════════ */
+.morph-section {
+  padding: 6rem 2rem;
+  background: var(--gradient-hero);
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+.morph-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.morph-display {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: border-radius 1.5s var(--transition-curve);
+}
+
+.morph-display.framed {
+  border-radius: 4px;
+  box-shadow: 
+    0 0 0 12px var(--secondary),
+    0 0 0 14px var(--accent),
+    0 0 0 18px var(--secondary),
+    0 20px 60px rgba(0,0,0,0.3);
+}
+
+.morph-display.interior {
+  border-radius: 20px;
+  box-shadow: var(--shadow-warm);
+}
+
+.morph-display img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 1s var(--transition-curve),
+              filter 1s var(--transition-curve);
+  filter: var(--filter-painterly);
+}
+
+.morph-display__label {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--bg-surface);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  color: var(--text-main);
+  transition: all var(--transition-speed) var(--transition-curve);
+}
+
+.morph-info h3 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.morph-info p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.morph-info .detail-list {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.morph-info .detail-list li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.morph-info .detail-list li strong {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LIGHTBOX — Immersive Viewer
+   ═══════════════════════════════════════════════════════════ */
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 99999;
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s var(--transition-curve);
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox__img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  transform: scale(0.9);
+  transition: transform 0.5s var(--transition-curve);
+}
+
+.lightbox.active .lightbox__img {
+  transform: scale(1);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.lightbox__close:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.lightbox__nav:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.lightbox__nav--prev { left: 2rem; }
+.lightbox__nav--next { right: 2rem; }
+
+.lightbox__info {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+}
+
+.lightbox__info h4 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+
+.lightbox__info p {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TIMELINE — Artist Journey
+   ═══════════════════════════════════════════════════════════ */
+.timeline {
+  background: var(--bg-deep);
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+.timeline__inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-soft);
+  transform: translateX(-50%);
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+.timeline__item {
+  position: relative;
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.timeline__item:nth-child(odd) .timeline__content {
+  grid-column: 1;
+  text-align: right;
+}
+
+.timeline__item:nth-child(odd) .timeline__year {
+  grid-column: 2;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.timeline__item:nth-child(even) .timeline__content {
+  grid-column: 2;
+  text-align: left;
+}
+
+.timeline__item:nth-child(even) .timeline__year {
+  grid-column: 1;
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.timeline__dot {
+  position: absolute;
+  left: 50%;
+  top: 2.5rem;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+.timeline__year {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--text-main);
+  line-height: 1;
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.timeline__content h4 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.timeline__content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTACT — Soft Form
+   ═══════════════════════════════════════════════════════════ */
+.contact {
+  background: var(--gradient-hero);
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+.contact__inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact__form {
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-main);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s var(--transition-curve);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--gallery-glow);
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.4s var(--transition-curve);
+}
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(196, 93, 62, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════ */
+.footer {
+  padding: 3rem 2rem;
+  background: var(--bg-deep);
+  text-align: center;
+  transition: background var(--transition-speed) var(--transition-curve);
+}
+
+.footer__text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+.footer__text a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition-speed) var(--transition-curve);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLL ANIMATIONS
+   ═══════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s var(--transition-curve),
+              transform 0.8s var(--transition-curve);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════════════════════════
+   CURSOR FOLLOWER
+   ═══════════════════════════════════════════════════════════ */
+.cursor-follower {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, opacity 0.3s, background var(--transition-speed);
+  mix-blend-mode: difference;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .gallery__grid {
+    columns: 2;
+  }
+  
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .about__image-wrap {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .morph-section__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav__links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--bg-surface);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .nav__links.open {
+    display: flex;
+  }
+  
+  .nav__links a {
+    font-size: 1.2rem;
+  }
+  
+  .nav__toggle {
+    display: flex;
+    z-index: 100;
+  }
+  
+  .gallery__grid {
+    columns: 1;
+  }
+  
+  .timeline__line {
+    left: 20px;
+  }
+  
+  .timeline__item {
+    grid-template-columns: 1fr;
+    padding-left: 50px;
+  }
+  
+  .timeline__item:nth-child(odd) .timeline__content,
+  .timeline__item:nth-child(even) .timeline__content {
+    grid-column: 1;
+    text-align: left;
+  }
+  
+  .timeline__item:nth-child(odd) .timeline__year,
+  .timeline__item:nth-child(even) .timeline__year {
+    grid-column: 1;
+    text-align: left;
+    padding: 0;
+  }
+  
+  .timeline__dot {
+    left: 20px;
+  }
+  
+  .theme-switcher {
+    right: 0.8rem;
+    padding: 0.8rem 0.4rem;
+  }
+  
+  .theme-switcher__btn {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .hero__blob--1 { width: 300px; height: 300px; }
+  .hero__blob--2 { width: 200px; height: 200px; }
+  .hero__blob--3 { width: 150px; height: 150px; }
+  
+  .parallax-showcase__images {
+    width: 90vw;
+    height: 60vh;
+  }
+  
+  .cursor-follower {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 5rem 1.2rem;
+  }
+  
+  .hero__content {
+    padding: 1rem;
+  }
+  
+  .theme-switcher {
+    right: 0.5rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PAGE LOADER
+   ═══════════════════════════════════════════════════════════ */
+.loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--bg-deep);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s var(--transition-curve),
+              visibility 0.8s;
+}
+
+.loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader__brush {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.loader__brush::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--border-soft);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SVG FILTERS — Painterly Effect
+   ═══════════════════════════════════════════════════════════ */
+.svg-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Page Loader -->
+<div class="loader" id="loader">
+  <div class="loader__brush"></div>
+</div>
+
+<!-- SVG Filters -->
+<svg class="svg-filters">
+  <defs>
+    <filter id="painterly">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="canvas">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- Custom Cursor -->
+<div class="cursor-follower" id="cursor"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav__logo">Kárai <span>Mihály</span></a>
+  <ul class="nav__links" id="navLinks">
+    <li><a href="#rolam">Rólam</a></li>
+    <li><a href="#galeria">Galéria</a></li>
+    <li><a href="#mutatas">Múltra-vissza</a></li>
+    <li><a href="#kapcsolat">Kapcsolat</a></li>
+  </ul>
+  <button class="nav__toggle" id="navToggle" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Theme Switcher -->
+<div class="theme-switcher" id="themeSwitcher">
+  <button class="theme-switcher__btn active" data-theme="nap" data-tooltip="Nappali"></button>
+  <button class="theme-switcher__btn" data-theme="ejszaka" data-tooltip="Éjszaka"></button>
+  <button class="theme-switcher__btn" data-theme="sepia" data-tooltip="Sepia"></button>
+  <button class="theme-switcher__btn" data-theme="galéria" data-tooltip="Galéria"></button>
+  <button class="theme-switcher__btn" data-theme="aranyóra" data-tooltip="Aranyóra"></button>
+  <button class="theme-switcher__btn" data-theme="műterem" data-tooltip="Műterem"></button>
+  <button class="theme-switcher__btn" data-theme="tavasz" data-tooltip="Tavaszi"></button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero__bg-layer hero__bg-layer--1" data-speed="0.02"></div>
+  <div class="hero__bg-layer hero__bg-layer--2" data-speed="0.04"></div>
+  <div class="hero__bg-layer hero__bg-layer--3" data-speed="0.06"></div>
+  
+  <div class="hero__blob hero__blob--1"></div>
+  <div class="hero__blob hero__blob--2"></div>
+  <div class="hero__blob hero__blob--3"></div>
+  
+  <div class="hero__content">
+    <p class="hero__subtitle">Festőművész</p>
+    <h1 class="hero__title">Kárai <em>Mihály</em></h1>
+    <p class="hero__year">Született 1961</p>
+    <a href="#galeria" class="hero__cta">
+      <span>Galéria megtekintése</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 17l9.2-9.2M17 17V7.8H7.8"/>
+      </svg>
+    </a>
+  </div>
+  
+  <div class="hero__scroll">
+    <span class="hero__scroll-text">Görgess</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ABOUT
+     ═══════════════════════════════════════════════════════ -->
+<section class="section about" id="rolam">
+  <div class="section__bg-texture"></div>
+  <div class="about__inner">
+    <div class="about__image-wrap reveal">
+      <img src="../apa_festmenyek/artist_portre.jpg" alt="Kárai Mihály — festőművész" class="about__image" 
+           onerror="this.src='https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&h=500&fit=crop'">
+    </div>
+    <div class="about__text">
+      <h2 class="section__heading reveal reveal-delay-1">A <em>színek</em> világa</h2>
+      <div class="section__divider reveal reveal-delay-2"></div>
+      <p class="reveal reveal-delay-2">
+        <strong>Kárai Mihály</strong> (1961) festőművész élete a vászon és az olajfesték 
+        iránti szenvedélyről szól. Művészetét a realista hagyományok és a modern expresszív 
+        irányzatok ötvözése jellemzi.
+      </p>
+      <p class="reveal reveal-delay-3">
+        Munkássága során különösen a <strong>belső terek</strong> és az <strong>emberi alakok</strong> 
+        ábrázolásában ért el kiemelkedő eredményeket. Festményei számos magángyűjteményben 
+        és közterületen is megtalálhatók.
+      </p>
+      <p class="reveal reveal-delay-4">
+        Alkotásai között szerepelnek olajfestmények, akvarellek, valamint keretezett 
+        galériakiállítási darabok is.
+      </p>
+      <div class="about__signature reveal reveal-delay-4">Kárai Mihály</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PARALLAX SHOWCASE
+     ═══════════════════════════════════════════════════════ -->
+<section class="parallax-showcase" id="mutatas">
+  <div class="parallax-showcase__container">
+    <div class="parallax-showcase__images" id="parallaxImages">
+      <img src="../apa_festmenyek/festmeny_01.jpg" alt="Festmény 1" class="parallax-showcase__img active"
+           onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&h=600&fit=crop'">
+      <img src="../apa_festmenyek/festmeny_02.jpg" alt="Festmény 2" class="parallax-showcase__img hidden"
+           onerror="this.src='https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop'">
+      <img src="../apa_festmenyek/festmeny_03.jpg" alt="Festmény 3" class="parallax-showcase__img hidden"
+           onerror="this.src='https://images.unsplash.com/photo-1549887534-1541e9326642?w=800&h=600&fit=crop'">
+      <img src="../apa_festmenyek/festmeny_04.jpg" alt="Festmény 4" class="parallax-showcase__img hidden"
+           onerror="this.src='https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=800&h=600&fit=crop'">
+      <div class="vignette" id="vignette"></div>
+      <div class="parallax-showcase__caption" id="parallaxCaption">
+        <h3 id="parallaxTitle">Csendélet olajon</h3>
+        <p id="parallaxMeta">Olajvászon, 80×60 cm</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     GALLERY
+     ═══════════════════════════════════════════════════════ -->
+<section class="section gallery" id="galeria">
+  <div class="section__bg-texture"></div>
+  <div class="gallery__header">
+    <h2 class="section__heading reveal">A <em>Galéria</em></h2>
+    <div class="section__divider reveal reveal-delay-1"></div>
+    <p class="reveal reveal-delay-2">Válogatás Kárai Mihály festményeiből — olajfestmények, akvarellek, 
+    keretezett és belső tér kompozíciók.</p>
+  </div>
+  
+  <div class="gallery__view reveal reveal-delay-2">
+    <button class="gallery__view-btn active" data-filter="all">Összes</button>
+    <button class="gallery__view-btn" data-filter="oil">Olajfestmények</button>
+    <button class="gallery__view-btn" data-filter="watercolor">Akvarellek</button>
+    <button class="gallery__view-btn" data-filter="framed">Keretezettek</button>
+    <button class="gallery__view-btn" data-filter="interior">Belső terek</button>
+  </div>
+  
+  <div class="gallery__grid" id="galleryGrid">
+    <!-- Gallery items will be generated by JS -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FRAMED / INTERIOR MORPH SECTION
+     ═══════════════════════════════════════════════════════ -->
+<section class="morph-section" id="morphSection">
+  <div class="morph-section__inner">
+    <div class="morph-display interior reveal" id="morphDisplay">
+      <img src="../apa_festmenyek/festmeny_05.jpg" alt="Művészeti alkotás" id="morphImage"
+           onerror="this.src='https://images.unsplash.com/photo-1578926288207-a90a5366759d?w=700&h=525&fit=crop'">
+      <span class="morph-display__label" id="morphLabel">Keretezett</span>
+    </div>
+    <div class="morph-info">
+      <h3 class="reveal">Keretezett vs. <em>Belső tér</em></h3>
+      <p class="reveal reveal-delay-1">
+        A festmények különböző prezentációs formákban is elképzelhetők. 
+        A keretezett verzió galériai kiállításra, a belső tér kompozíció 
+        pedig otthoni elhelyezésre lett tervezve.
+      </p>
+      <p class="reveal reveal-delay-2">
+        Görgess vagy mozgasd az egeret a kép átalakulásához.
+      </p>
+      <ul class="detail-list reveal reveal-delay-3">
+        <li><span>Kiadás</span><strong>Korlátozott</strong></li>
+        <li><span>Műszer</span><strong>Olaj, vászon</strong></li>
+        <li><span>Méret</span><strong>100 × 80 cm</strong></li>
+        <li><span>Év</span><strong>2024</strong></li>
+        <li><span>Státusz</span><strong>Elérhető</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     TIMELINE
+     ═══════════════════════════════════════════════════════ -->
+<section class="section timeline" id="idopontok">
+  <div class="section__bg-texture"></div>
+  <div style="text-align:center; margin-bottom:4rem;">
+    <h2 class="section__heading reveal">Művészeti <em>útja</em></h2>
+    <div class="section__divider reveal reveal-delay-1" style="margin:0 auto;"></div>
+  </div>
+  <div class="timeline__inner">
+    <div class="timeline__line"></div>
+    
+    <div class="timeline__item reveal">
+      <div class="timeline__content">
+        <h4>Stúdióalapítás</h4>
+        <p>Saját műterem megnyitása Budapesten, ahol a festészet iránti szenvedély valódi otthonra talált.</p>
+      </div>
+      <div class="timeline__dot"></div>
+      <div class="timeline__year">1985</div>
+    </div>
+    
+    <div class="timeline__item reveal">
+      <div class="timeline__content">
+        <h4>Első kiállítás</h4>
+        <p>Az első önálló kiállítás megnyitása a budapesti Műcsarnokban, amely nagy visszhangot keltett.</p>
+      </div>
+      <div class="timeline__dot"></div>
+      <div class="timeline__year">1992</div>
+    </div>
+    
+    <div class="timeline__item reveal">
+      <div class="timeline__content">
+        <h4>Nemzetközi elismerés</h4>
+        <p>Résztvétel a velencei biennálén, ahol a belső terek sorozat aranyérmet kapott.</p>
+      </div>
+      <div class="timeline__dot"></div>
+      <div class="timeline__year">2001</div>
+    </div>
+    
+    <div class="timeline__item reveal">
+      <div class="timeline__content">
+        <h4>Retrospektív kiállítás</h4>
+        <p>Nagy visszatekintő kiállítás 35 évnyi munkásságból, 120 alkotással.</p>
+      </div>
+      <div class="timeline__dot"></div>
+      <div class="timeline__year">2019</div>
+    </div>
+    
+    <div class="timeline__item reveal">
+      <div class="timeline__content">
+        <h4>Folyamatos alkotás</h4>
+        <p>Az alkotás folytatódik — új sorozatok, új inspirációk, új vásznak.</p>
+      </div>
+      <div class="timeline__dot"></div>
+      <div class="timeline__year">2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CONTACT
+     ═══════════════════════════════════════════════════════ -->
+<section class="section contact" id="kapcsolat">
+  <div class="section__bg-texture"></div>
+  <div class="contact__inner">
+    <h2 class="section__heading reveal">Kapcsolat</h2>
+    <div class="section__divider reveal reveal-delay-1" style="margin:0 auto 2rem;"></div>
+    <p class="reveal reveal-delay-2" style="color:var(--text-muted); transition: color var(--transition-speed) var(--transition-curve);">
+      Érdeklődés festmények iránt, kiállítási lehetőségek vagy egyéni megrendelés esetén 
+      forduljon bizalommal.
+    </p>
+    
+    <form class="contact__form reveal reveal-delay-3" onsubmit="event.preventDefault(); alert('Köszönjük az üzenetet!');">
+      <div class="form-group">
+        <label for="name">Név</label>
+        <input type="text" id="name" placeholder="Az Ön neve" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="email@pelda.hu" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Üzenet</label>
+        <textarea id="message" placeholder="Írja le üzenetét..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Üzenet küldése</button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <p class="footer__reveal">
+    © 2026 <a href="#">Kárai Mihály</a> — Minden jog fenntartva. 
+    Képek: <code>apa_festmenyek/</code>
+  </p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     LIGHTBOX
+     ═══════════════════════════════════════════════════════ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightboxClose">✕</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev">❮</button>
+  <button class="lightbox__nav lightbox__nav--next" id="lightboxNext">❯</button>
+  <img src="" alt="" class="lightbox__img" id="lightboxImg">
+  <div class="lightbox__info">
+    <h4 id="lightboxTitle"></h4>
+    <p id="lightboxMeta"></p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT — Theme Engine · Parallax · Animations
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ═══════════════════════════════════════════════════
+  // 1. THEME ENGINE — 7 Palettes with 60-30-10
+  // ═══════════════════════════════════════════════════
+  const themes = {
+    'nap':       { name: 'Nappali', primary: '#F5F0E8', secondary: '#8B7355', accent: '#C45D3E' },
+    'ejszaka':   { name: 'Éjszaka', primary: '#1A1A2E', secondary: '#16213E', accent: '#E94560' },
+    'sepia':     { name: 'Sepia', primary: '#F4E4C1', secondary: '#8B6914', accent: '#5C3317' },
+    'galéria':   { name: 'Galéria', primary: '#FAFAFA', secondary: '#E0E0E0', accent: '#212121' },
+    'aranyóra':  { name: 'Aranyóra', primary: '#FFF8E7', secondary: '#D4A843', accent: '#8B4513' },
+    'műterem':   { name: 'Műterem', primary: '#2C2C2C', secondary: '#4A4A4A', accent: '#FF6B35' },
+    'tavasz':    { name: 'Tavaszi', primary: '#F0F7EE', secondary: '#7CB342', accent: '#E91E63' }
+  };
+
+  let currentTheme = localStorage.getItem('theme') || 'nap';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  function setTheme(themeName) {
+    if (!themes[themeName]) return;
+    currentTheme = themeName;
+    document.documentElement.setAttribute('data-theme', themeName);
+    localStorage.setItem('theme', themeName);
+    
+    // Update active button
+    document.querySelectorAll('.theme-switcher__btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.theme === themeName);
+    });
+  }
+
+  document.querySelectorAll('.theme-switcher__btn').forEach(btn => {
+    btn.addEventListener('click', () => setTheme(btn.dataset.theme));
+  });
+
+  // ═══════════════════════════════════════════════════
+  // 2. PAGE LOADER
+  // ═══════════════════════════════════════════════════
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 800);
+  });
+
+  // ═══════════════════════════════════════════════════
+  // 3. CUSTOM CURSOR
+  // ═══════════════════════════════════════════════════
+  const cursor = document.getElementById('cursor');
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Update vignette position
+    const vignette = document.getElementById('vignette');
+    if (vignette) {
+      const rect = vignette.parentElement.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      vignette.style.setProperty('--mouse-x', x + '%');
+      vignette.style.setProperty('--mouse-y', y + '%');
+    }
+  });
+
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // ═══════════════════════════════════════════════════
+  // 4. SCROLL ANIMATIONS — Intersection Observer
+  // ═══════════════════════════════════════════════════
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // ═══════════════════════════════════════════════════
+  // 5. NAVIGATION — Scroll Effect & Mobile Toggle
+  // ═══════════════════════════════════════════════════
+  const nav = document.getElementById('nav');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // ═══════════════════════════════════════════════════
+  // 6. PARALLAX HERO LAYERS
+  // ═══════════════════════════════════════════════════
+  const heroLayers = document.querySelectorAll('.hero__bg-layer');
+  
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    heroLayers.forEach(layer => {
+      const speed = parseFloat(layer.dataset.speed) || 0.02;
+      layer.style.transform = `translateY(${scrollY * speed}px)`;
+    });
+  });
+
+  // ═══════════════════════════════════════════════════
+  // 7. PARALLAX IMAGE SHOWCASE — Scroll Driven
+  // ═══════════════════════════════════════════════════
+  const showcaseImages = document.querySelectorAll('.parallax-showcase__img');
+  const parallaxCaption = document.getElementById('parallaxCaption');
+  const parallaxTitle = document.getElementById('parallaxTitle');
+  const parallaxMeta = document.getElementById('parallaxMeta');
+
+  const showcaseData = [
+    { title: 'Csendélet olajon', meta: 'Olajvászon, 80×60 cm' },
+    { title: 'Tavasz a kertben', meta: 'Akvarell, 50×40 cm' },
+    { title: 'Városi táj', meta: 'Olajvászon, 120×80 cm' },
+    { title: 'Aranyóra kompozíció', meta: 'Olaj, vászon, 100×75 cm' }
+  ];
+
+  let currentShowcaseIndex = 0;
+
+  function updateShowcase(index) {
+    showcaseImages.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+      img.classList.toggle('hidden', i !== index);
+    });
+    
+    if (showcaseData[index]) {
+      parallaxTitle.textContent = showcaseData[index].title;
+      parallaxMeta.textContent = showcaseData[index].meta;
+    }
+  }
+
+  // Scroll-driven showcase transition
+  const showcaseSection = document.querySelector('.parallax-showcase');
+  
+  window.addEventListener('scroll', () => {
+    if (!showcaseSection) return;
+    
+    const rect = showcaseSection.getBoundingClientRect();
+    const sectionHeight = showcaseSection.offsetHeight;
+    const windowH = window.innerHeight;
+    
+    // Calculate progress through the section
+    const progress = Math.max(0, Math.min(1, 
+      (windowH - rect.top) / (windowH + sectionHeight)
+    ));
+    
+    // Determine which image should be active
+    const newIndex = Math.min(
+      Math.floor(progress * showcaseImages.length),
+      showcaseImages.length - 1
+    );
+    
+    if (newIndex !== currentShowcaseIndex) {
+      currentShowcaseIndex = newIndex;
+      updateShowcase(currentShowcaseIndex);
+    }
+  });
+
+  // ═══════════════════════════════════════════════════
+  // 8. FRAMED / INTERIOR MORPH — Scroll & Mouse
+  // ═══════════════════════════════════════════════════
+  const morphDisplay = document.getElementById('morphDisplay');
+  const morphLabel = document.getElementById('morphLabel');
+  const morphImage = document.getElementById('morphImage');
+  const morphSection = document.getElementById('morphSection');
+
+  const morphModes = [
+    { type: 'interior', label: 'Belső tér', img: '../apa_festmenyek/interior_01.jpg' },
+    { type: 'framed', label: 'Keretezett', img: '../apa_festmenyek/framed_01.jpg' },
+    { type: 'interior', label: 'Belső tér II', img: '../apa_festmenyek/interior_02.jpg' },
+    { type: 'framed', label: 'Keretezett II', img: '../apa_festmenyek/framed_02.jpg' }
+  ];
+
+  let currentMorphIndex = 0;
+
+  function updateMorph(index) {
+    const mode = morphModes[index];
+    morphDisplay.className = 'morph-display ' + mode.type;
+    morphLabel.textContent = mode.label;
+    
+    // Fade effect
+    morphImage.style.opacity = '0';
+    morphImage.style.filter = 'blur(8px)';
+    
+    setTimeout(() => {
+      morphImage.src = mode.img;
+      morphImage.onerror = function() {
+        // Fallback images
+        const fallbacks = [
+          'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=700&h=525&fit=crop',
+          'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=700&h=525&fit=crop',
+          'https://images.unsplash.com/photo-1549887534-1541e9326642?w=700&h=525&fit=crop',
+          'https://images.unsplash.com/photo-1578926288207-a90a5366759d?w=700&h=525&fit=crop'
+        ];
+        this.src = fallbacks[index % fallbacks.length];
+      };
+      morphImage.onload = () => {
+        morphImage.style.opacity = '1';
+        morphImage.style.filter = 'var(--filter-painterly)';
+      };
+    }, 400);
+  }
+
+  // Scroll-driven morph
+  window.addEventListener('scroll', () => {
+    if (!morphSection) return;
+    
+    const rect = morphSection.getBoundingClientRect();
+    const sectionH = morphSection.offsetHeight;
+    const windowH = window.innerHeight;
+    
+    const progress = Math.max(0, Math.min(1,
+      (windowH - rect.top) / (windowH + sectionH)
+    ));
+    
+    const newIndex = Math.min(
+      Math.floor(progress * morphModes.length),
+      morphModes.length - 1
+    );
+    
+    if (newIndex !== currentMorphIndex) {
+      currentMorphIndex = newIndex;
+      updateMorph(currentMorphIndex);
+    }
+  });
+
+  // Mouse-driven morph (on hover)
+  let morphTimeout;
+  morphDisplay.addEventListener('mouseenter', () => {
+    clearTimeout(morphTimeout);
+    morphTimeout = setTimeout(() => {
+      currentMorphIndex = (currentMorphIndex + 1) % morphModes.length;
+      updateMorph(currentMorphIndex);
+    }, 1500);
+  });
+
+  morphDisplay.addEventListener('mouseleave', () => {
+    clearTimeout(morphTimeout);
+  });
+
+  // ═══════════════════════════════════════════════════
+  // 9. GALLERY — Dynamic Generation & Filtering
+  // ═══════════════════════════════════════════════════
+  const galleryGrid = document.getElementById('galleryGrid');
+  
+  const galleryItems = [
+    { src: '../apa_festmenyek/olaj_01.jpg', title: 'Tengerpart', meta: 'Olaj, 90×70 cm', cat: 'oil', h: '400' },
+    { src: '../apa_festmenyek/akvarell_01.jpg', title: 'Őszi táj', meta: 'Akvarell, 40×30 cm', cat: 'watercolor', h: '350' },
+    { src: '../apa_festmenyek/keret_01.jpg', title: 'Portré', meta: 'Olaj, keretezett, 60×50 cm', cat: 'framed', h: '450' },
+    { src: '../apa_festmenyek/interior_01.jpg', title: 'Nappali kompozíció', meta: 'Olaj, belső tér, 100×80 cm', cat: 'interior', h: '380' },
+    { src: '../apa_festmenyek/olaj_02.jpg', title: 'Hegyi táj', meta: 'Olaj, 120×90 cm', cat: 'oil', h: '420' },
+    { src: '../apa_festmenyek/akvarell_02.jpg', title: 'Virágcsendélet', meta: 'Akvarell, 30×40 cm', cat: 'watercolor', h: '360' },
+    { src: '../apa_festmenyek/keret_02.jpg', title: 'Falusi jelenet', meta: 'Olaj, keretezett, 80×60 cm', cat: 'framed', h: '440' },
+    { src: '../apa_festmenyek/interior_02.jpg', title: 'Irodai tér', meta: 'Olaj, belső tér, 90×70 cm', cat: 'interior', h: '370' },
+    { src: '../apa_festmenyek/olaj_03.jpg', title: 'Esti város', meta: 'Olaj, 110×80 cm', cat: 'oil', h: '410' }
+  ];
+
+  let activeFilter = 'all';
+
+  function renderGallery(filter) {
+    const filtered = filter === 'all' 
+      ? galleryItems 
+      : galleryItems.filter(item => item.cat === filter);
+    
+    galleryGrid.innerHTML = '';
+    
+    filtered.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'gallery__item reveal';
+      div.dataset.index = galleryItems.indexOf(item);
+      div.style.transitionDelay = (i * 0.08) + 's';
+      
+      const fallbackSrc = `https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&h=${item.h}&fit=crop`;
+      
+      div.innerHTML = `
+        <img src="${item.src}" alt="${item.title}" 
+             onerror="this.src='${fallbackSrc}'"
+             loading="lazy">
+        <div class="gallery__item-overlay">
+          <h4 class="gallery__item-title">${item.title}</h4>
+          <p class="gallery__item-meta">${item.meta}</p>
+        </div>
+      `;
+      
+      div.addEventListener('click', () => openLightbox(galleryItems.indexOf(item)));
+      galleryGrid.appendChild(div);
+    });
+    
+    // Re-observe new elements
+    document.querySelectorAll('.gallery__item.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+  }
+
+  renderGallery('all');
+
+  // Filter buttons
+  document.querySelectorAll('.gallery__view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.gallery__view-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      renderGallery(activeFilter);
+    });
+  });
+
+  // ═══════════════════════════════════════════════════
+  // 10. LIGHTBOX
+  // ═══════════════════════════════════════════════════
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxMeta = document.getElementById('lightboxMeta');
+  let lightboxIndex = 0;
+
+  function openLightbox(index) {
+    lightboxIndex = index;
+    const item = galleryItems[index];
+    
+    lightboxImg.src = item.src;
+    lightboxImg.onerror = function() {
+      this.src = `https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200&h=900&fit=crop`;
+    };
+    lightboxTitle.textContent = item.title;
+    lightboxMeta.textContent = item.meta;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function navigateLightbox(dir) {
+    lightboxIndex = (lightboxIndex + dir + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[lightboxIndex];
+    lightboxImg.style.opacity = '0';
+    setTimeout(() => {
+      lightboxImg.src = item.src;
+      lightboxImg.onerror = function() {
+        this.src = `https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200&h=900&fit=crop`;
+      };
+      lightboxTitle.textContent = item.title;
+      lightboxMeta.textContent = item.meta;
+      lightboxImg.style.opacity = '1';
+    }, 300);
+  }
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', () => navigateLightbox(-1));
+  document.getElementById('lightboxNext').addEventListener('click', () => navigateLightbox(1));
+  
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  // ═══════════════════════════════════════════════════
+  // 11. SMOOTH SCROLL
+  // ═══════════════════════════════════════════════════
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ═══════════════════════════════════════════════════
+  // 12. TOUCH SUPPORT — Swipe for showcase
+  // ═══════════════════════════════════════════════════
+  let touchStartX = 0;
+  const showcaseContainer = document.getElementById('parallaxImages');
+  
+  if (showcaseContainer) {
+    showcaseContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    
+    showcaseContainer.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0 && currentShowcaseIndex < showcaseImages.length - 1) {
+          currentShowcaseIndex++;
+          updateShowcase(currentShowcaseIndex);
+        } else if (diff < 0 && currentShowcaseIndex > 0) {
+          currentShowcaseIndex--;
+          updateShowcase(currentShowcaseIndex);
+        }
+      }
+    }, { passive: true });
+  }
+
+  // ═══════════════════════════════════════════════════
+  // 13. INITIAL THEME APPLICATION
+  // ═══════════════════════════════════════════════════
+  setTheme(currentTheme);
+
+})();
+</script>
+
+</body>
+</html>
+
