@@ -345,23 +345,23 @@
                 <tr>
                     <th class="col-id">
                         <div class="th-title" onclick="handleSort('id')"># <span id="sort-icon-id" class="sort-icon"></span></div>
-                        <input type="text" class="filter-input" placeholder="Keres..." oninput="handleFilter('id', this.value)">
+                        <input type="text" class="filter-input" autocomplete="off" data-lpignore="true" placeholder="Keres..." oninput="handleFilter('id', this.value)">
                     </th>
                     <th class="col-name">
                         <div class="th-title" onclick="handleSort('file')">Fájlnév <span id="sort-icon-file" class="sort-icon"></span></div>
-                        <input type="text" class="filter-input" placeholder="Keres..." oninput="handleFilter('file', this.value)">
+                        <input type="text" class="filter-input" autocomplete="off" data-lpignore="true" placeholder="Keres..." oninput="handleFilter('file', this.value)">
                     </th>
                     <th class="col-status">
                         <div class="th-title" onclick="handleSort('status')">Állapot <span id="sort-icon-status" class="sort-icon"></span></div>
-                        <input type="text" class="filter-input" placeholder="Keres..." oninput="handleFilter('status', this.value)">
+                        <input type="text" class="filter-input" autocomplete="off" data-lpignore="true" placeholder="Keres..." oninput="handleFilter('status', this.value)">
                     </th>
                     <th class="col-score">
                         <div class="th-title" onclick="handleSort('scoreEndi')">Pontszám <span id="sort-icon-score" class="sort-icon"></span></div>
-                        <input type="text" class="filter-input" placeholder="Keres..." disabled style="opacity: 0.3;">
+                        <input type="text" class="filter-input" autocomplete="off" data-lpignore="true" placeholder="Keres..." disabled style="opacity: 0.3;">
                     </th>
                     <th class="col-comment">
                         <div class="th-title" onclick="handleSort('comment')">Megjegyzés <span id="sort-icon-comment" class="sort-icon"></span></div>
-                        <input type="text" class="filter-input" placeholder="Keres..." oninput="handleFilter('comment', this.value)">
+                        <input type="text" class="filter-input" autocomplete="off" data-lpignore="true" placeholder="Keres..." oninput="handleFilter('comment', this.value)">
                     </th>
                 </tr>
             </thead>
@@ -382,10 +382,10 @@
             Add meg a GitHub tokenedet (Personal Access Token), hogy az értékelések és a feketelista közvetlenül a GitHub repo-dba mentsődjenek. Ezt a böngésződ helyileg biztonságban tárolja.
         </p>
         <label>Repository neve (pl. Kriszi/Kriszihonlap):</label>
-        <input type="text" id="gh-repo" placeholder="tulajdonos/reponév">
+        <input type="text" id="gh-repo" placeholder="tulajdonos/reponév" autocomplete="off" data-lpignore="true">
         
         <label>GitHub Token (ghp_...):</label>
-        <input type="password" id="gh-token" placeholder="Token beillesztése">
+        <input type="password" id="gh-token" placeholder="Token beillesztése" autocomplete="new-password" data-lpignore="true">
         
         <div class="modal-actions">
             <button class="btn" onclick="closeSettings()">Mégse</button>
@@ -481,8 +481,9 @@
                 // Nem létezik még a fájl, üresen indulunk
                 sharedData = { ratings: {}, blacklist: [] };
             } else {
-                console.error('Github fetch hiba', await res.text());
-                alert("Hiba történt a GitHub letöltésekor. Lehet, hogy rossz a Repo név vagy a Token!");
+                const errorText = await res.text();
+                console.error('Github fetch hiba', res.status, errorText);
+                alert(`Hiba történt a GitHub letöltésekor (Kód: ${res.status}).\nÜzenet: ${errorText}\nLehet, hogy rossz a Repo név vagy a Token!`);
             }
         } catch (e) {
             console.error("Nem sikerült letölteni a githubról", e);
