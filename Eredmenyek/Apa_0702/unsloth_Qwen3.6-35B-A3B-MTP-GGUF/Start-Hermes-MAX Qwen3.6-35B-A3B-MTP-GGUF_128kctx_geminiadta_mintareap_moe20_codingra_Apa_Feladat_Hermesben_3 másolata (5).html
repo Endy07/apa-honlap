@@ -1,21 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kárai Mihály — Kortárs Absztrakt Festőművész</title>
+    <title>KĂˇrai MihĂˇly â€” KortĂˇrs Absztrakt FestĹ‘mĹ±vĂ©sz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        /* ═══════════════════════════════════════════════════════
-           THEME SYSTEM — 7 Harmonic Palettes (60-30-10 Rule)
-           ═══════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           THEME SYSTEM â€” 7 Harmonic Palettes (60-30-10 Rule)
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         :root {
             --transition-speed: 0.6s;
         }
 
-        /* THEME 1: Éjszaka (Night) — Deep dark + gold */
+        /* THEME 1: Ă‰jszaka (Night) â€” Deep dark + gold */
         [data-theme="ejsszaka"] {
             --bg-primary: #0a0a0f;
             --bg-secondary: #12121a;
@@ -37,7 +37,7 @@
             --swatch-3: #e8e4df;
         }
 
-        /* THEME 2: Vászon (Canvas) — Warm off-white + burnt sienna */
+        /* THEME 2: VĂˇszon (Canvas) â€” Warm off-white + burnt sienna */
         [data-theme="vaszon"] {
             --bg-primary: #f5f0e8;
             --bg-secondary: #ebe4d8;
@@ -59,7 +59,7 @@
             --swatch-3: #2c2420;
         }
 
-        /* THEME 3: Alkonyat (Dusk) — Purple + warm orange */
+        /* THEME 3: Alkonyat (Dusk) â€” Purple + warm orange */
         [data-theme="alkonyat"] {
             --bg-primary: #1a1420;
             --bg-secondary: #231d2b;
@@ -81,8 +81,8 @@
             --swatch-3: #f0e6d3;
         }
 
-        /* THEME 4: Galéria (Gallery) — Clean white gallery */
-        [data-theme="galéria"] {
+        /* THEME 4: GalĂ©ria (Gallery) â€” Clean white gallery */
+        [data-theme="galĂ©ria"] {
             --bg-primary: #fafafa;
             --bg-secondary: #f0f0f0;
             --bg-tertiary: #e8e8e8;
@@ -103,8 +103,8 @@
             --swatch-3: #1a1a1a;
         }
 
-        /* THEME 5: Bohém (Bohemian) — Terracotta + sage + cream */
-        [data-theme="bohém"] {
+        /* THEME 5: BohĂ©m (Bohemian) â€” Terracotta + sage + cream */
+        [data-theme="bohĂ©m"] {
             --bg-primary: #f4ebe3;
             --bg-secondary: #ebe0d4;
             --bg-tertiary: #e2d5c7;
@@ -125,7 +125,7 @@
             --swatch-3: #3d3229;
         }
 
-        /* THEME 6: Meleg (Warm) — Cream + burgundy */
+        /* THEME 6: Meleg (Warm) â€” Cream + burgundy */
         [data-theme="meleg"] {
             --bg-primary: #fdf6ee;
             --bg-secondary: #f5ece0;
@@ -147,8 +147,8 @@
             --swatch-3: #2d1f1a;
         }
 
-        /* THEME 7: Erdő (Forest) — Deep green + amber */
-        [data-theme="erdő"] {
+        /* THEME 7: ErdĹ‘ (Forest) â€” Deep green + amber */
+        [data-theme="erdĹ‘"] {
             --bg-primary: #1a2e1a;
             --bg-secondary: #223822;
             --bg-tertiary: #2a422a;
@@ -169,9 +169,9 @@
             --swatch-3: #e8e4d4;
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            BASE RESET & GLOBAL
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -196,9 +196,9 @@
             line-height: 1.7;
         }
 
-        /* ═══════════════════════════════════════════════════════
-           TEXTURE OVERLAY — Film Grain
-           ═══════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           TEXTURE OVERLAY â€” Film Grain
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         body::before {
             content: '';
             position: fixed;
@@ -211,9 +211,9 @@
             background-size: 256px 256px;
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            SCROLLBAR
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-secondary); }
         ::-webkit-scrollbar-thumb {
@@ -221,9 +221,9 @@
             border-radius: 3px;
         }
 
-        /* ═══════════════════════════════════════════════════════
-           NAVIGATION — Floating Pill
-           ═══════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           NAVIGATION â€” Floating Pill
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .nav {
             position: fixed;
             top: 24px;
@@ -314,9 +314,9 @@
             transform: rotate(-45deg) translate(5px, -4px);
         }
 
-        /* ═══════════════════════════════════════════════════════
-           HERO SECTION — Canvas Paint Animation
-           ═══════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           HERO SECTION â€” Canvas Paint Animation
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .hero {
             position: relative;
             width: 100%;
@@ -421,9 +421,9 @@
             animation: scrollPulse 2s ease infinite;
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            SECTION COMMON
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         section {
             position: relative;
             padding: clamp(80px, 12vw, 160px) clamp(24px, 5vw, 80px);
@@ -469,9 +469,9 @@
             color: var(--accent);
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            REVEAL ANIMATIONS
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -488,9 +488,9 @@
         .reveal-delay-3 { transition-delay: 0.3s; }
         .reveal-delay-4 { transition-delay: 0.4s; }
 
-        /* ═══════════════════════════════════════════════════════
-           ABOUT SECTION — Diagonal Split
-           ═══════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           ABOUT SECTION â€” Diagonal Split
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .about {
             background: var(--bg-secondary);
             transition: background var(--transition-speed) ease;
@@ -584,9 +584,9 @@
             margin-top: 0.5rem;
         }
 
-        /* ═══════════════════════════════════════════════════════
-           GALLERY — Masonry Layout
-           ═══════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           GALLERY â€” Masonry Layout
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .gallery {
             background: var(--bg-primary);
         }
@@ -701,9 +701,9 @@
             max-height: 200px;
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            LIGHTBOX
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .lightbox {
             position: fixed;
             inset: 0;
@@ -776,9 +776,9 @@
             max-width: 500px;
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            QUOTE / PHILOSOPHY SECTION
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .quote-section {
             background: var(--bg-secondary);
             text-align: center;
@@ -814,9 +814,9 @@
             color: var(--text-muted);
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            CONTACT SECTION
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .contact {
             background: var(--bg-primary);
         }
@@ -935,9 +935,9 @@
             color: var(--bg-primary);
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            FOOTER
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         footer {
             background: var(--bg-secondary);
             padding: 3rem clamp(24px, 5vw, 80px);
@@ -960,9 +960,9 @@
             margin-bottom: 0.5rem;
         }
 
-        /* ═══════════════════════════════════════════════════════
-           THEME SWITCHER — Floating Palette Panel
-           ═══════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           THEME SWITCHER â€” Floating Palette Panel
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .theme-switcher {
             position: fixed;
             right: 24px;
@@ -1020,16 +1020,16 @@
         .theme-swatch[data-theme="alkonyat"] {
             background: linear-gradient(135deg, #1a1420 50%, #e07a5f 50%);
         }
-        .theme-swatch[data-theme="galéria"] {
+        .theme-swatch[data-theme="galĂ©ria"] {
             background: linear-gradient(135deg, #fafafa 50%, #c9a87c 50%);
         }
-        .theme-swatch[data-theme="bohém"] {
+        .theme-swatch[data-theme="bohĂ©m"] {
             background: linear-gradient(135deg, #f4ebe3 50%, #c1666b 50%);
         }
         .theme-swatch[data-theme="meleg"] {
             background: linear-gradient(135deg, #fdf6ee 50%, #722f37 50%);
         }
-        .theme-swatch[data-theme="erdő"] {
+        .theme-swatch[data-theme="erdĹ‘"] {
             background: linear-gradient(135deg, #1a2e1a 50%, #d4a574 50%);
         }
 
@@ -1055,9 +1055,9 @@
             opacity: 1;
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            ANIMATIONS
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1082,9 +1082,9 @@
             100% { height: 120px; opacity: 0; }
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            RESPONSIVE
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         @media (max-width: 1024px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1179,9 +1179,9 @@
             }
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            DECORATIVE ELEMENTS
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .deco-line {
             width: 60px;
             height: 1px;
@@ -1205,9 +1205,9 @@
             opacity: 0.4;
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            PAINT DRIP DECORATIONS
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .paint-drip {
             position: absolute;
             width: 3px;
@@ -1216,9 +1216,9 @@
             border-radius: 0 0 3px 3px;
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            SECTION DIVIDER
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .section-divider {
             display: flex;
             align-items: center;
@@ -1235,9 +1235,9 @@
             opacity: 0.2;
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            PROCESS SECTION
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .process {
             background: var(--bg-primary);
         }
@@ -1294,9 +1294,9 @@
             }
         }
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            MOBILE NAV OVERLAY FIX
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         .nav-overlay {
             position: fixed;
             inset: 0;
@@ -1315,12 +1315,12 @@
 </head>
 <body data-theme="ejsszaka">
 
-    <!-- ═══ NAVIGATION ═══ -->
+    <!-- â•â•â• NAVIGATION â•â•â• -->
     <nav class="nav">
-        <a href="#hero" class="nav-logo">Kárai M.</a>
+        <a href="#hero" class="nav-logo">KĂˇrai M.</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#about" onclick="closeNav()">Rólam</a></li>
-            <li><a href="#gallery" onclick="closeNav()">Galéria</a></li>
+            <li><a href="#about" onclick="closeNav()">RĂłlam</a></li>
+            <li><a href="#gallery" onclick="closeNav()">GalĂ©ria</a></li>
             <li><a href="#process" onclick="closeNav()">Folyamat</a></li>
             <li><a href="#contact" onclick="closeNav()">Kapcsolat</a></li>
         </ul>
@@ -1330,48 +1330,48 @@
     </nav>
     <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
 
-    <!-- ═══ THEME SWITCHER ═══ -->
+    <!-- â•â•â• THEME SWITCHER â•â•â• -->
     <div class="theme-switcher" id="themeSwitcher">
-        <span class="theme-switcher-label">Téma</span>
-        <div class="theme-swatch active" data-theme="ejsszaka" onclick="setTheme('ejsszaka')" title="Éjszaka">
-            <span class="theme-swatch-tooltip">Éjszaka</span>
+        <span class="theme-switcher-label">TĂ©ma</span>
+        <div class="theme-swatch active" data-theme="ejsszaka" onclick="setTheme('ejsszaka')" title="Ă‰jszaka">
+            <span class="theme-swatch-tooltip">Ă‰jszaka</span>
         </div>
-        <div class="theme-swatch" data-theme="vaszon" onclick="setTheme('vaszon')" title="Vászon">
-            <span class="theme-swatch-tooltip">Vászon</span>
+        <div class="theme-swatch" data-theme="vaszon" onclick="setTheme('vaszon')" title="VĂˇszon">
+            <span class="theme-swatch-tooltip">VĂˇszon</span>
         </div>
         <div class="theme-swatch" data-theme="alkonyat" onclick="setTheme('alkonyat')" title="Alkonyat">
             <span class="theme-swatch-tooltip">Alkonyat</span>
         </div>
-        <div class="theme-swatch" data-theme="galéria" onclick="setTheme('galéria')" title="Galéria">
-            <span class="theme-swatch-tooltip">Galéria</span>
+        <div class="theme-swatch" data-theme="galĂ©ria" onclick="setTheme('galĂ©ria')" title="GalĂ©ria">
+            <span class="theme-swatch-tooltip">GalĂ©ria</span>
         </div>
-        <div class="theme-swatch" data-theme="bohém" onclick="setTheme('bohém')" title="Bohém">
-            <span class="theme-swatch-tooltip">Bohém</span>
+        <div class="theme-swatch" data-theme="bohĂ©m" onclick="setTheme('bohĂ©m')" title="BohĂ©m">
+            <span class="theme-swatch-tooltip">BohĂ©m</span>
         </div>
         <div class="theme-swatch" data-theme="meleg" onclick="setTheme('meleg')" title="Meleg">
             <span class="theme-swatch-tooltip">Meleg</span>
         </div>
-        <div class="theme-swatch" data-theme="erdő" onclick="setTheme('erdő')" title="Erdő">
-            <span class="theme-swatch-tooltip">Erdő</span>
+        <div class="theme-swatch" data-theme="erdĹ‘" onclick="setTheme('erdĹ‘')" title="ErdĹ‘">
+            <span class="theme-swatch-tooltip">ErdĹ‘</span>
         </div>
     </div>
 
-    <!-- ═══ HERO ═══ -->
+    <!-- â•â•â• HERO â•â•â• -->
     <section class="hero" id="hero">
         <canvas class="hero-canvas" id="heroCanvas"></canvas>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <p class="hero-eyebrow">Kortárs Absztrakt Festőművész</p>
-            <h1 class="hero-title">Kárai<br><em>Mihály</em></h1>
-            <p class="hero-subtitle">A szín és forma nyelve — ahol az érzelem festékkel ölt testet</p>
+            <p class="hero-eyebrow">KortĂˇrs Absztrakt FestĹ‘mĹ±vĂ©sz</p>
+            <h1 class="hero-title">KĂˇrai<br><em>MihĂˇly</em></h1>
+            <p class="hero-subtitle">A szĂ­n Ă©s forma nyelve â€” ahol az Ă©rzelem festĂ©kkel Ă¶lt testet</p>
         </div>
         <div class="hero-scroll">
-            <span>Felfedezés</span>
+            <span>FelfedezĂ©s</span>
             <div class="hero-scroll-line"></div>
         </div>
     </section>
 
-    <!-- ═══ ABOUT ═══ -->
+    <!-- â•â•â• ABOUT â•â•â• -->
     <section class="about" id="about">
         <div class="section-inner">
             <div class="about-grid">
@@ -1384,29 +1384,29 @@
                     </div>
                 </div>
                 <div class="about-text">
-                    <div class="section-label reveal">Rólam</div>
-                    <h2 class="section-title reveal reveal-delay-1">A festészet az <em>érzelem</em> tükre</h2>
+                    <div class="section-label reveal">RĂłlam</div>
+                    <h2 class="section-title reveal reveal-delay-1">A festĂ©szet az <em>Ă©rzelem</em> tĂĽkre</h2>
                     <p class="reveal reveal-delay-2">
-                        Kárai Mihály 1961-ben született, és évtizedek óta alkotja meg a kortárs absztrakt festészet egyedi világát. Művészete a lírai absztrakció és az expresszionizmus határán táncol — ahol az érzelmek nem szavakban, hanem ecsetvonásokban, textúrákban és színekben beszélnek.
+                        KĂˇrai MihĂˇly 1961-ben szĂĽletett, Ă©s Ă©vtizedek Ăłta alkotja meg a kortĂˇrs absztrakt festĂ©szet egyedi vilĂˇgĂˇt. MĹ±vĂ©szete a lĂ­rai absztrakciĂł Ă©s az expresszionizmus hatĂˇrĂˇn tĂˇncol â€” ahol az Ă©rzelmek nem szavakban, hanem ecsetvonĂˇsokban, textĂşrĂˇkban Ă©s szĂ­nekben beszĂ©lnek.
                     </p>
                     <div class="highlight reveal reveal-delay-3">
-                        „Minden festmény egy belső küzdelem kimenetele: a fény és sötétség, a rend és káosz, a csend és a vihar dialógusa."
+                        â€žMinden festmĂ©ny egy belsĹ‘ kĂĽzdelem kimenetele: a fĂ©ny Ă©s sĂ¶tĂ©tsĂ©g, a rend Ă©s kĂˇosz, a csend Ă©s a vihar dialĂłgusa."
                     </div>
                     <p class="reveal reveal-delay-3">
-                        Művészete a vastag impasto technika és a palettakéses kaparások erejében rejlik. A tűzpirosak, kadmiumnarancsok és aranyak harsány melegségét éles ciánkék és türkiz kontrasztok törik meg — mintha egy belső táj színei öntenének formát a vásznon.
+                        MĹ±vĂ©szete a vastag impasto technika Ă©s a palettakĂ©ses kaparĂˇsok erejĂ©ben rejlik. A tĹ±zpirosak, kadmiumnarancsok Ă©s aranyak harsĂˇny melegsĂ©gĂ©t Ă©les ciĂˇnkĂ©k Ă©s tĂĽrkiz kontrasztok tĂ¶rik meg â€” mintha egy belsĹ‘ tĂˇj szĂ­nei Ă¶ntenĂ©nek formĂˇt a vĂˇsznon.
                     </p>
                     <div class="about-stats reveal reveal-delay-4">
                         <div>
                             <div class="about-stat-number">60+</div>
-                            <div class="about-stat-label">Életkor</div>
+                            <div class="about-stat-label">Ă‰letkor</div>
                         </div>
                         <div>
                             <div class="about-stat-number">30+</div>
-                            <div class="about-stat-label">Év alkotás</div>
+                            <div class="about-stat-label">Ă‰v alkotĂˇs</div>
                         </div>
                         <div>
                             <div class="about-stat-number">100+</div>
-                            <div class="about-stat-label">Festmény</div>
+                            <div class="about-stat-label">FestmĂ©ny</div>
                         </div>
                     </div>
                 </div>
@@ -1420,18 +1420,18 @@
         </svg>
     </div>
 
-    <!-- ═══ GALLERY ═══ -->
+    <!-- â•â•â• GALLERY â•â•â• -->
     <section class="gallery" id="gallery">
         <div class="section-inner">
-            <div class="section-label reveal">Galéria</div>
-            <h2 class="section-title reveal reveal-delay-1">Válogatott <em>alkotások</em></h2>
+            <div class="section-label reveal">GalĂ©ria</div>
+            <h2 class="section-title reveal reveal-delay-1">VĂˇlogatott <em>alkotĂˇsok</em></h2>
 
             <div class="gallery-filters reveal reveal-delay-2">
-                <button class="gallery-filter active" data-filter="all">Összes</button>
+                <button class="gallery-filter active" data-filter="all">Ă–sszes</button>
                 <button class="gallery-filter" data-filter="absztrakt">Absztrakt</button>
-                <button class="gallery-filter" data-filter="szines">Színes</button>
-                <button class="gallery-filter" data-filter="figura">Figurális</button>
-                <button class="gallery-filter" data-filter="panorama">Panoráma</button>
+                <button class="gallery-filter" data-filter="szines">SzĂ­nes</button>
+                <button class="gallery-filter" data-filter="figura">FigurĂˇlis</button>
+                <button class="gallery-filter" data-filter="panorama">PanorĂˇma</button>
             </div>
 
             <div class="gallery-grid" id="galleryGrid">
@@ -1440,45 +1440,45 @@
         </div>
     </section>
 
-    <!-- ═══ QUOTE ═══ -->
+    <!-- â•â•â• QUOTE â•â•â• -->
     <section class="quote-section">
         <div class="section-inner">
             <div class="quote-mark reveal">"</div>
             <p class="quote-text reveal reveal-delay-1">
-                A festészet nem azt mutatja meg, amit látunk, hanem azt, amit látvátlanná teszünk.
+                A festĂ©szet nem azt mutatja meg, amit lĂˇtunk, hanem azt, amit lĂˇtvĂˇtlannĂˇ teszĂĽnk.
             </p>
-            <p class="quote-author reveal reveal-delay-2">— Kárai Mihály</p>
+            <p class="quote-author reveal reveal-delay-2">â€” KĂˇrai MihĂˇly</p>
         </div>
     </section>
 
-    <!-- ═══ PROCESS ═══ -->
+    <!-- â•â•â• PROCESS â•â•â• -->
     <section class="process" id="process">
         <div class="section-inner">
-            <div class="section-label reveal">Alkotás</div>
+            <div class="section-label reveal">AlkotĂˇs</div>
             <h2 class="section-title reveal reveal-delay-1">A <em>folyamat</em></h2>
             <p class="reveal reveal-delay-2" style="color:var(--text-secondary);max-width:600px;font-size:1rem;line-height:1.8;">
-                Minden festmény születése egy belső szükségletből indul — egy kép, ami csak a vásznon nyer formát. A folyamat nyers és őszinte, ahol a véletlen is társművész.
+                Minden festmĂ©ny szĂĽletĂ©se egy belsĹ‘ szĂĽksĂ©gletbĹ‘l indul â€” egy kĂ©p, ami csak a vĂˇsznon nyer formĂˇt. A folyamat nyers Ă©s Ĺ‘szinte, ahol a vĂ©letlen is tĂˇrsmĹ±vĂ©sz.
             </p>
             <div class="process-steps">
                 <div class="process-step reveal reveal-delay-1">
                     <div class="process-step-number">01</div>
-                    <h3 class="process-step-title">Belső impulzus</h3>
+                    <h3 class="process-step-title">BelsĹ‘ impulzus</h3>
                     <p class="process-step-desc">
-                        Minden alkotás egy érzelmi pillanatból, belső képből vagy hangulatból indul. A vászon üressége várja az első ecsetvonást.
+                        Minden alkotĂˇs egy Ă©rzelmi pillanatbĂłl, belsĹ‘ kĂ©pbĹ‘l vagy hangulatbĂłl indul. A vĂˇszon ĂĽressĂ©ge vĂˇrja az elsĹ‘ ecsetvonĂˇst.
                     </p>
                 </div>
                 <div class="process-step reveal reveal-delay-2">
                     <div class="process-step-number">02</div>
-                    <h3 class="process-step-title">Rétegek játéka</h3>
+                    <h3 class="process-step-title">RĂ©tegek jĂˇtĂ©ka</h3>
                     <p class="process-step-desc">
-                        Vastag impasto rétegek, palettakéses kaparások, rétegzett felhordás — a festék plasztikus testté válik, textúrája élő szervezetté.
+                        Vastag impasto rĂ©tegek, palettakĂ©ses kaparĂˇsok, rĂ©tegzett felhordĂˇs â€” a festĂ©k plasztikus testtĂ© vĂˇlik, textĂşrĂˇja Ă©lĹ‘ szervezettĂ©.
                     </p>
                 </div>
                 <div class="process-step reveal reveal-delay-3">
                     <div class="process-step-number">03</div>
-                    <h3 class="process-step-title">Végső harmónia</h3>
+                    <h3 class="process-step-title">VĂ©gsĹ‘ harmĂłnia</h3>
                     <p class="process-step-desc">
-                        Amikor a kompozíció eléri egyensúlyát — a kázból rend, a színekből zene, a vonalakból táj születik.
+                        Amikor a kompozĂ­ciĂł elĂ©ri egyensĂşlyĂˇt â€” a kĂˇzbĂłl rend, a szĂ­nekbĹ‘l zene, a vonalakbĂłl tĂˇj szĂĽletik.
                     </p>
                 </div>
             </div>
@@ -1491,29 +1491,29 @@
         </svg>
     </div>
 
-    <!-- ═══ CONTACT ═══ -->
+    <!-- â•â•â• CONTACT â•â•â• -->
     <section class="contact" id="contact">
         <div class="section-inner">
             <div class="section-label reveal">Kapcsolat</div>
-            <h2 class="section-title reveal reveal-delay-1">Lépjen <em>kapcsolatba</em></h2>
+            <h2 class="section-title reveal reveal-delay-1">LĂ©pjen <em>kapcsolatba</em></h2>
             <div class="contact-grid">
                 <div class="contact-info reveal reveal-delay-2">
                     <p>
-                        Ha érdekel egy alkotás, kiállítás, vagy együttműködés lehetősége, forduljon bizalommal. Szívesen beszél a művészetről és az alkotás folyamatáról.
+                        Ha Ă©rdekel egy alkotĂˇs, kiĂˇllĂ­tĂˇs, vagy egyĂĽttmĹ±kĂ¶dĂ©s lehetĹ‘sĂ©ge, forduljon bizalommal. SzĂ­vesen beszĂ©l a mĹ±vĂ©szetrĹ‘l Ă©s az alkotĂˇs folyamatĂˇrĂłl.
                     </p>
                     <div class="contact-detail">
-                        <div class="contact-detail-icon">✉</div>
+                        <div class="contact-detail-icon">âś‰</div>
                         <span class="contact-detail-text">kapcsolat@karai-mihaly.hu</span>
                     </div>
                     <div class="contact-detail">
-                        <div class="contact-detail-icon">☎</div>
-                        <span class="contact-detail-text">Magyarország</span>
+                        <div class="contact-detail-icon">âŽ</div>
+                        <span class="contact-detail-text">MagyarorszĂˇg</span>
                     </div>
                 </div>
-                <form class="contact-form reveal reveal-delay-3" onsubmit="event.preventDefault(); alert('Köszönjük az üzenetet!');">
+                <form class="contact-form reveal reveal-delay-3" onsubmit="event.preventDefault(); alert('KĂ¶szĂ¶njĂĽk az ĂĽzenetet!');">
                     <div class="form-group">
                         <input type="text" id="name" placeholder=" " required>
-                        <label for="name">Név</label>
+                        <label for="name">NĂ©v</label>
                     </div>
                     <div class="form-group">
                         <input type="email" id="email" placeholder=" " required>
@@ -1521,23 +1521,23 @@
                     </div>
                     <div class="form-group">
                         <textarea id="message" rows="4" placeholder=" " required></textarea>
-                        <label for="message">Üzenet</label>
+                        <label for="message">Ăśzenet</label>
                     </div>
-                    <button type="submit" class="form-submit">Küldés</button>
+                    <button type="submit" class="form-submit">KĂĽldĂ©s</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- ═══ FOOTER ═══ -->
+    <!-- â•â•â• FOOTER â•â•â• -->
     <footer>
-        <p class="footer-name">Kárai Mihály</p>
-        <p>© 2026 — Kortárs Absztrakt Festőművész. Minden jog fenntartva.</p>
+        <p class="footer-name">KĂˇrai MihĂˇly</p>
+        <p>Â© 2026 â€” KortĂˇrs Absztrakt FestĹ‘mĹ±vĂ©sz. Minden jog fenntartva.</p>
     </footer>
 
-    <!-- ═══ LIGHTBOX ═══ -->
+    <!-- â•â•â• LIGHTBOX â•â•â• -->
     <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <button class="lightbox-close" onclick="closeLightbox()">âś•</button>
         <img class="lightbox-img" id="lightboxImg" src="" alt="">
         <div class="lightbox-info">
             <h3 class="lightbox-title" id="lightboxTitle"></h3>
@@ -1545,137 +1545,137 @@
         </div>
     </div>
 
-    <!-- ═══ JAVASCRIPT ═══ -->
+    <!-- â•â•â• JAVASCRIPT â•â•â• -->
     <script>
     (function() {
         'use strict';
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            PAINTING DATA
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         const paintings = [
             {
                 id: 1,
                 file: '014fb97bae01374ff673a7f51de018af-karai-mihaly-absztrakt-festmeny-kepmeret-80x60-cm.jpg',
-                title: 'Absztrakt festmény',
-                size: '80×60 cm',
+                title: 'Absztrakt festmĂ©ny',
+                size: '80Ă—60 cm',
                 category: 'absztrakt',
-                desc: 'Meleg tónusú, textúrált kompozíció rácsszerű szerkezetre épül. Az éles fehér és sárga hasításszerű vonalak úgy hatnak, mint a szélben hajladozó nád.',
+                desc: 'Meleg tĂłnusĂş, textĂşrĂˇlt kompozĂ­ciĂł rĂˇcsszerĹ± szerkezetre Ă©pĂĽl. Az Ă©les fehĂ©r Ă©s sĂˇrga hasĂ­tĂˇsszerĹ± vonalak Ăşgy hatnak, mint a szĂ©lben hajladozĂł nĂˇd.',
                 class: ''
             },
             {
                 id: 2,
                 file: '579ee3610e2f00108ae1ad3b4efe881f-karai-mihaly-a-kep-merete-80x60-cm.jpg',
                 title: 'Color Blocking',
-                size: '80×60 cm',
+                size: '80Ă—60 cm',
                 category: 'absztrakt',
-                desc: 'Geometriai, nagy kontrasztú festmény. Ciánkék mező, tűzpiros oszlop, és dinamikus X-forma — erős vizuális dualitás.',
+                desc: 'Geometriai, nagy kontrasztĂş festmĂ©ny. CiĂˇnkĂ©k mezĹ‘, tĹ±zpiros oszlop, Ă©s dinamikus X-forma â€” erĹ‘s vizuĂˇlis dualitĂˇs.',
                 class: ''
             },
             {
                 id: 3,
                 file: '732e9d819fbbee1e6b2126f580f51743-karai-mihaly-szines-modern-absztrakt-festmeny-90-x-90-cm.jpg',
-                title: 'Tűz és Jég',
-                size: '90×90 cm',
+                title: 'TĹ±z Ă©s JĂ©g',
+                size: '90Ă—90 cm',
                 category: 'szines',
-                desc: 'Szürreális, organikus formákból álló fluid landscape. Mélykék jéghegy és lángnyelvszerű piros alakzat — elementáris erők összecsapása.',
+                desc: 'SzĂĽrreĂˇlis, organikus formĂˇkbĂłl ĂˇllĂł fluid landscape. MĂ©lykĂ©k jĂ©ghegy Ă©s lĂˇngnyelvszerĹ± piros alakzat â€” elementĂˇris erĹ‘k Ă¶sszecsapĂˇsa.',
                 class: 'tall'
             },
             {
                 id: 4,
                 file: '76a52a2610ed517750b4d73efabbe595-karai-mihaly-absztrakt-festmeny-140x40x4-cm.jpg',
-                title: 'Városi Tükör',
-                size: '140×40 cm',
+                title: 'VĂˇrosi TĂĽkĂ¶r',
+                size: '140Ă—40 cm',
                 category: 'panorama',
-                desc: 'Panorámaszerű függőleges elrendezés. Naplemente olvad éjszakai víztükröződéssé — kubista, vertikális ecsetvonások neonfényű felhőkarcolókká válnak.',
+                desc: 'PanorĂˇmaszerĹ± fĂĽggĹ‘leges elrendezĂ©s. Naplemente olvad Ă©jszakai vĂ­ztĂĽkrĂ¶zĹ‘dĂ©ssĂ© â€” kubista, vertikĂˇlis ecsetvonĂˇsok neonfĂ©nyĹ± felhĹ‘karcolĂłkkĂˇ vĂˇlnak.',
                 class: 'wide'
             },
             {
                 id: 5,
                 file: '8548dfcda68a1463e1ed276bce0b0b0c-karai-mihaly-absztrakt-festmeny-kepmeret-140x40-cm.jpg',
-                title: 'Izzó Torony',
-                size: '140×40 cm',
+                title: 'IzzĂł Torony',
+                size: '140Ă—40 cm',
                 category: 'panorama',
-                desc: 'Vérvörös háttérből fehér-sárga felhőkarcoló ugrik ki. Izzó sárga mag, vibráló rózsaszín és magenta — tüzes égbolt és hideg víz kontrasztja.',
+                desc: 'VĂ©rvĂ¶rĂ¶s hĂˇttĂ©rbĹ‘l fehĂ©r-sĂˇrga felhĹ‘karcolĂł ugrik ki. IzzĂł sĂˇrga mag, vibrĂˇlĂł rĂłzsaszĂ­n Ă©s magenta â€” tĂĽzes Ă©gbolt Ă©s hideg vĂ­z kontrasztja.',
                 class: ''
             },
             {
                 id: 6,
                 file: '9714f6cd20df8b60a6cfa68e340bdcb2-karai-mihaly-absztrakt-festmeny-40x70-cm.jpg',
-                title: 'Oázis',
-                size: '40×70 cm',
+                title: 'OĂˇzis',
+                size: '40Ă—70 cm',
                 category: 'absztrakt',
-                desc: 'Horizontális tájkép-absztrakció. Arany és sárga sivatagi naplemente, élénk türkiz csík — mint egy perzselő sivatag hűvös oázisa.',
+                desc: 'HorizontĂˇlis tĂˇjkĂ©p-absztrakciĂł. Arany Ă©s sĂˇrga sivatagi naplemente, Ă©lĂ©nk tĂĽrkiz csĂ­k â€” mint egy perzselĹ‘ sivatag hĹ±vĂ¶s oĂˇzisa.',
                 class: 'tall'
             },
             {
                 id: 7,
                 file: 'c74fb23ff889ff7fc5bc22904e957ac7-karai-mihaly-kortars-absztrakt-festmeny-kepmeret-70x30-cm.jpg',
-                title: 'Fénysugár',
-                size: '70×30 cm',
+                title: 'FĂ©nysugĂˇr',
+                size: '70Ă—30 cm',
                 category: 'absztrakt',
-                desc: 'Organikus körök és napkorongok a felső részen, középen vakító fehér fénysugár. Alsó fele málna-rózsaszín — fodrozódó víztükör élménye.',
+                desc: 'Organikus kĂ¶rĂ¶k Ă©s napkorongok a felsĹ‘ rĂ©szen, kĂ¶zĂ©pen vakĂ­tĂł fehĂ©r fĂ©nysugĂˇr. AlsĂł fele mĂˇlna-rĂłzsaszĂ­n â€” fodrozĂłdĂł vĂ­ztĂĽkĂ¶r Ă©lmĂ©nye.',
                 class: ''
             },
             {
                 id: 8,
                 file: 'cf6c30f8ab61eea749199ee138ae02df-karai-mihaly-nyari-hoseg-kepmeret-100x70-cm.jpg',
-                title: 'Nyári Hőség',
-                size: '100×70 cm',
+                title: 'NyĂˇri HĹ‘sĂ©g',
+                size: '100Ă—70 cm',
                 category: 'figura',
-                desc: 'Figurális-absztrakt fúzió. Női alak torzója hófehér bikinin, teste beleolvad az izzó narancs, vörös, sárga háttérbe — a nyári nap fizikai ereje.',
+                desc: 'FigurĂˇlis-absztrakt fĂşziĂł. NĹ‘i alak torzĂłja hĂłfehĂ©r bikinin, teste beleolvad az izzĂł narancs, vĂ¶rĂ¶s, sĂˇrga hĂˇttĂ©rbe â€” a nyĂˇri nap fizikai ereje.',
                 class: ''
             },
             {
                 id: 9,
                 file: 'd0e8f21d863d3647ce7ce2705fbb0aeb-karai-mihaly-absztrakt-festmeny-kepmeret-70x70-cm.jpg',
-                title: 'Szív',
-                size: '70×70 cm',
+                title: 'SzĂ­v',
+                size: '70Ă—70 cm',
                 category: 'absztrakt',
-                desc: 'Nyers, indusztriális textúrájú kompozíció. Rozsdabarna és hamuszürke környezetből tör elő élénk kadmiumpiros szív — melankólia és szenvedély.',
+                desc: 'Nyers, indusztriĂˇlis textĂşrĂˇjĂş kompozĂ­ciĂł. Rozsdabarna Ă©s hamuszĂĽrke kĂ¶rnyezetbĹ‘l tĂ¶r elĹ‘ Ă©lĂ©nk kadmiumpiros szĂ­v â€” melankĂłlia Ă©s szenvedĂ©ly.',
                 class: ''
             },
             {
                 id: 10,
                 file: 'd45190df18d013a48540242d4e02b588-karai-mihaly-szines-modern-absztrakt-festmeny-90x100-cm.jpg',
-                title: 'Virágszirom',
-                size: '90×100 cm',
+                title: 'VirĂˇgszirom',
+                size: '90Ă—100 cm',
                 category: 'szines',
-                desc: 'Finom, elegáns, pasztell atmoszféra. Lazacszín, mályva, púderrózsaszín — makró virágszirom textúra, gyűrött selyem harmóniája.',
+                desc: 'Finom, elegĂˇns, pasztell atmoszfĂ©ra. LazacszĂ­n, mĂˇlyva, pĂşderrĂłzsaszĂ­n â€” makrĂł virĂˇgszirom textĂşra, gyĹ±rĂ¶tt selyem harmĂłniĂˇja.',
                 class: 'tall'
             },
             {
                 id: 11,
                 file: 'e862397c8ee36bfab0bbe2de56b503e2-karai-mihaly-absztrakt-festmeny-kepmeret-60x60-cm.jpg',
-                title: 'Városi Mozaik',
-                size: '60×60 cm',
+                title: 'VĂˇrosi Mozaik',
+                size: '60Ă—60 cm',
                 category: 'absztrakt',
-                desc: 'Három sávra bontható négyzet. Kozmikus örvények, málnapiros sáv, és lüktető városi mozaik — madártávlati nyüzsgő piac.',
+                desc: 'HĂˇrom sĂˇvra bonthatĂł nĂ©gyzet. Kozmikus Ă¶rvĂ©nyek, mĂˇlnapiros sĂˇv, Ă©s lĂĽktetĹ‘ vĂˇrosi mozaik â€” madĂˇrtĂˇvlati nyĂĽzsgĹ‘ piac.',
                 class: ''
             },
             {
                 id: 12,
                 file: 'keretnelkul_1.jpg',
                 title: 'Nyers Energia',
-                size: '70×100 cm',
+                size: '70Ă—100 cm',
                 category: 'absztrakt',
-                desc: 'A gyűjtemény legsötétebb darabja. Burgundi vörös és mélybarna alapból kaparó mozdulatokkal tör elő hófehér és sárgás festék — chiaroscuro dráma.',
+                desc: 'A gyĹ±jtemĂ©ny legsĂ¶tĂ©tebb darabja. Burgundi vĂ¶rĂ¶s Ă©s mĂ©lybarna alapbĂłl kaparĂł mozdulatokkal tĂ¶r elĹ‘ hĂłfehĂ©r Ă©s sĂˇrgĂˇs festĂ©k â€” chiaroscuro drĂˇma.',
                 class: ''
             },
             {
                 id: 13,
                 file: 'keretnelkul_2.jpg',
                 title: 'Hangulat',
-                size: '80×60 cm',
+                size: '80Ă—60 cm',
                 category: 'szines',
-                desc: 'Áramló, lüktető tiszta energia. Ködszerű vörös-magenta felhő, napsárga és fűzöld visszfények — forró, misztikus, mélyen érzelmes atmoszféra.',
+                desc: 'ĂramlĂł, lĂĽktetĹ‘ tiszta energia. KĂ¶dszerĹ± vĂ¶rĂ¶s-magenta felhĹ‘, napsĂˇrga Ă©s fĹ±zĂ¶ld visszfĂ©nyek â€” forrĂł, misztikus, mĂ©lyen Ă©rzelmes atmoszfĂ©ra.',
                 class: 'wide'
             }
         ];
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            GALLERY RENDERING
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         const galleryGrid = document.getElementById('galleryGrid');
 
         function renderGallery(filter) {
@@ -1687,7 +1687,7 @@
                 item.className = `gallery-item ${p.class} reveal reveal-delay-${Math.min(i % 4 + 1, 4)}`;
                 item.setAttribute('data-category', p.category);
                 item.innerHTML = `
-                    <img class="gallery-item-img" src="apa_festmenyek/${p.file}" alt="${p.title}" loading="lazy">
+                    <img class="gallery-item-img" src="http://localhost/2026/Hermes/Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/apa_festmenyek/${p.file}" alt="${p.title}" loading="lazy">
                     <div class="gallery-item-overlay">
                         <h3 class="gallery-item-title">${p.title}</h3>
                         <span class="gallery-item-size">${p.size}</span>
@@ -1708,9 +1708,9 @@
 
         renderGallery('all');
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            GALLERY FILTERS
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         document.querySelectorAll('.gallery-filter').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('active'));
@@ -1719,9 +1719,9 @@
             });
         });
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            LIGHTBOX
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxTitle = document.getElementById('lightboxTitle');
@@ -1730,7 +1730,7 @@
         window.openLightbox = function(p) {
             lightboxImg.src = `apa_festmenyek/${p.file}`;
             lightboxImg.alt = p.title;
-            lightboxTitle.textContent = p.title + ' — ' + p.size;
+            lightboxTitle.textContent = p.title + ' â€” ' + p.size;
             lightboxDesc.textContent = p.desc;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1749,9 +1749,9 @@
             if (e.key === 'Escape') closeLightbox();
         });
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            THEME SWITCHER
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         window.setTheme = function(themeName) {
             document.body.setAttribute('data-theme', themeName);
             document.querySelectorAll('.theme-swatch').forEach(s => s.classList.remove('active'));
@@ -1765,9 +1765,9 @@
         const savedTheme = localStorage.getItem('karai-theme');
         if (savedTheme) setTheme(savedTheme);
 
-        /* ═══════════════════════════════════════════════════════
-           HERO CANVAS — Abstract Paint Animation
-           ═══════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           HERO CANVAS â€” Abstract Paint Animation
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         const canvas = document.getElementById('heroCanvas');
         const ctx = canvas.getContext('2d');
         let animFrame;
@@ -1782,10 +1782,10 @@
             'ejsszaka': ['#c9a96e', '#8b6914', '#d4a853', '#a08040', '#e8c97a', '#6b5530'],
             'vaszon': ['#8b4513', '#a0522d', '#cd853f', '#d2691e', '#b8860b', '#6b3a1f'],
             'alkonyat': ['#e07a5f', '#c1666b', '#d4846a', '#b85a45', '#e8a08a', '#8b4557'],
-            'galéria': ['#c9a87c', '#b8956a', '#d4b896', '#a07d55', '#dfc8a8', '#8b7355'],
-            'bohém': ['#c1666b', '#d4848a', '#b85560', '#e0a0a5', '#a05060', '#d4a5a8'],
+            'galĂ©ria': ['#c9a87c', '#b8956a', '#d4b896', '#a07d55', '#dfc8a8', '#8b7355'],
+            'bohĂ©m': ['#c1666b', '#d4848a', '#b85560', '#e0a0a5', '#a05060', '#d4a5a8'],
             'meleg': ['#722f37', '#8b3a44', '#a04050', '#9a4555', '#b85565', '#5a2530'],
-            'erdő': ['#d4a574', '#c49464', '#e0b888', '#b88454', '#a07444', '#8b6434']
+            'erdĹ‘': ['#d4a574', '#c49464', '#e0b888', '#b88454', '#a07444', '#8b6434']
         };
 
         // Paint stroke objects
@@ -1954,9 +1954,9 @@
             drawHeroCanvas();
         });
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            SCROLL REVEAL (Intersection Observer)
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         let observerInstance;
 
         function initReveal() {
@@ -1993,9 +1993,9 @@
         });
         galleryObserver.observe(galleryGrid, { childList: true });
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            MOBILE NAV
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         window.toggleNav = function() {
             const burger = document.getElementById('navBurger');
             const links = document.getElementById('navLinks');
@@ -2014,9 +2014,9 @@
             overlay.classList.remove('active');
         };
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            SMOOTH SCROLL FOR NAV LINKS
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2027,9 +2027,9 @@
             });
         });
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            NAV BACKGROUND ON SCROLL
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.nav');
@@ -2044,9 +2044,9 @@
             lastScroll = scrollY;
         }, { passive: true });
 
-        /* ═══════════════════════════════════════════════════════
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            PARALLAX-LIKE EFFECT ON HERO
-           ═══════════════════════════════════════════════════════ */
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         window.addEventListener('scroll', () => {
             const hero = document.querySelector('.hero-content');
             const scrollY = window.scrollY;
@@ -2057,9 +2057,9 @@
         }, { passive: true });
 
 
-        /* ═══════════════════════════════════════════════════════
-           THEME SWITCHER — Save/Load Preference
-           ═══════════════════════════════════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           THEME SWITCHER â€” Save/Load Preference
+           â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         const themeSwitcher = document.getElementById('themeSwitcher');
         const swatches = document.querySelectorAll('.theme-swatch');
         const savedTheme = localStorage.getItem('karai-theme') || 'ejsszaka';

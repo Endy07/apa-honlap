@@ -30,7 +30,21 @@ foreach ($file in $files) {
     if (-not (Test-Path $destDir)) {
         New-Item -ItemType Directory -Path $destDir -Force | Out-Null
     }
-    Copy-Item -Path $file.FullName -Destination $destFile -Force
+    $content = Get-Content -Path $file.FullName -Raw
+    $relDir = (Split-Path $relPath -Parent).Replace('\', '/')
+    $baseUrl = "http://localhost/2026/Hermes/"
+    if ($relDir) { $baseUrl += $relDir + "/" }
+    
+    $content = [regex]::Replace($content, '(?i)\bsrc="([^"]+)"', {
+        param($m)
+        $val = $m.Groups[1].Value
+        if ($val -match "^http" -or $val -match "^data:") {
+            return $m.Value
+        }
+        return "src=`"$baseUrl$val`""
+    })
+    
+    Set-Content -Path $destFile -Value $content -Encoding UTF8
     
     # Lista építése (HTML számára)
     $htmlRelPath = "Eredmenyek/" + $relPath.Replace('\', '/')

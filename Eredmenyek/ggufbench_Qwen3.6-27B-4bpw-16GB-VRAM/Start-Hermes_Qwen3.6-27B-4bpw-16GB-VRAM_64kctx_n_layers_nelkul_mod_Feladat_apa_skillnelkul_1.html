@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="hu" data-theme="alkonyat">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kárai Mihály — Festőművész</title>
-    <meta name="description" content="Kárai Mihály festőművész hivatalos oldala. Tájképek, csendéletek és portrék a színek és formák világában.">
+    <title>KĂˇrai MihĂˇly â€” FestĹ‘mĹ±vĂ©sz</title>
+    <meta name="description" content="KĂˇrai MihĂˇly festĹ‘mĹ±vĂ©sz hivatalos oldala. TĂˇjkĂ©pek, csendĂ©letek Ă©s portrĂ©k a szĂ­nek Ă©s formĂˇk vilĂˇgĂˇban.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,10 +13,10 @@
     
     <style>
         /* ============================================
-           CSS CUSTOM PROPERTIES — THEME SYSTEM
+           CSS CUSTOM PROPERTIES â€” THEME SYSTEM
            ============================================ */
         
-        /* --- ALKONYAT (Sunset) — Light Warm --- */
+        /* --- ALKONYAT (Sunset) â€” Light Warm --- */
         [data-theme="alkonyat"] {
             --bg-primary: #FDF6EC;
             --bg-secondary: #F5E6D0;
@@ -40,7 +40,7 @@
             --paint-texture: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
         }
 
-        /* --- ÉJFÉL (Midnight) — Dark Elegant --- */
+        /* --- Ă‰JFĂ‰L (Midnight) â€” Dark Elegant --- */
         [data-theme="ejfel"] {
             --bg-primary: #0D1117;
             --bg-secondary: #161B22;
@@ -64,7 +64,7 @@
             --paint-texture: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
-        /* --- RÉGISÉG (Antique) — Light Sepia --- */
+        /* --- RĂ‰GISĂ‰G (Antique) â€” Light Sepia --- */
         [data-theme="regiseg"] {
             --bg-primary: #F5F0E8;
             --bg-secondary: #EDE5D8;
@@ -88,7 +88,7 @@
             --paint-texture: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
-        /* --- KÉK ÓRA (Blue Hour) — Dark Blue --- */
+        /* --- KĂ‰K Ă“RA (Blue Hour) â€” Dark Blue --- */
         [data-theme="kekora"] {
             --bg-primary: #0F1923;
             --bg-secondary: #162030;
@@ -112,7 +112,7 @@
             --paint-texture: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
-        /* --- ŐSZ (Autumn) — Light Warm --- */
+        /* --- ĹSZ (Autumn) â€” Light Warm --- */
         [data-theme="osz"] {
             --bg-primary: #FBF5EE;
             --bg-secondary: #F2E4D0;
@@ -136,7 +136,7 @@
             --paint-texture: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
         }
 
-        /* --- SZÜRKEÁRNYALATOK (Grayscale) — Light Mono --- */
+        /* --- SZĂśRKEĂRNYALATOK (Grayscale) â€” Light Mono --- */
         [data-theme="szurke"] {
             --bg-primary: #F8F8F8;
             --bg-secondary: #EEEEEE;
@@ -160,7 +160,7 @@
             --paint-texture: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
         }
 
-        /* --- RÉZ & BOR (Copper & Wine) — Light Rich --- */
+        /* --- RĂ‰Z & BOR (Copper & Wine) â€” Light Rich --- */
         [data-theme="rezbor"] {
             --bg-primary: #FDF8F4;
             --bg-secondary: #F5E8E0;
@@ -1887,7 +1887,7 @@
 
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-text">Kárai Mihály</div>
+        <div class="loading-text">KĂˇrai MihĂˇly</div>
         <div class="loading-bar"></div>
     </div>
 
@@ -1895,20 +1895,20 @@
     <div class="cursor-follower" id="cursorFollower"></div>
 
     <!-- Navigation -->
-    <nav class="nav" id="navbar" role="navigation" aria-label="Fő navigáció">
-        <a href="#hero" class="nav-logo">Kárai <span>Mihály</span></a>
+    <nav class="nav" id="navbar" role="navigation" aria-label="FĹ‘ navigĂˇciĂł">
+        <a href="#hero" class="nav-logo">KĂˇrai <span>MihĂˇly</span></a>
         
-        <button class="nav-toggle" id="navToggle" aria-label="Menü megnyitása" aria-expanded="false">
+        <button class="nav-toggle" id="navToggle" aria-label="MenĂĽ megnyitĂˇsa" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
         <ul class="nav-links" id="navLinks" role="menubar">
-            <li role="none"><a href="#about" role="menuitem">Életrajz</a></li>
-            <li role="none"><a href="#gallery" role="menuitem">Galéria</a></li>
-            <li role="none"><a href="#philosophy" role="menuitem">Festői filozófia</a></li>
-            <li role="none"><a href="#exhibitions" role="menuitem">Kiállítások</a></li>
+            <li role="none"><a href="#about" role="menuitem">Ă‰letrajz</a></li>
+            <li role="none"><a href="#gallery" role="menuitem">GalĂ©ria</a></li>
+            <li role="none"><a href="#philosophy" role="menuitem">FestĹ‘i filozĂłfia</a></li>
+            <li role="none"><a href="#exhibitions" role="menuitem">KiĂˇllĂ­tĂˇsok</a></li>
             <li role="none"><a href="#contact" role="menuitem">Kapcsolat</a></li>
         </ul>
     </nav>
@@ -1922,17 +1922,17 @@
         <canvas class="hero-bg-art" id="heroCanvas"></canvas>
 
         <div class="hero-content">
-            <p class="hero-subtitle">Festőművész · 1961</p>
+            <p class="hero-subtitle">FestĹ‘mĹ±vĂ©sz Â· 1961</p>
             <h1 class="hero-title">
-                A színek<br>
+                A szĂ­nek<br>
                 <em>nyelve</em>
             </h1>
             <p class="hero-description">
-                Minden ecsetvonás egy történetet mesél. Minden szín egy érzést hordoz. 
-                Kárai Mihály festményein az idő megáll, és a szépség örökíti önmagát.
+                Minden ecsetvonĂˇs egy tĂ¶rtĂ©netet mesĂ©l. Minden szĂ­n egy Ă©rzĂ©st hordoz. 
+                KĂˇrai MihĂˇly festmĂ©nyein az idĹ‘ megĂˇll, Ă©s a szĂ©psĂ©g Ă¶rĂ¶kĂ­ti Ă¶nmagĂˇt.
             </p>
             <a href="#gallery" class="hero-cta">
-                Fedezze fel a műveket
+                Fedezze fel a mĹ±veket
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
@@ -1940,7 +1940,7 @@
         </div>
 
         <div class="hero-scroll">
-            <span>Görgessen le</span>
+            <span>GĂ¶rgessen le</span>
             <div class="scroll-line"></div>
         </div>
     </section>
@@ -1949,48 +1949,48 @@
     <section class="section about" id="about">
         <div class="section-container">
             <div class="section-header reveal">
-                <span class="section-label">Életrajz</span>
-                <h2 class="section-title">Az ember a <em>festmény mögött</em></h2>
+                <span class="section-label">Ă‰letrajz</span>
+                <h2 class="section-title">Az ember a <em>festmĂ©ny mĂ¶gĂ¶tt</em></h2>
                 <div class="section-divider"></div>
             </div>
 
             <div class="about-grid">
                 <div class="about-image-wrapper reveal">
                     <div class="about-image-frame">
-                        <img src="../apa_festmenyek/keretezve_1.jpg" alt="Kárai Mihály festménye keretben" loading="lazy">
+                        <img src="http://localhost/2026/Hermes/ggufbench_Qwen3.6-27B-4bpw-16GB-VRAM/../apa_festmenyek/keretezve_1.jpg" alt="KĂˇrai MihĂˇly festmĂ©nye keretben" loading="lazy">
                     </div>
                 </div>
 
                 <div class="about-text">
-                    <h3 class="reveal">Több mint festészet —<br>egy életmű születése</h3>
+                    <h3 class="reveal">TĂ¶bb mint festĂ©szet â€”<br>egy Ă©letmĹ± szĂĽletĂ©se</h3>
                     <p class="reveal reveal-delay-1">
-                        Kárai Mihály 1961-ben született, és azóta is a festészet nyelvén beszél a világgal. 
-                        Műveiben a táj és a lélek találkozik, ahol minden ecsetvonás tudatos döntés, 
-                        minden színárnyalat egy érzés megfogalmazása.
+                        KĂˇrai MihĂˇly 1961-ben szĂĽletett, Ă©s azĂłta is a festĂ©szet nyelvĂ©n beszĂ©l a vilĂˇggal. 
+                        MĹ±veiben a tĂˇj Ă©s a lĂ©lek talĂˇlkozik, ahol minden ecsetvonĂˇs tudatos dĂ¶ntĂ©s, 
+                        minden szĂ­nĂˇrnyalat egy Ă©rzĂ©s megfogalmazĂˇsa.
                     </p>
                     <p class="reveal reveal-delay-2">
-                        Festményei nem csupán látványt közvetítenek — élményt adnak át. 
-                        A néző belefolyik a kép világába, ahol a fény és az árnyék táncolnak, 
-                        a színek beszélnek, és a csend is láthatóvá válik.
+                        FestmĂ©nyei nem csupĂˇn lĂˇtvĂˇnyt kĂ¶zvetĂ­tenek â€” Ă©lmĂ©nyt adnak Ăˇt. 
+                        A nĂ©zĹ‘ belefolyik a kĂ©p vilĂˇgĂˇba, ahol a fĂ©ny Ă©s az ĂˇrnyĂ©k tĂˇncolnak, 
+                        a szĂ­nek beszĂ©lnek, Ă©s a csend is lĂˇthatĂłvĂˇ vĂˇlik.
                     </p>
                     <p class="reveal reveal-delay-3">
-                        Munkásságában a hagyományos festészeti technikák találkoznak 
-                        a kortárs érzékeléssel, így születnek meg azok a képek, amelyek 
-                        az idő alatt is megőrzik erejüket és szépségüket.
+                        MunkĂˇssĂˇgĂˇban a hagyomĂˇnyos festĂ©szeti technikĂˇk talĂˇlkoznak 
+                        a kortĂˇrs Ă©rzĂ©kelĂ©ssel, Ă­gy szĂĽletnek meg azok a kĂ©pek, amelyek 
+                        az idĹ‘ alatt is megĹ‘rzik erejĂĽket Ă©s szĂ©psĂ©gĂĽket.
                     </p>
 
                     <div class="about-stats reveal reveal-delay-4">
                         <div class="stat-item">
                             <div class="stat-number">60+</div>
-                            <div class="stat-label">Év</div>
+                            <div class="stat-label">Ă‰v</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">35+</div>
-                            <div class="stat-label">Év festészet</div>
+                            <div class="stat-label">Ă‰v festĂ©szet</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">∞</div>
-                            <div class="stat-label">Inspiráció</div>
+                            <div class="stat-number">âž</div>
+                            <div class="stat-label">InspirĂˇciĂł</div>
                         </div>
                     </div>
                 </div>
@@ -2000,11 +2000,11 @@
 
     <!-- Parallax Break -->
     <div class="parallax-section">
-        <img src="../apa_festmenyek/interior_1.jpg" alt="Kiállítás belső nézet" class="parallax-bg" loading="lazy">
+        <img src="http://localhost/2026/Hermes/ggufbench_Qwen3.6-27B-4bpw-16GB-VRAM/../apa_festmenyek/interior_1.jpg" alt="KiĂˇllĂ­tĂˇs belsĹ‘ nĂ©zet" class="parallax-bg" loading="lazy">
         <div class="parallax-overlay"></div>
         <div class="parallax-content reveal">
-            <h2>A művészet a csend nyelvén beszél</h2>
-            <p>Minden kép egy kapu egy másik világba — ahol a szépség az egyetlen igazság.</p>
+            <h2>A mĹ±vĂ©szet a csend nyelvĂ©n beszĂ©l</h2>
+            <p>Minden kĂ©p egy kapu egy mĂˇsik vilĂˇgba â€” ahol a szĂ©psĂ©g az egyetlen igazsĂˇg.</p>
         </div>
     </div>
 
@@ -2012,8 +2012,8 @@
     <section class="section gallery" id="gallery">
         <div class="section-container">
             <div class="section-header reveal">
-                <span class="section-label">Művek</span>
-                <h2 class="section-title">A festmények <em>világa</em></h2>
+                <span class="section-label">MĹ±vek</span>
+                <h2 class="section-title">A festmĂ©nyek <em>vilĂˇga</em></h2>
                 <div class="section-divider"></div>
             </div>
 
@@ -2022,15 +2022,15 @@
                 <div class="gallery-item reveal" onclick="openLightbox(this)">
                     <div class="gallery-item-inner">
                         <div class="gallery-image">
-                            <img src="../apa_festmenyek/interior_1.jpg" alt="Kiállítás belső nézet 1" loading="lazy">
+                            <img src="http://localhost/2026/Hermes/ggufbench_Qwen3.6-27B-4bpw-16GB-VRAM/../apa_festmenyek/interior_1.jpg" alt="KiĂˇllĂ­tĂˇs belsĹ‘ nĂ©zet 1" loading="lazy">
                             <div class="gallery-overlay">
-                                <h4>Kiállítás — Belső nézet</h4>
-                                <p>A művek a térben</p>
+                                <h4>KiĂˇllĂ­tĂˇs â€” BelsĹ‘ nĂ©zet</h4>
+                                <p>A mĹ±vek a tĂ©rben</p>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h4>Kiállítás — Belső nézet I.</h4>
-                            <p>Festmények a térben</p>
+                            <h4>KiĂˇllĂ­tĂˇs â€” BelsĹ‘ nĂ©zet I.</h4>
+                            <p>FestmĂ©nyek a tĂ©rben</p>
                         </div>
                     </div>
                 </div>
@@ -2039,15 +2039,15 @@
                 <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox(this)">
                     <div class="gallery-item-inner">
                         <div class="gallery-image">
-                            <img src="../apa_festmenyek/interior_2.jpg" alt="Kiállítás belső nézet 2" loading="lazy">
+                            <img src="http://localhost/2026/Hermes/ggufbench_Qwen3.6-27B-4bpw-16GB-VRAM/../apa_festmenyek/interior_2.jpg" alt="KiĂˇllĂ­tĂˇs belsĹ‘ nĂ©zet 2" loading="lazy">
                             <div class="gallery-overlay">
-                                <h4>Kiállítás — Belső nézet</h4>
-                                <p>A művek a térben</p>
+                                <h4>KiĂˇllĂ­tĂˇs â€” BelsĹ‘ nĂ©zet</h4>
+                                <p>A mĹ±vek a tĂ©rben</p>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h4>Kiállítás — Belső nézet II.</h4>
-                            <p>Festmények a térben</p>
+                            <h4>KiĂˇllĂ­tĂˇs â€” BelsĹ‘ nĂ©zet II.</h4>
+                            <p>FestmĂ©nyek a tĂ©rben</p>
                         </div>
                     </div>
                 </div>
@@ -2056,15 +2056,15 @@
                 <div class="gallery-item reveal" onclick="openLightbox(this)">
                     <div class="gallery-item-inner">
                         <div class="gallery-image">
-                            <img src="../apa_festmenyek/keretezve_1.jpg" alt="Festmény keretben 1" loading="lazy">
+                            <img src="http://localhost/2026/Hermes/ggufbench_Qwen3.6-27B-4bpw-16GB-VRAM/../apa_festmenyek/keretezve_1.jpg" alt="FestmĂ©ny keretben 1" loading="lazy">
                             <div class="gallery-overlay">
-                                <h4>Festmény keretben</h4>
-                                <p>A művészet keretben</p>
+                                <h4>FestmĂ©ny keretben</h4>
+                                <p>A mĹ±vĂ©szet keretben</p>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h4>Festmény keretben I.</h4>
-                            <p>Teljes kompozíció</p>
+                            <h4>FestmĂ©ny keretben I.</h4>
+                            <p>Teljes kompozĂ­ciĂł</p>
                         </div>
                     </div>
                 </div>
@@ -2073,49 +2073,49 @@
                 <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox(this)">
                     <div class="gallery-item-inner">
                         <div class="gallery-image">
-                            <img src="../apa_festmenyek/keretezve_2.jpg" alt="Festmény keretben 2" loading="lazy">
+                            <img src="http://localhost/2026/Hermes/ggufbench_Qwen3.6-27B-4bpw-16GB-VRAM/../apa_festmenyek/keretezve_2.jpg" alt="FestmĂ©ny keretben 2" loading="lazy">
                             <div class="gallery-overlay">
-                                <h4>Festmény keretben</h4>
-                                <p>A művészet keretben</p>
+                                <h4>FestmĂ©ny keretben</h4>
+                                <p>A mĹ±vĂ©szet keretben</p>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h4>Festmény keretben II.</h4>
-                            <p>Teljes kompozíció</p>
+                            <h4>FestmĂ©ny keretben II.</h4>
+                            <p>Teljes kompozĂ­ciĂł</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Keret nélkül 1 -->
+                <!-- Keret nĂ©lkĂĽl 1 -->
                 <div class="gallery-item reveal" onclick="openLightbox(this)">
                     <div class="gallery-item-inner">
                         <div class="gallery-image">
-                            <img src="../apa_festmenyek/keretnelkul_1.jpg" alt="Festmény keret nélkül 1" loading="lazy">
+                            <img src="http://localhost/2026/Hermes/ggufbench_Qwen3.6-27B-4bpw-16GB-VRAM/../apa_festmenyek/keretnelkul_1.jpg" alt="FestmĂ©ny keret nĂ©lkĂĽl 1" loading="lazy">
                             <div class="gallery-overlay">
-                                <h4>Festmény — Részlet</h4>
-                                <p>Tiszta kép, tiszta érzés</p>
+                                <h4>FestmĂ©ny â€” RĂ©szlet</h4>
+                                <p>Tiszta kĂ©p, tiszta Ă©rzĂ©s</p>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h4>Festmény — Részlet I.</h4>
-                            <p>Keret nélküli nézet</p>
+                            <h4>FestmĂ©ny â€” RĂ©szlet I.</h4>
+                            <p>Keret nĂ©lkĂĽli nĂ©zet</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Keret nélkül 2 -->
+                <!-- Keret nĂ©lkĂĽl 2 -->
                 <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox(this)">
                     <div class="gallery-item-inner">
                         <div class="gallery-image">
-                            <img src="../apa_festmenyek/keretnelkul_2.jpg" alt="Festmény keret nélkül 2" loading="lazy">
+                            <img src="http://localhost/2026/Hermes/ggufbench_Qwen3.6-27B-4bpw-16GB-VRAM/../apa_festmenyek/keretnelkul_2.jpg" alt="FestmĂ©ny keret nĂ©lkĂĽl 2" loading="lazy">
                             <div class="gallery-overlay">
-                                <h4>Festmény — Részlet</h4>
-                                <p>Tiszta kép, tiszta érzés</p>
+                                <h4>FestmĂ©ny â€” RĂ©szlet</h4>
+                                <p>Tiszta kĂ©p, tiszta Ă©rzĂ©s</p>
                             </div>
                         </div>
                         <div class="gallery-caption">
-                            <h4>Festmény — Részlet II.</h4>
-                            <p>Keret nélküli nézet</p>
+                            <h4>FestmĂ©ny â€” RĂ©szlet II.</h4>
+                            <p>Keret nĂ©lkĂĽli nĂ©zet</p>
                         </div>
                     </div>
                 </div>
@@ -2127,17 +2127,17 @@
     <section class="section philosophy" id="philosophy">
         <div class="section-container">
             <div class="section-header reveal">
-                <span class="section-label">Filozófia</span>
-                <h2 class="section-title">A festészet <em>filozófiája</em></h2>
+                <span class="section-label">FilozĂłfia</span>
+                <h2 class="section-title">A festĂ©szet <em>filozĂłfiĂˇja</em></h2>
                 <div class="section-divider"></div>
             </div>
 
             <div class="philosophy-quote reveal">
                 <blockquote>
-                    „A festészet nem a látható világ másolása, hanem a láthatatlan 
-                    érzések láthatóvá tétele. Minden ecsetvonás egy igazságkeresés."
+                    â€žA festĂ©szet nem a lĂˇthatĂł vilĂˇg mĂˇsolĂˇsa, hanem a lĂˇthatatlan 
+                    Ă©rzĂ©sek lĂˇthatĂłvĂˇ tĂ©tele. Minden ecsetvonĂˇs egy igazsĂˇgkeresĂ©s."
                 </blockquote>
-                <cite>— Kárai Mihály</cite>
+                <cite>â€” KĂˇrai MihĂˇly</cite>
             </div>
 
             <div class="philosophy-values">
@@ -2148,8 +2148,8 @@
                             <path d="M12 6v6l4 2"/>
                         </svg>
                     </div>
-                    <h4>Időtlesség</h4>
-                    <p>A művészet nem ismer korszakokat. Minden igaz festmény az örökkévalósággal beszél, és az idő alatt is megtartja erejét.</p>
+                    <h4>IdĹ‘tlessĂ©g</h4>
+                    <p>A mĹ±vĂ©szet nem ismer korszakokat. Minden igaz festmĂ©ny az Ă¶rĂ¶kkĂ©valĂłsĂˇggal beszĂ©l, Ă©s az idĹ‘ alatt is megtartja erejĂ©t.</p>
                 </div>
 
                 <div class="value-card reveal reveal-delay-1">
@@ -2161,7 +2161,7 @@
                         </svg>
                     </div>
                     <h4>Harmonia</h4>
-                    <p>A színek, formák és fények harmóniája a festmény lelke. Az egyensúly nem véletlen — tudatos döntés és érzékelés eredménye.</p>
+                    <p>A szĂ­nek, formĂˇk Ă©s fĂ©nyek harmĂłniĂˇja a festmĂ©ny lelke. Az egyensĂşly nem vĂ©letlen â€” tudatos dĂ¶ntĂ©s Ă©s Ă©rzĂ©kelĂ©s eredmĂ©nye.</p>
                 </div>
 
                 <div class="value-card reveal reveal-delay-2">
@@ -2170,8 +2170,8 @@
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                         </svg>
                     </div>
-                    <h4>Érzelem</h4>
-                    <p>Minden festmény egy érzelem megfogalmazása. A művész feladata, hogy a néző szívében ébredjen életre az a pillanat.</p>
+                    <h4>Ă‰rzelem</h4>
+                    <p>Minden festmĂ©ny egy Ă©rzelem megfogalmazĂˇsa. A mĹ±vĂ©sz feladata, hogy a nĂ©zĹ‘ szĂ­vĂ©ben Ă©bredjen Ă©letre az a pillanat.</p>
                 </div>
 
                 <div class="value-card reveal reveal-delay-3">
@@ -2181,8 +2181,8 @@
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                         </svg>
                     </div>
-                    <h4>Történet</h4>
-                    <p>Minden kép mögött egy történet rejlik. A festészet a csendben is képes beszélni, ha a néző hajlandó hallgatni.</p>
+                    <h4>TĂ¶rtĂ©net</h4>
+                    <p>Minden kĂ©p mĂ¶gĂ¶tt egy tĂ¶rtĂ©net rejlik. A festĂ©szet a csendben is kĂ©pes beszĂ©lni, ha a nĂ©zĹ‘ hajlandĂł hallgatni.</p>
                 </div>
             </div>
         </div>
@@ -2193,39 +2193,39 @@
         <div class="section-container">
             <div class="section-header reveal">
                 <span class="section-label">Munkafolyamat</span>
-                <h2 class="section-title">Az alkotás <em>útja</em></h2>
+                <h2 class="section-title">Az alkotĂˇs <em>Ăştja</em></h2>
                 <div class="section-divider"></div>
             </div>
 
             <div class="process-timeline">
                 <div class="process-item reveal">
                     <div class="process-content">
-                        <h4>Inspiráció</h4>
-                        <p>Az alkotás mindig egy pillanattal kezdődik — egy látott tájjal, egy fényjátékkal, vagy egy bennünk felcsillanó gondolattal. Ez a pillanat a művészi úton járás első lépe.</p>
+                        <h4>InspirĂˇciĂł</h4>
+                        <p>Az alkotĂˇs mindig egy pillanattal kezdĹ‘dik â€” egy lĂˇtott tĂˇjjal, egy fĂ©nyjĂˇtĂ©kkal, vagy egy bennĂĽnk felcsillanĂł gondolattal. Ez a pillanat a mĹ±vĂ©szi Ăşton jĂˇrĂˇs elsĹ‘ lĂ©pe.</p>
                     </div>
                     <div class="process-dot"></div>
                 </div>
 
                 <div class="process-item reveal">
                     <div class="process-content">
-                        <h4>Előkészítés</h4>
-                        <p>A vászon felkészítése, a színek összeválogatása, a kompozíció megtervezése. Ez a csendes, türelmes munka, amely a művészi látomás alapját adja.</p>
+                        <h4>ElĹ‘kĂ©szĂ­tĂ©s</h4>
+                        <p>A vĂˇszon felkĂ©szĂ­tĂ©se, a szĂ­nek Ă¶sszevĂˇlogatĂˇsa, a kompozĂ­ciĂł megtervezĂ©se. Ez a csendes, tĂĽrelmes munka, amely a mĹ±vĂ©szi lĂˇtomĂˇs alapjĂˇt adja.</p>
                     </div>
                     <div class="process-dot"></div>
                 </div>
 
                 <div class="process-item reveal">
                     <div class="process-content">
-                        <h4>Alkotás</h4>
-                        <p>Amikor az ecset találkozik a vászonnal, életre kel a kép. Rétegről rétegre épül a festmény, minden ecsetvonás tudatos döntés és spontán pillanat egyvelege.</p>
+                        <h4>AlkotĂˇs</h4>
+                        <p>Amikor az ecset talĂˇlkozik a vĂˇszonnal, Ă©letre kel a kĂ©p. RĂ©tegrĹ‘l rĂ©tegre Ă©pĂĽl a festmĂ©ny, minden ecsetvonĂˇs tudatos dĂ¶ntĂ©s Ă©s spontĂˇn pillanat egyvelege.</p>
                     </div>
                     <div class="process-dot"></div>
                 </div>
 
                 <div class="process-item reveal">
                     <div class="process-content">
-                        <h4>Befejezés</h4>
-                        <p>A festmény akkor kész, amikor a művész lezárja a köztük lévő párbeszédet. A kép önálló életre kél, és a nézővel folytatja a történetét.</p>
+                        <h4>BefejezĂ©s</h4>
+                        <p>A festmĂ©ny akkor kĂ©sz, amikor a mĹ±vĂ©sz lezĂˇrja a kĂ¶ztĂĽk lĂ©vĹ‘ pĂˇrbeszĂ©det. A kĂ©p Ă¶nĂˇllĂł Ă©letre kĂ©l, Ă©s a nĂ©zĹ‘vel folytatja a tĂ¶rtĂ©netĂ©t.</p>
                     </div>
                     <div class="process-dot"></div>
                 </div>
@@ -2235,11 +2235,11 @@
 
     <!-- Second Parallax Break -->
     <div class="parallax-section">
-        <img src="../apa_festmenyek/interior_2.jpg" alt="Kiállítás belső nézet" class="parallax-bg" loading="lazy">
+        <img src="http://localhost/2026/Hermes/ggufbench_Qwen3.6-27B-4bpw-16GB-VRAM/../apa_festmenyek/interior_2.jpg" alt="KiĂˇllĂ­tĂˇs belsĹ‘ nĂ©zet" class="parallax-bg" loading="lazy">
         <div class="parallax-overlay"></div>
         <div class="parallax-content reveal">
-            <h2>A szépség nem kérdés — tény</h2>
-            <p>És a festészet az a nyelv, amelyen ez a tény legmeggyőzőbben fogalmazódik meg.</p>
+            <h2>A szĂ©psĂ©g nem kĂ©rdĂ©s â€” tĂ©ny</h2>
+            <p>Ă‰s a festĂ©szet az a nyelv, amelyen ez a tĂ©ny legmeggyĹ‘zĹ‘bben fogalmazĂłdik meg.</p>
         </div>
     </div>
 
@@ -2247,8 +2247,8 @@
     <section class="section exhibitions" id="exhibitions">
         <div class="section-container">
             <div class="section-header reveal">
-                <span class="section-label">Kiállítások</span>
-                <h2 class="section-title">A művek <em>útja</em></h2>
+                <span class="section-label">KiĂˇllĂ­tĂˇsok</span>
+                <h2 class="section-title">A mĹ±vek <em>Ăştja</em></h2>
                 <div class="section-divider"></div>
             </div>
 
@@ -2256,17 +2256,17 @@
                 <div class="exhibition-item reveal">
                     <div class="exhibition-year">2024</div>
                     <div class="exhibition-info">
-                        <h4>Színek és formák harmóniája</h4>
-                        <p>Magánkiállítás — Galéria</p>
+                        <h4>SzĂ­nek Ă©s formĂˇk harmĂłniĂˇja</h4>
+                        <p>MagĂˇnkiĂˇllĂ­tĂˇs â€” GalĂ©ria</p>
                     </div>
-                    <span class="exhibition-type">Egyéni</span>
+                    <span class="exhibition-type">EgyĂ©ni</span>
                 </div>
 
                 <div class="exhibition-item reveal reveal-delay-1">
                     <div class="exhibition-year">2023</div>
                     <div class="exhibition-info">
-                        <h4>Tájak a lelkünkben</h4>
-                        <p>Csoportos kiállítás — Művészeti Központ</p>
+                        <h4>TĂˇjak a lelkĂĽnkben</h4>
+                        <p>Csoportos kiĂˇllĂ­tĂˇs â€” MĹ±vĂ©szeti KĂ¶zpont</p>
                     </div>
                     <span class="exhibition-type">Csoportos</span>
                 </div>
@@ -2274,26 +2274,26 @@
                 <div class="exhibition-item reveal reveal-delay-2">
                     <div class="exhibition-year">2022</div>
                     <div class="exhibition-info">
-                        <h4>Fény és árnyék játékai</h4>
-                        <p>Állandó kiállítás — Városi Galéria</p>
+                        <h4>FĂ©ny Ă©s ĂˇrnyĂ©k jĂˇtĂ©kai</h4>
+                        <p>ĂllandĂł kiĂˇllĂ­tĂˇs â€” VĂˇrosi GalĂ©ria</p>
                     </div>
-                    <span class="exhibition-type">Egyéni</span>
+                    <span class="exhibition-type">EgyĂ©ni</span>
                 </div>
 
                 <div class="exhibition-item reveal reveal-delay-3">
                     <div class="exhibition-year">2020</div>
                     <div class="exhibition-info">
-                        <h4>Őszi hangulatok</h4>
-                        <p>Időszaki kiállítás — Kortárs Művészeti Ház</p>
+                        <h4>Ĺszi hangulatok</h4>
+                        <p>IdĹ‘szaki kiĂˇllĂ­tĂˇs â€” KortĂˇrs MĹ±vĂ©szeti HĂˇz</p>
                     </div>
-                    <span class="exhibition-type">Egyéni</span>
+                    <span class="exhibition-type">EgyĂ©ni</span>
                 </div>
 
                 <div class="exhibition-item reveal reveal-delay-4">
                     <div class="exhibition-year">2018</div>
                     <div class="exhibition-info">
-                        <h4>Kortárs magyar festészet</h4>
-                        <p>Nemzetközi csoportos kiállítás</p>
+                        <h4>KortĂˇrs magyar festĂ©szet</h4>
+                        <p>NemzetkĂ¶zi csoportos kiĂˇllĂ­tĂˇs</p>
                     </div>
                     <span class="exhibition-type">Csoportos</span>
                 </div>
@@ -2306,23 +2306,23 @@
         <div class="section-container">
             <div class="section-header reveal">
                 <span class="section-label">Kapcsolat</span>
-                <h2 class="section-title">Lépjen <em>kapcsolatba</em></h2>
+                <h2 class="section-title">LĂ©pjen <em>kapcsolatba</em></h2>
                 <div class="section-divider"></div>
             </div>
 
             <div class="contact-grid">
                 <div class="contact-info reveal">
-                    <h3>Szóljon hozzá</h3>
+                    <h3>SzĂłljon hozzĂˇ</h3>
                     <p>
-                        Ha érdeklődik a festmények iránt, kiállítási lehetőségekről szeretne 
-                        egyeztetni, vagy egyszerűen megosztaná gondolatait a művészetünkről — 
+                        Ha Ă©rdeklĹ‘dik a festmĂ©nyek irĂˇnt, kiĂˇllĂ­tĂˇsi lehetĹ‘sĂ©gekrĹ‘l szeretne 
+                        egyeztetni, vagy egyszerĹ±en megosztanĂˇ gondolatait a mĹ±vĂ©szetĂĽnkrĹ‘l â€” 
                         ne habozzon felvenni a kapcsolatot.
                     </p>
 
                     <ul class="contact-details">
                         <li>
                             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            Magyarország
+                            MagyarorszĂˇg
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -2338,17 +2338,17 @@
                 <form class="contact-form reveal reveal-delay-2" onsubmit="handleSubmit(event)">
                     <div class="form-group">
                         <input type="text" id="name" placeholder=" " required>
-                        <label for="name">Név</label>
+                        <label for="name">NĂ©v</label>
                     </div>
                     <div class="form-group">
                         <input type="email" id="email" placeholder=" " required>
-                        <label for="email">E-mail cím</label>
+                        <label for="email">E-mail cĂ­m</label>
                     </div>
                     <div class="form-group">
                         <textarea id="message" rows="4" placeholder=" " required></textarea>
-                        <label for="message">Üzenet</label>
+                        <label for="message">Ăśzenet</label>
                     </div>
-                    <button type="submit" class="form-submit">Üzenet küldése</button>
+                    <button type="submit" class="form-submit">Ăśzenet kĂĽldĂ©se</button>
                 </form>
             </div>
         </div>
@@ -2357,8 +2357,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-logo">Kárai <span>Mihály</span></div>
-            <p class="footer-text">© 2025 Kárai Mihály. Minden jog fenntartva.</p>
+            <div class="footer-logo">KĂˇrai <span>MihĂˇly</span></div>
+            <p class="footer-text">Â© 2025 KĂˇrai MihĂˇly. Minden jog fenntartva.</p>
             <div class="footer-social">
                 <a href="#" aria-label="Facebook">
                     <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -2375,7 +2375,7 @@
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Bezárás">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="BezĂˇrĂˇs">
             <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
         <div class="lightbox-content">
@@ -2388,14 +2388,14 @@
     </div>
 
     <!-- Theme Switcher -->
-    <button class="theme-switcher-toggle" id="themeToggle" aria-label="Téma váltása">
+    <button class="theme-switcher-toggle" id="themeToggle" aria-label="TĂ©ma vĂˇltĂˇsa">
         <svg viewBox="0 0 24 24">
             <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
         </svg>
     </button>
 
     <div class="theme-switcher-panel" id="themePanel">
-        <h3 class="theme-switcher-title">Téma választása</h3>
+        <h3 class="theme-switcher-title">TĂ©ma vĂˇlasztĂˇsa</h3>
         <div class="theme-options">
             <div class="theme-option active" data-theme="alkonyat" onclick="setTheme('alkonyat')">
                 <div class="theme-colors">
@@ -2414,7 +2414,7 @@
                     <div class="theme-color-dot" style="background:#E8C478"></div>
                     <div class="theme-color-dot" style="background:#E6EDF3"></div>
                 </div>
-                <span class="theme-option-name">Éjfél</span>
+                <span class="theme-option-name">Ă‰jfĂ©l</span>
             </div>
 
             <div class="theme-option" data-theme="regiseg" onclick="setTheme('regiseg')">
@@ -2424,7 +2424,7 @@
                     <div class="theme-color-dot" style="background:#A68B6B"></div>
                     <div class="theme-color-dot" style="background:#3A2E24"></div>
                 </div>
-                <span class="theme-option-name">Régiség</span>
+                <span class="theme-option-name">RĂ©gisĂ©g</span>
             </div>
 
             <div class="theme-option" data-theme="kekora" onclick="setTheme('kekora')">
@@ -2434,7 +2434,7 @@
                     <div class="theme-color-dot" style="background:#8BC4E8"></div>
                     <div class="theme-color-dot" style="background:#E8EEF4"></div>
                 </div>
-                <span class="theme-option-name">Kék óra</span>
+                <span class="theme-option-name">KĂ©k Ăłra</span>
             </div>
 
             <div class="theme-option" data-theme="osz" onclick="setTheme('osz')">
@@ -2444,7 +2444,7 @@
                     <div class="theme-color-dot" style="background:#D4884A"></div>
                     <div class="theme-color-dot" style="background:#2E2418"></div>
                 </div>
-                <span class="theme-option-name">Ősz</span>
+                <span class="theme-option-name">Ĺsz</span>
             </div>
 
             <div class="theme-option" data-theme="szurke" onclick="setTheme('szurke')">
@@ -2454,7 +2454,7 @@
                     <div class="theme-color-dot" style="background:#D4B87A"></div>
                     <div class="theme-color-dot" style="background:#1A1A1A"></div>
                 </div>
-                <span class="theme-option-name">Szürkeárnyalatok</span>
+                <span class="theme-option-name">SzĂĽrkeĂˇrnyalatok</span>
             </div>
 
             <div class="theme-option" data-theme="rezbor" onclick="setTheme('rezbor')">
@@ -2464,13 +2464,13 @@
                     <div class="theme-color-dot" style="background:#D4956A"></div>
                     <div class="theme-color-dot" style="background:#2A1520"></div>
                 </div>
-                <span class="theme-option-name">Réz & Bor</span>
+                <span class="theme-option-name">RĂ©z & Bor</span>
             </div>
         </div>
     </div>
 
     <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Vissza a tetejére">
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Vissza a tetejĂ©re">
         <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
 
@@ -2649,7 +2649,7 @@
         });
 
         // ============================================
-        // HERO CANVAS — PAINT EFFECT
+        // HERO CANVAS â€” PAINT EFFECT
         // ============================================
         const heroCanvas = document.getElementById('heroCanvas');
         const ctx = heroCanvas.getContext('2d');
@@ -2731,11 +2731,11 @@
             e.preventDefault();
             const btn = e.target.querySelector('.form-submit');
             const originalText = btn.textContent;
-            btn.textContent = 'Küldés...';
+            btn.textContent = 'KĂĽldĂ©s...';
             btn.style.opacity = '0.7';
 
             setTimeout(() => {
-                btn.textContent = '✓ Küldve!';
+                btn.textContent = 'âś“ KĂĽldve!';
                 btn.style.opacity = '1';
                 e.target.reset();
 
