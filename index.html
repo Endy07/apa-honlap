@@ -416,6 +416,7 @@
     let ghConfig = JSON.parse(localStorage.getItem(storageKey)) || { repo: '', token: '' };
     let fileSha = null;
     let currentVoiceFileName = '';
+    let currentVoiceFileRowPath = '';
 
     // --- BASE64 HELPER (UTF-8 támogatással) ---
     function b64EncodeUnicode(str) {
@@ -563,14 +564,15 @@
         processedData = rawFiles
             .filter(file => !(sharedData.blacklist || []).includes(file))
             .map((file) => {
-                const data = sharedData.ratings[file] || { scoreEndi: null, scoreApa: null, comment: '', status: '' };
+                const data = sharedData.ratings[file] || { scoreEndi: null, scoreApa: null, comment: '', status: '', voiceNoteExt: '' };
                 return {
                     id: currentId++,
                     file: file,
                     scoreEndi: data.scoreEndi,
                     scoreApa: data.scoreApa,
                     comment: data.comment || '',
-                    status: data.status || ''
+                    status: data.status || '',
+                    voiceNoteExt: data.voiceNoteExt || ''
                 };
             });
         updateBlacklistUI();
@@ -658,9 +660,10 @@
                     <button class="btn" onclick="blacklistFile('${row.file}')" style="margin-left: 5px; border-color: var(--danger); color: var(--danger);">
                         🗑️ Elrejtés
                     </button>
-                    <button class="btn" onclick="startVoiceRecord('${row.file}')" style="margin-left: 5px; color: var(--accent); border-color: var(--accent);" title="Hangrögzítő indítása">
-                        🎙️ Hangjegyzet
+                    <button class="btn" onclick="startVoiceRecord('${row.file}')" style="margin-left: 5px; color: var(--accent); border-color: var(--accent);" title="Új hangrögzítő indítása">
+                        🎙️ Új Hangjegyzet
                     </button>
+                    ${row.voiceNoteExt ? `<audio controls preload="none" style="height: 32px; width: 100%; margin-top: 10px; border-radius: 6px;" src="Eredmenyek/hangjegyzetek/${encodeURIComponent(row.file.split('/').pop().replace(/\.html$/, ''))}.${row.voiceNoteExt}"></audio>` : ''}
                 </td>
                 <td class="col-status">
                     <div class="status-container">
@@ -746,6 +749,7 @@
     }
 
     window.startVoiceRecord = function(filename) {
+        currentVoiceFileRowPath = filename;
         currentVoiceFileName = filename.split('/').pop().replace(/\.html$/, '');
         document.getElementById('voice-recorder-input').click();
     }
@@ -792,6 +796,13 @@
                     if (res.ok) {
                         notif.innerText = `Sikeresen feltöltve a GitHubra: Eredmenyek/hangjegyzetek/${fileName}`;
                         notif.style.backgroundColor = 'var(--success)';
+                        
+                        if(!sharedData.ratings[currentVoiceFileRowPath]) sharedData.ratings[currentVoiceFileRowPath] = { scoreEndi: null, scoreApa: null, comment: '', status: '' };
+                        sharedData.ratings[currentVoiceFileRowPath].voiceNoteExt = ext;
+                        const rowData = processedData.find(r => r.file === currentVoiceFileRowPath);
+                        if(rowData) rowData.voiceNoteExt = ext;
+                        renderTable();
+                        scheduleSave();
                     } else {
                         // Ha már létezik (422 Unprocessable Entity), akkor sem baj, kezelhetjük
                         const errorText = await res.text();
