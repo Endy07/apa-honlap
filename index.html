@@ -372,6 +372,7 @@
     </div>
 </div>
 
+<input type="file" id="voice-recorder-input" accept="audio/*" capture="microphone" style="display:none;" onchange="handleVoiceRecording(event)">
 <div id="notification">Értékelések kimásolva a vágólapra! Most már beillesztheted (Ctrl+V) Messengerbe vagy Discordba.</div>
 
 <!-- Settings Modal -->
@@ -414,6 +415,7 @@
     
     let ghConfig = JSON.parse(localStorage.getItem(storageKey)) || { repo: '', token: '' };
     let fileSha = null;
+    let currentVoiceFileName = '';
 
     // --- BASE64 HELPER (UTF-8 támogatással) ---
     function b64EncodeUnicode(str) {
@@ -656,6 +658,9 @@
                     <button class="btn" onclick="blacklistFile('${row.file}')" style="margin-left: 5px; border-color: var(--danger); color: var(--danger);">
                         🗑️ Elrejtés
                     </button>
+                    <button class="btn" onclick="startVoiceRecord('${row.file}')" style="margin-left: 5px; color: var(--accent); border-color: var(--accent);" title="Hangrögzítő indítása">
+                        🎙️ Hangjegyzet
+                    </button>
                 </td>
                 <td class="col-status">
                     <div class="status-container">
@@ -738,6 +743,95 @@
             renderTable();
             scheduleSave();
         }
+    }
+
+    window.startVoiceRecord = function(filename) {
+        currentVoiceFileName = filename.split('/').pop().replace(/\.html$/, '');
+        document.getElementById('voice-recorder-input').click();
+    }
+
+    window.handleVoiceRecording = async function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        let ext = file.name.split('.').pop();
+        if (!ext || ext === 'blob') ext = 'm4a';
+        
+        const fileName = `${currentVoiceFileName}.${ext}`;
+        const notif = document.getElementById('notification');
+        
+        // Ha van GitHub beállítva, egyenesen oda töltjük!
+        if (ghConfig.repo && ghConfig.token) {
+            notif.innerText = `Feltöltés a GitHubra folyamatban: ${fileName}...`;
+            notif.style.backgroundColor = 'var(--warning)';
+            showNotification();
+            
+            try {
+                // Fájl beolvasása Base64 formátumba
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async function () {
+                    // A base64 string "data:audio/m4a;base64,..." formátumú, le kell vágni a prefixet
+                    const base64Content = reader.result.split(',')[1];
+                    
+                    const body = {
+                        message: `Hangjegyzet hozzáadása: ${fileName}`,
+                        content: base64Content
+                    };
+                    
+                    // Feltöltés a hangjegyzetek mappába
+                    const res = await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/Eredmenyek/hangjegyzetek/${fileName}`, {
+                        method: 'PUT',
+                        headers: { 
+                            'Authorization': `token ${ghConfig.token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(body)
+                    });
+                    
+                    if (res.ok) {
+                        notif.innerText = `Sikeresen feltöltve a GitHubra: Eredmenyek/hangjegyzetek/${fileName}`;
+                        notif.style.backgroundColor = 'var(--success)';
+                    } else {
+                        // Ha már létezik (422 Unprocessable Entity), akkor sem baj, kezelhetjük
+                        const errorText = await res.text();
+                        console.error("Feltöltési hiba:", errorText);
+                        notif.innerText = `Hiba a feltöltés során. Letöltés telefonra...`;
+                        notif.style.backgroundColor = 'var(--danger)';
+                        downloadLocally(file, fileName);
+                    }
+                    
+                    setTimeout(() => {
+                        notif.innerText = 'Értékelések kimásolva a vágólapra! Most már beillesztheted (Ctrl+V) Messengerbe vagy Discordba.';
+                        notif.style.backgroundColor = 'var(--success)';
+                    }, 5000);
+                };
+            } catch(err) {
+                console.error(err);
+                downloadLocally(file, fileName);
+            }
+        } else {
+            // Nincs Github, letöltés telefonra
+            downloadLocally(file, fileName);
+            notif.innerText = `Hangjegyzet mentve a telefonra: ${fileName}`;
+            showNotification();
+            setTimeout(() => {
+                notif.innerText = 'Értékelések kimásolva a vágólapra! Most már beillesztheted (Ctrl+V) Messengerbe vagy Discordba.';
+            }, 5000);
+        }
+
+        event.target.value = '';
+    }
+    
+    function downloadLocally(file, fileName) {
+        const url = URL.createObjectURL(file);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     }
 
     // --- BEÁLLÍTÁSOK ---
