@@ -6,6 +6,18 @@ if (-not (Test-Path $apaPath)) {
     New-Item -ItemType Directory -Path $apaPath | Out-Null
 }
 
+# ALAP KÖNYVTÁR MÁSOLÁSA (JS Hivatkozások miatt!)
+# Mivel a JS kódból dinamikusan is hivatkoznak képekre, a statikus elemző nem mindig találja meg őket.
+# Ezért a teljes apa_festmenyek mappát garantáltan felmásoljuk a gyökérbe.
+$festmenyekSource = Join-Path $hermesPath "apa_festmenyek"
+$festmenyekDest = Join-Path $apaPath "apa_festmenyek"
+if (Test-Path $festmenyekSource) {
+    if (-not (Test-Path $festmenyekDest)) {
+        New-Item -ItemType Directory -Path $festmenyekDest | Out-Null
+    }
+    Copy-Item -Path "$festmenyekSource\*" -Destination $festmenyekDest -Recurse -Force
+}
+
 $files = Get-ChildItem -Path $hermesPath -Filter *.html -Recurse | Where-Object {
     if ($_.FullName.StartsWith($apaPath)) { return $false }
     if ($_.FullName -eq "C:\xampp\htdocs\2026\Hermes\APA\index.html") { return $false }
@@ -92,6 +104,15 @@ foreach ($file in $files) {
         
         return $m.Value
     })
+    
+    # -------------------------------------------------------------
+    # JS STRING JAVÍTÁS (Közvetlen apa_festmenyek/ hivatkozások JS kódokban)
+    # -------------------------------------------------------------
+    $depth = ($relPath -split '\\').Count - 1
+    $backPath = ""
+    for ($i = 0; $i -lt $depth; $i++) { $backPath += "../" }
+    
+    $content = $content -replace '(?i)(?<=["''`])apa_festmenyek/', "${backPath}apa_festmenyek/"
     
     # HTML fájl elmentése az új linkekkel
     Set-Content -Path $destFile -Value $content -Encoding UTF8

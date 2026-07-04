@@ -425,7 +425,7 @@
             </div>
             <div class="about-image">
                 <!-- Placeholder for Artist Portrait -->
-                <img src="apa_festmenyek/artist_portrait.jpg" alt="KĂˇrai MihĂˇly portrĂ©ja" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop'">
+                <img src="../apa_festmenyek/artist_portrait.jpg" alt="KĂˇrai MihĂˇly portrĂ©ja" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop'">
             </div>
         </div>
     </section>
@@ -551,7 +551,7 @@
             // Determine image source. 
             // Note: In a real deployment, ensure these files exist in the folder.
             // Using a placeholder if the specific file isn't found to prevent broken layout.
-            const imgSrc = `apa_festmenyek/${item.id}.jpg`; 
+            const imgSrc = `../apa_festmenyek/${item.id}.jpg`; 
             
             card.innerHTML = `
                 <div class="art-image-wrapper ${isFramed ? 'framed-effect' : ''}">

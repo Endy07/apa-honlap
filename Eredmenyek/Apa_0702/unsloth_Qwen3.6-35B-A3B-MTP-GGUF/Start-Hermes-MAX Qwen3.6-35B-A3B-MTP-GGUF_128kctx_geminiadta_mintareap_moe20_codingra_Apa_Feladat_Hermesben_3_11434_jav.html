@@ -1692,7 +1692,7 @@
                 item.className = `gallery-item ${p.class} reveal reveal-delay-${Math.min(i % 4 + 1, 4)}`;
                 item.setAttribute('data-category', p.category);
                 item.innerHTML = `
-                    <img class="gallery-item-img" src="apa_festmenyek/${p.file}" alt="${p.title}" loading="lazy">
+                    <img class="gallery-item-img" src="../../apa_festmenyek/${p.file}" alt="${p.title}" loading="lazy">
                     <div class="gallery-item-overlay">
                         <h3 class="gallery-item-title">${p.title}</h3>
                         <span class="gallery-item-size">${p.size}</span>
@@ -1733,7 +1733,7 @@
         const lightboxDesc = document.getElementById('lightboxDesc');
 
         window.openLightbox = function(p) {
-            lightboxImg.src = `apa_festmenyek/${p.file}`;
+            lightboxImg.src = `../../apa_festmenyek/${p.file}`;
             lightboxImg.alt = p.title;
             lightboxTitle.textContent = p.title + ' â€” ' + p.size;
             lightboxDesc.textContent = p.desc;
