@@ -1,0 +1,545 @@
+/* ═══════════════════════════════════════════════════════════
+   KÁRAI MIHÁLY — THEME SYSTEM (60-30-10 Rule, 2026)
+   7 Themes | Vanilla CSS :root Variables | MutationObserver Ready
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── BASE (Default: Vörös Mélység) ─── */
+:root {
+    /* 60% Dominant Background */
+    --bg-primary: #0d0705;
+    --bg-secondary: #1a0f0a;
+    --bg-tertiary: #2a1a12;
+    --bg-glass: rgba(26, 15, 10, 0.65);
+    --bg-glass-border: rgba(209, 65, 36, 0.15);
+
+    /* 30% Secondary Text & Elements */
+    --text-primary: #f5efe6;
+    --text-secondary: #b8a898;
+    --text-muted: #6b5d52;
+    --border-subtle: rgba(245, 239, 230, 0.08);
+    --border-accent: rgba(209, 65, 36, 0.3);
+
+    /* 10% Accent */
+    --accent-primary: #d14124;
+    --accent-secondary: #c9a84c;
+    --accent-glow: rgba(209, 65, 36, 0.4);
+    --accent-soft: rgba(201, 168, 76, 0.15);
+
+    /* Canvas Hero Colors */
+    --canvas-blob-1: #d14124;
+    --canvas-blob-2: #c9a84c;
+    --canvas-blob-3: #8b2500;
+    --canvas-particle: rgba(209, 65, 36, 0.6);
+    --canvas-grain: rgba(0, 0, 0, 0.03);
+
+    /* Typography */
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Scrollbar */
+    --scrollbar-track: #1a0f0a;
+    --scrollbar-thumb: #d14124;
+}
+
+/* ─── THEME 2: Éjszakai Város ─── */
+[data-theme="city-night"] {
+    --bg-primary: #060a14;
+    --bg-secondary: #0c1525;
+    --bg-tertiary: #152035;
+    --bg-glass: rgba(12, 21, 37, 0.65);
+    --bg-glass-border: rgba(240, 192, 64, 0.12);
+    --text-primary: #e8e4df;
+    --text-secondary: #9aa8b8;
+    --text-muted: #4a5568;
+    --border-subtle: rgba(232, 228, 223, 0.06);
+    --border-accent: rgba(240, 192, 64, 0.25);
+    --accent-primary: #f0c040;
+    --accent-secondary: #40d8c8;
+    --accent-glow: rgba(240, 192, 64, 0.35);
+    --accent-soft: rgba(64, 216, 200, 0.12);
+    --canvas-blob-1: #f0c040;
+    --canvas-blob-2: #40d8c8;
+    --canvas-blob-3: #1a3050;
+    --canvas-particle: rgba(240, 192, 64, 0.5);
+    --scrollbar-thumb: #f0c040;
+}
+
+/* ─── THEME 3: Pasztell Álom ─── */
+[data-theme="pastel-dream"] {
+    --bg-primary: #faf6f1;
+    --bg-secondary: #f0e8df;
+    --bg-tertiary: #e8ddd0;
+    --bg-glass: rgba(250, 246, 241, 0.7);
+    --bg-glass-border: rgba(230, 160, 130, 0.2);
+    --text-primary: #2a1a12;
+    --text-secondary: #6b5040;
+    --text-muted: #a08878;
+    --border-subtle: rgba(42, 26, 18, 0.08);
+    --border-accent: rgba(230, 160, 130, 0.3);
+    --accent-primary: #e6a082;
+    --accent-secondary: #d4829a;
+    --accent-glow: rgba(230, 160, 130, 0.3);
+    --accent-soft: rgba(212, 130, 154, 0.12);
+    --canvas-blob-1: #e6a082;
+    --canvas-blob-2: #d4829a;
+    --canvas-blob-3: #f0d0c0;
+    --canvas-particle: rgba(230, 160, 130, 0.5);
+    --canvas-grain: rgba(0, 0, 0, 0.015);
+    --scrollbar-thumb: #e6a082;
+}
+
+/* ─── THEME 4: Oázis ─── */
+[data-theme="oasis"] {
+    --bg-primary: #f5efe0;
+    --bg-secondary: #e8dcc8;
+    --bg-tertiary: #d8c8b0;
+    --bg-glass: rgba(232, 220, 200, 0.6);
+    --bg-glass-border: rgba(64, 180, 200, 0.15);
+    --text-primary: #1a2a28;
+    --text-secondary: #4a6a68;
+    --text-muted: #8a9a98;
+    --border-subtle: rgba(26, 42, 40, 0.08);
+    --border-accent: rgba(64, 180, 200, 0.25);
+    --accent-primary: #40b4c8;
+    --accent-secondary: #c9a84c;
+    --accent-glow: rgba(64, 180, 200, 0.3);
+    --accent-soft: rgba(201, 168, 76, 0.15);
+    --canvas-blob-1: #40b4c8;
+    --canvas-blob-2: #c9a84c;
+    --canvas-blob-3: #2a8a9a;
+    --canvas-particle: rgba(64, 180, 200, 0.5);
+    --canvas-grain: rgba(0, 0, 0, 0.015);
+    --scrollbar-thumb: #40b4c8;
+}
+
+/* ─── THEME 5: Indusztria ─── */
+[data-theme="industry"] {
+    --bg-primary: #141416;
+    --bg-secondary: #1e1e22;
+    --bg-tertiary: #2a2a30;
+    --bg-glass: rgba(30, 30, 34, 0.7);
+    --bg-glass-border: rgba(209, 65, 36, 0.12);
+    --text-primary: #e0dcd8;
+    --text-secondary: #8a8682;
+    --text-muted: #4a4846;
+    --border-subtle: rgba(224, 220, 216, 0.06);
+    --border-accent: rgba(209, 65, 36, 0.2);
+    --accent-primary: #d14124;
+    --accent-secondary: #f0f0f0;
+    --accent-glow: rgba(209, 65, 36, 0.35);
+    --accent-soft: rgba(240, 240, 240, 0.08);
+    --canvas-blob-1: #d14124;
+    --canvas-blob-2: #6a6a70;
+    --canvas-blob-3: #3a3a40;
+    --canvas-particle: rgba(209, 65, 36, 0.4);
+    --scrollbar-thumb: #d14124;
+}
+
+/* ─── THEME 6: Tűz & Jég ─── */
+[data-theme="fire-ice"] {
+    --bg-primary: #0e0e12;
+    --bg-secondary: #161620;
+    --bg-tertiary: #20202e;
+    --bg-glass: rgba(22, 22, 32, 0.65);
+    --bg-glass-border: rgba(209, 65, 36, 0.15);
+    --text-primary: #ece8e4;
+    --text-secondary: #989490;
+    --text-muted: #4a4846;
+    --border-subtle: rgba(236, 232, 228, 0.06);
+    --border-accent: rgba(209, 65, 36, 0.2);
+    --accent-primary: #d14124;
+    --accent-secondary: #4090d0;
+    --accent-glow: rgba(209, 65, 36, 0.35);
+    --accent-soft: rgba(64, 144, 208, 0.12);
+    --canvas-blob-1: #d14124;
+    --canvas-blob-2: #4090d0;
+    --canvas-blob-3: #2a1a10;
+    --canvas-particle: rgba(209, 65, 36, 0.4);
+    --scrollbar-thumb: #d14124;
+}
+
+/* ─── THEME 7: Reggeli Köd ─── */
+[data-theme="morning-mist"] {
+    --bg-primary: #f2f0ee;
+    --bg-secondary: #e8e4e0;
+    --bg-tertiary: #d8d4d0;
+    --bg-glass: rgba(232, 228, 224, 0.6);
+    --bg-glass-border: rgba(139, 37, 36, 0.12);
+    --text-primary: #1a1210;
+    --text-secondary: #5a4a44;
+    --text-muted: #9a8a84;
+    --border-subtle: rgba(26, 18, 16, 0.06);
+    --border-accent: rgba(139, 37, 36, 0.2);
+    --accent-primary: #8b2524;
+    --accent-secondary: #c9a84c;
+    --accent-glow: rgba(139, 37, 36, 0.25);
+    --accent-soft: rgba(201, 168, 76, 0.12);
+    --canvas-blob-1: #8b2524;
+    --canvas-blob-2: #c9a84c;
+    --canvas-blob-3: #d4c0b0;
+    --canvas-particle: rgba(139, 37, 36, 0.4);
+    --canvas-grain: rgba(0, 0, 0, 0.015);
+    --scrollbar-thumb: #8b2524;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   THEME SWITCHER — Organic Morphing Pills
+   ═══════════════════════════════════════════════════════════ */
+
+.theme-switcher {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 10px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: 40px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.theme-switcher.collapsed {
+    padding: 12px 8px;
+    gap: 8px;
+}
+
+.theme-pill {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+}
+
+.theme-pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: inherit;
+    filter: blur(0px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.theme-pill:hover {
+    transform: scale(1.35);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.theme-pill.active {
+    transform: scale(1.2);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.theme-pill.active::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Pill color definitions */
+.theme-pill[data-theme="default"] {
+    background: linear-gradient(135deg, #0d0705 50%, #d14124 50%);
+}
+.theme-pill[data-theme="city-night"] {
+    background: linear-gradient(135deg, #060a14 50%, #f0c040 50%);
+}
+.theme-pill[data-theme="pastel-dream"] {
+    background: linear-gradient(135deg, #faf6f1 50%, #e6a082 50%);
+}
+.theme-pill[data-theme="oasis"] {
+    background: linear-gradient(135deg, #f5efe0 50%, #40b4c8 50%);
+}
+.theme-pill[data-theme="industry"] {
+    background: linear-gradient(135deg, #141416 50%, #d14124 50%);
+}
+.theme-pill[data-theme="fire-ice"] {
+    background: linear-gradient(135deg, #0e0e12 50%, #d14124 50%);
+    border-color: rgba(64, 144, 208, 0.3);
+}
+.theme-pill[data-theme="morning-mist"] {
+    background: linear-gradient(135deg, #f2f0ee 50%, #8b2524 50%);
+}
+
+/* Tooltip on hover */
+.theme-pill .tooltip {
+    position: absolute;
+    right: 42px;
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: var(--text-primary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid var(--border-subtle);
+}
+
+.theme-pill:hover .tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Theme transition overlay */
+.theme-transition-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-transition-overlay.active {
+    opacity: 1;
+    animation: themeFlash 0.6s ease forwards;
+}
+
+@keyframes themeFlash {
+    0% { opacity: 0; }
+    30% { opacity: 0.08; }
+    100% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   THEME-ENABLED COMPONENT STYLES
+   ═══════════════════════════════════════════════════════════ */
+
+/* Glassmorphism Cards */
+.glass-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--bg-glass-border);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glass-card:hover {
+    border-color: var(--border-accent);
+    box-shadow: 0 8px 32px var(--accent-soft);
+}
+
+/* Text Transitions */
+body, h1, h2, h3, h4, h5, h6, p, span, a, button, label {
+    transition: color 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                background-color 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                border-color 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* Selection */
+::selection {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+}
+
+/* Focus visible */
+:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CANVAS HERO — Theme-Aware Morphing Blobs
+   ═══════════════════════════════════════════════════════════ */
+
+#hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+/* Grain Overlay */
+.grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   JAVASCRIPT — Theme Switcher + Canvas Sync
+   ═══════════════════════════════════════════════════════════ */
+
+/*
+ * USAGE:
+ * 1. Include this CSS file in the HTML head
+ * 2. Include the JS below in the HTML body (before </body>)
+ * 3. Call initThemeSwitcher() on page load
+ * 4. Call syncCanvasTheme(themeName) when theme changes
+ */
+
+(function() {
+    'use strict';
+
+    const THEME_NAMES = {
+        'default': 'Vörös Mélység',
+        'city-night': 'Éjszakai Város',
+        'pastel-dream': 'Pasztell Álom',
+        'oasis': 'Oázis',
+        'industry': 'Indusztria',
+        'fire-ice': 'Tűz & Jég',
+        'morning-mist': 'Reggeli Köd'
+    };
+
+    let currentTheme = 'default';
+
+    /**
+     * Switch theme and sync canvas
+     */
+    function switchTheme(themeName) {
+        if (!THEME_NAMES[themeName]) return;
+
+        const prevTheme = currentTheme;
+        currentTheme = themeName;
+
+        // Apply data attribute
+        document.documentElement.setAttribute('data-theme',
+            themeName === 'default' ? '' : themeName);
+
+        // Flash overlay
+        const overlay = document.getElementById('theme-transition-overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+            void overlay.offsetWidth; // reflow
+            overlay.classList.add('active');
+            setTimeout(() => overlay.classList.remove('active'), 600);
+        }
+
+        // Update active pill
+        document.querySelectorAll('.theme-pill').forEach(pill => {
+            pill.classList.toggle('active',
+                pill.dataset.theme === themeName);
+        });
+
+        // Sync canvas if available
+        if (typeof syncCanvasTheme === 'function') {
+            syncCanvasTheme(themeName);
+        }
+
+        // Persist
+        try { localStorage.setItem('karai-theme', themeName); } catch(e) {}
+
+        // Dispatch custom event for other components
+        document.dispatchEvent(new CustomEvent('themechange', {
+            detail: { from: prevTheme, to: themeName }
+        }));
+    }
+
+    /**
+     * Initialize theme switcher UI
+     */
+    function initThemeSwitcher() {
+        // Build switcher UI
+        const switcher = document.createElement('div');
+        switcher.className = 'theme-switcher';
+        switcher.id = 'theme-switcher';
+
+        Object.keys(THEME_NAMES).forEach(themeName => {
+            const pill = document.createElement('div');
+            pill.className = 'theme-pill';
+            pill.dataset.theme = themeName;
+
+            const tooltip = document.createElement('span');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = THEME_NAMES[themeName];
+            pill.appendChild(tooltip);
+
+            pill.addEventListener('click', () => switchTheme(themeName));
+
+            switcher.appendChild(pill);
+        });
+
+        document.body.appendChild(switcher);
+
+        // Restore saved theme
+        let saved;
+        try { saved = localStorage.getItem('karai-theme'); } catch(e) {}
+        if (saved && THEME_NAMES[saved]) {
+            switchTheme(saved);
+        } else {
+            // Set default active
+            const defaultPill = switcher.querySelector('[data-theme="default"]');
+            if (defaultPill) defaultPill.classList.add('active');
+        }
+    }
+
+    /**
+     * Observe data-theme changes for canvas sync
+     */
+    function observeThemeChanges() {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach(mutation => {
+                if (mutation.attributeName === 'data-theme') {
+                    const theme = document.documentElement.getAttribute('data-theme') || 'default';
+                    if (typeof syncCanvasTheme === 'function') {
+                        syncCanvasTheme(theme);
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, { attributes: true });
+    }
+
+    // Expose to global
+    window.switchTheme = switchTheme;
+    window.initThemeSwitcher = initThemeSwitcher;
+    window.observeThemeChanges = observeThemeChanges;
+
+    // Auto-init
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            initThemeSwitcher();
+            observeThemeChanges();
+        });
+    } else {
+        initThemeSwitcher();
+        observeThemeChanges();
+    }
+
+})();
