@@ -6,6 +6,12 @@ if (-not (Test-Path $apaPath)) {
     New-Item -ItemType Directory -Path $apaPath | Out-Null
 }
 
+# Másoljuk a festmények mappát egy az egyben a GitHub-ra
+$festmenyekSource = Join-Path $hermesPath "apa_festmenyek"
+if (Test-Path $festmenyekSource) {
+    Copy-Item -Path $festmenyekSource -Destination $apaPath -Recurse -Force
+}
+
 $files = Get-ChildItem -Path $hermesPath -Filter *.html -Recurse | Where-Object {
     if ($_.FullName.StartsWith($apaPath)) { return $false }
     if ($_.FullName -eq "C:\xampp\htdocs\2026\Hermes\APA\index.html") { return $false }
@@ -23,28 +29,15 @@ $files = Get-ChildItem -Path $hermesPath -Filter *.html -Recurse | Where-Object 
 
 $fileList = @()
 foreach ($file in $files) {
-    # Eredeti almappa struktúra lemásolása
     $relPath = $file.FullName.Substring($hermesPath.Length + 1)
     $destFile = Join-Path $apaPath $relPath
     $destDir = Split-Path $destFile -Parent
     if (-not (Test-Path $destDir)) {
         New-Item -ItemType Directory -Path $destDir -Force | Out-Null
     }
-    $content = Get-Content -Path $file.FullName -Raw
-    $relDir = (Split-Path $relPath -Parent).Replace('\', '/')
-    $baseUrl = "http://localhost/2026/Hermes/"
-    if ($relDir) { $baseUrl += $relDir + "/" }
     
-    $content = [regex]::Replace($content, '(?i)\bsrc="([^"]+)"', {
-        param($m)
-        $val = $m.Groups[1].Value
-        if ($val -match "^http" -or $val -match "^data:") {
-            return $m.Value
-        }
-        return "src=`"$baseUrl$val`""
-    })
-    
-    Set-Content -Path $destFile -Value $content -Encoding UTF8
+    # Érintetlenül másoljuk a HTML fájlokat, mivel a képek mappáját is feltöltjük
+    Copy-Item -Path $file.FullName -Destination $destFile -Force
     
     # Lista építése (HTML számára)
     $htmlRelPath = "Eredmenyek/" + $relPath.Replace('\', '/')

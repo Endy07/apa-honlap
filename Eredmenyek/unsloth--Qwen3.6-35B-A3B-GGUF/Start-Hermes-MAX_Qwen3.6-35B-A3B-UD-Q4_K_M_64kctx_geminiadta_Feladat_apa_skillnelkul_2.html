@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KĂˇrai MihĂˇly | MĹ±vĂ©szeti PortfĂłliĂł 2026</title>
+    <title>Kárai Mihály | Művészeti Portfólió 2026</title>
     
-    <!-- BetĹ±tĂ­pusok: Elegancia Ă©s ModernitĂˇs -->
+    <!-- Betűtípusok: Elegancia és Modernitás -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@200;400;500&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
          * =========================================
          */
         :root {
-            /* AlapĂ©rtelmezett tĂ©ma: "Ă‰jfekete Olaj" (SĂ¶tĂ©t, drĂˇmai) */
+            /* Alapértelmezett téma: "Éjfekete Olaj" (Sötét, drámai) */
             --bg-color: #0a0a0a;
             --text-primary: #e0e0e0;
             --text-secondary: #8c8c8c;
@@ -29,12 +29,12 @@
             --transition-speed: 0.6s;
         }
 
-        /* TĂ©mĂˇk definĂ­ciĂłi */
+        /* Témák definíciói */
         [data-theme="crystalline"] {
-            --bg-color: #f4f4f0; /* KrĂ©ta fehĂ©r */
+            --bg-color: #f4f4f0; /* Kréta fehér */
             --text-primary: #2c2c2c;
             --text-secondary: #666;
-            --accent-color: #5d7a8c; /* Tengeri kĂ©k */
+            --accent-color: #5d7a8c; /* Tengeri kék */
             --glass-bg: rgba(0, 0, 0, 0.03);
             --glass-border: rgba(0, 0, 0, 0.05);
         }
@@ -43,25 +43,25 @@
             --bg-color: #e6dace; /* Meleg homok */
             --text-primary: #3e2723;
             --text-secondary: #795548;
-            --accent-color: #bf360c; /* TĂ©gla vĂ¶rĂ¶s */
+            --accent-color: #bf360c; /* Tégla vörös */
             --glass-bg: rgba(255, 255, 255, 0.4);
             --glass-border: rgba(255, 255, 255, 0.6);
         }
 
         [data-theme="midnight-ocean"] {
-            --bg-color: #0f172a; /* MĂ©kĂ©k */
+            --bg-color: #0f172a; /* Mékék */
             --text-primary: #e2e8f0;
             --text-secondary: #94a3b8;
-            --accent-color: #38bdf8; /* VillĂˇmkĂ©k */
+            --accent-color: #38bdf8; /* Villámkék */
             --glass-bg: rgba(15, 23, 42, 0.6);
             --glass-border: rgba(56, 189, 248, 0.2);
         }
 
         [data-theme="forest-whisper"] {
-            --bg-color: #1a2f1a; /* SĂ¶tĂ©tzĂ¶ld */
+            --bg-color: #1a2f1a; /* Sötétzöld */
             --text-primary: #d1d5db;
             --text-secondary: #9ca3af;
-            --accent-color: #4ade80; /* Friss zĂ¶ld */
+            --accent-color: #4ade80; /* Friss zöld */
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
@@ -76,7 +76,7 @@
         }
 
         [data-theme="royal-purple"] {
-            --bg-color: #181020; /* MĂ©ly lila */
+            --bg-color: #181020; /* Mély lila */
             --text-primary: #f3e5f5;
             --text-secondary: #b39ddb;
             --accent-color: #d4af37; /* Arany */
@@ -99,7 +99,7 @@
             line-height: 1.6;
         }
 
-        /* TextĂşra rĂ©teg (PapĂ­r hatĂˇs) */
+        /* Textúra réteg (Papír hatás) */
         body::before {
             content: "";
             position: fixed;
@@ -124,7 +124,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            mix-blend-mode: difference; /* Ez teszi elegĂˇnssĂˇ a hĂˇttĂ©rtĹ‘l fĂĽggetlen lĂˇthatĂłsĂˇgot */
+            mix-blend-mode: difference; /* Ez teszi elegánssá a háttértől független láthatóságot */
         }
 
         .logo {
@@ -250,7 +250,7 @@
             height: 600px;
             width: 100%;
             overflow: hidden;
-            border-radius: 4px; /* Enyhe kerekĂ­tĂ©s */
+            border-radius: 4px; /* Enyhe kerekítés */
         }
 
         .bio-image img {
@@ -291,7 +291,7 @@
             gap: 4rem;
         }
 
-        /* KĂ©p kĂˇrtya */
+        /* Kép kártya */
         .art-card {
             position: relative;
             background: var(--glass-bg);
@@ -306,11 +306,11 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
-        /* A kĂ©p kontĂ©ner (keret vs keret nĂ©lkĂĽl) */
+        /* A kép konténer (keret vs keret nélkül) */
         .image-container {
             position: relative;
             width: 100%;
-            height: 400px; /* Fix magassĂˇg az egysĂ©gessĂ©gĂ©rt */
+            height: 400px; /* Fix magasság az egységességért */
             overflow: hidden;
             margin-bottom: 20px;
         }
@@ -322,22 +322,22 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Keret nĂ©lkĂĽli kĂ©p (alap) */
+        /* Keret nélküli kép (alap) */
         .img-frameless {
             position: absolute;
             top: 0; left: 0;
             z-index: 2;
         }
 
-        /* Keretes kĂ©p (fedĹ‘) */
+        /* Keretes kép (fedő) */
         .img-framed {
             position: absolute;
             top: 0; left: 0;
             z-index: 1;
-            opacity: 0; /* AlapbĂłl rejtve */
+            opacity: 0; /* Alapból rejtve */
         }
 
-        /* InteraktĂ­v slider a kĂ©pek kĂ¶zĂ¶tt */
+        /* Interaktív slider a képek között */
         .frame-toggle {
             position: absolute;
             bottom: 10px;
@@ -404,7 +404,7 @@
             100% { height: 60px; opacity: 0; transform: translateY(60px); }
         }
 
-        /* ReszponzivitĂˇs */
+        /* Reszponzivitás */
         @media (max-width: 768px) {
             .bio-section {
                 grid-template-columns: 1fr;
@@ -422,19 +422,19 @@
 </head>
 <body data-theme="midnight-ocean">
 
-    <!-- NavigĂˇciĂł -->
+    <!-- Navigáció -->
     <nav>
-        <div class="logo">KĂˇrai MihĂˇly</div>
+        <div class="logo">Kárai Mihály</div>
         <div class="theme-switcher" onclick="cycleTheme()">
-            <span class="theme-label">TĂ©ma vĂˇltĂˇs</span>
+            <span class="theme-label">Téma váltás</span>
             <div class="theme-btn"></div>
         </div>
     </nav>
 
-    <!-- Hero SzekciĂł -->
+    <!-- Hero Szekció -->
     <header>
-        <h1>A LĂ©t TĂĽkre</h1>
-        <p class="subtitle">KĂˇrai MihĂˇly festĂ©szete â€“ ahol a szĂ­nek hangot kapnak, Ă©s a csend formĂˇt Ă¶lt.</p>
+        <h1>A Lét Tükre</h1>
+        <p class="subtitle">Kárai Mihály festészete – ahol a színek hangot kapnak, és a csend formát ölt.</p>
         
         <div class="scroll-indicator">
             <span style="font-size: 0.7rem; letter-spacing: 2px;">FEDEZD FEL</span>
@@ -442,41 +442,41 @@
         </div>
     </header>
 
-    <!-- Ă‰letrajz SzekciĂł -->
+    <!-- Életrajz Szekció -->
     <section class="bio-section">
         <div class="bio-text">
-            <h2>A MĹ±vĂ©sz</h2>
-            <p>SzĂĽletett: 1961. Budapest.</p>
-            <p>KĂˇrai MihĂˇly nem csupĂˇn fest, hanem Ă©rzĂ©keli a vilĂˇgot. MĹ±vĂ©szetĂ©ben a klasszikus olajfestĂ©szet technikai tĂ¶kĂ©letessĂ©ge talĂˇlkozik a modern kor egzisztenciĂˇlis kĂ©rdĂ©seivel. FestmĂ©nyei nem dekorĂˇciĂłk; azok tĂĽkĂ¶rbe tartott ablakok a lĂ©lek mĂ©lyĂ©re.</p>
-            <p>MunkĂˇssĂˇga sorĂˇn feltĂˇrja az emberi Ă©rzelmek Ăˇrnyalatait, a termĂ©szet titkos ritmusait Ă©s a vĂˇrosi Ă©let dinamikus energiĂˇjĂˇt. MĹ±vei a csend Ă©s a mozgĂˇs hatĂˇrmezsgyĂ©jĂ©n tĂˇncolnak.</p>
+            <h2>A Művész</h2>
+            <p>Született: 1961. Budapest.</p>
+            <p>Kárai Mihály nem csupán fest, hanem érzékeli a világot. Művészetében a klasszikus olajfestészet technikai tökéletessége találkozik a modern kor egzisztenciális kérdéseivel. Festményei nem dekorációk; azok tükörbe tartott ablakok a lélek mélyére.</p>
+            <p>Munkássága során feltárja az emberi érzelmek árnyalatait, a természet titkos ritmusait és a városi élet dinamikus energiáját. Művei a csend és a mozgás határmezsgyéjén táncolnak.</p>
         </div>
         <div class="bio-image">
-            <!-- IDE TEHETED AZ Ă‰DESAPUK KĂ‰PĂ‰T, HA VAN -->
-            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop" alt="KĂˇrai MihĂˇly stĂşdiĂł">
+            <!-- IDE TEHETED AZ ÉDESAPUK KÉPÉT, HA VAN -->
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop" alt="Kárai Mihály stúdió">
         </div>
     </section>
 
-    <!-- GalĂ©ria SzekciĂł -->
+    <!-- Galéria Szekció -->
     <section class="gallery-section">
         <div class="section-header">
-            <h3>KivĂˇlogatott MĹ±vek</h3>
-            <p style="color: var(--text-secondary); margin-top: 10px;">A keret Ă©s a vĂˇszon kĂ¶zĂ¶tti pĂˇrbeszĂ©d</p>
+            <h3>Kiválogatott Művek</h3>
+            <p style="color: var(--text-secondary); margin-top: 10px;">A keret és a vászon közötti párbeszéd</p>
         </div>
 
         <div class="gallery-grid" id="gallery-container">
-            <!-- A JavaScript tĂ¶lti fel a kĂ©peket dinamikusan -->
+            <!-- A JavaScript tölti fel a képeket dinamikusan -->
         </div>
     </section>
 
-    <!-- LĂˇblĂ©c -->
+    <!-- Lábléc -->
     <footer>
-        <p class="footer-text">Â© 2026 KĂˇrai MihĂˇly MĹ±vĂ©szeti AlapĂ­tvĂˇny</p>
+        <p class="footer-text">© 2026 Kárai Mihály Művészeti Alapítvány</p>
         <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.5;">Design by AI Assistant for a Father's Legacy</p>
     </footer>
 
     <!-- JAVASCRIPT LOGIKA -->
     <script>
-        // --- 1. TĂ‰MA VĂLTĂ“ LOGIKA ---
+        // --- 1. TÉMA VÁLTÓ LOGIKA ---
         const themes = ['midnight-ocean', 'crystalline', 'terracotta', 'forest-whisper', 'monochrome', 'royal-purple'];
         let currentThemeIndex = 0;
 
@@ -484,70 +484,70 @@
             currentThemeIndex = (currentThemeIndex + 1) % themes.length;
             document.body.setAttribute('data-theme', themes[currentThemeIndex]);
             
-            // Finom animĂˇciĂł a vĂˇltĂˇshoz
+            // Finom animáció a váltáshoz
             document.body.style.opacity = '0.95';
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 200);
         }
 
-        // --- 2. GALĂ‰RIA GENERĂLĂS ---
+        // --- 2. GALÉRIA GENERÁLÁS ---
         
-        // FONTOS: Itt kell beĂˇllĂ­tani a fĂˇjlneveket!
-        // A rendszer automatikusan keresi a keretes Ă©s keret nĂ©lkĂĽli pĂˇrokat.
-        // Ha van pl. "festmeny1.jpg" Ă©s "keretezve_1.jpg", akkor ezeket hasznĂˇlja.
+        // FONTOS: Itt kell beállítani a fájlneveket!
+        // A rendszer automatikusan keresi a keretes és keret nélküli párokat.
+        // Ha van pl. "festmeny1.jpg" és "keretezve_1.jpg", akkor ezeket használja.
         
         const artworks = [
             { 
                 id: 1, 
                 title: "Csendes Reggel", 
-                desc: "Olaj, vĂˇszon. A fĂ©ny Ă©s ĂˇrnyĂ©k jĂˇtĂ©ka a hajnali ĂłrĂˇkban.",
-                baseName: "interior_1" // Ez a nĂ©v alap lesz
+                desc: "Olaj, vászon. A fény és árnyék játéka a hajnali órákban.",
+                baseName: "interior_1" // Ez a név alap lesz
             },
             { 
                 id: 2, 
-                title: "VĂˇrosi TĂˇj", 
-                desc: "Az aszfalt Ă©s az Ă©g talĂˇlkozĂˇsa. Modern impresszionizmus.",
+                title: "Városi Táj", 
+                desc: "Az aszfalt és az ég találkozása. Modern impresszionizmus.",
                 baseName: "interior_2"
             },
             { 
                 id: 3, 
-                title: "Abstrakt Ă‰rzelmek", 
-                desc: "SzĂ­nek zĂşgĂˇsa, amely a belsĹ‘ vilĂˇgunkat tĂĽkrĂ¶zi.",
-                baseName: "festmeny1" // Placeholder nĂ©v
+                title: "Abstrakt Érzelmek", 
+                desc: "Színek zúgása, amely a belső világunkat tükrözi.",
+                baseName: "festmeny1" // Placeholder név
             },
             { 
                 id: 4, 
-                title: "TermĂ©szet I.", 
-                desc: "A zĂ¶ld Ăˇrnyalatai, az Ă©let Ă¶rĂ¶k kĂ¶rforgĂˇsa.",
-                baseName: "festmeny2" // Placeholder nĂ©v
+                title: "Természet I.", 
+                desc: "A zöld árnyalatai, az élet örök körforgása.",
+                baseName: "festmeny2" // Placeholder név
             }
         ];
 
         const galleryContainer = document.getElementById('gallery-container');
 
         artworks.forEach(art => {
-            // KĂ©pfĂˇjlok keresĂ©se (Logika)
-            // PrĂłbĂˇljuk meg betĂ¶lteni a keretes verziĂłt, ha van, kĂĽlĂ¶nben az alap kĂ©pet
+            // Képfájlok keresése (Logika)
+            // Próbáljuk meg betölteni a keretes verziót, ha van, különben az alap képet
             const framedSrc = `apa_festmenyek/keretezve_${art.baseName}.jpg`; 
             const framelessSrc = `apa_festmenyek/${art.baseName}.jpg`; // Vagy keretnelkul_...
             
-            // Mivel nem tudom a pontos fĂˇjlokat, most placeholder URL-eket generĂˇlok a kĂłd mĹ±kĂ¶dĂ©sĂ©hez.
-            // A te gĂ©peden a 'src' attribĂştumokat a kĂ¶vetkezĹ‘kĂ©ppen kellene beĂˇllĂ­tani:
+            // Mivel nem tudom a pontos fájlokat, most placeholder URL-eket generálok a kód működéséhez.
+            // A te gépeden a 'src' attribútumokat a következőképpen kellene beállítani:
             
             const card = document.createElement('div');
             card.className = 'art-card';
 
-            // HTML struktĂşra a kĂˇrtyĂˇhoz
+            // HTML struktúra a kártyához
             card.innerHTML = `
                 <div class="image-container">
-                    <!-- Keret nĂ©lkĂĽli kĂ©p (alap) -->
-                    <img src="http://localhost/2026/Hermes/unsloth--Qwen3.6-35B-A3B-GGUF/${framelessSrc}" alt="${art.title}" class="art-img img-frameless" onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=2000&auto=format&fit=crop'">
+                    <!-- Keret nélküli kép (alap) -->
+                    <img src="${framelessSrc}" alt="${art.title}" class="art-img img-frameless" onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=2000&auto=format&fit=crop'">
                     
-                    <!-- Keretes kĂ©p (rejtve, hoverre jĂ¶n) -->
-                    <img src="http://localhost/2026/Hermes/unsloth--Qwen3.6-35B-A3B-GGUF/${framedSrc}" alt="${art.title} keretben" class="art-img img-framed" onerror="this.style.display='none'">
+                    <!-- Keretes kép (rejtve, hoverre jön) -->
+                    <img src="${framedSrc}" alt="${art.title} keretben" class="art-img img-framed" onerror="this.style.display='none'">
                     
-                    <button class="frame-toggle" onclick="toggleFrame(this)">Keret / Keret nĂ©lkĂĽl</button>
+                    <button class="frame-toggle" onclick="toggleFrame(this)">Keret / Keret nélkül</button>
                 </div>
                 <div class="art-info">
                     <h4>${art.title}</h4>
@@ -558,27 +558,27 @@
             galleryContainer.appendChild(card);
         });
 
-        // --- 3. KERET VĂLTĂ“ FUNKCIĂ“ ---
+        // --- 3. KERET VÁLTÓ FUNKCIÓ ---
         function toggleFrame(btn) {
             const container = btn.parentElement;
             const framedImg = container.querySelector('.img-framed');
             const framelessImg = container.querySelector('.img-frameless');
 
-            // EllenĹ‘rizzĂĽk, hogy a keretes kĂ©p lĂ©tezik-e (nem 404-es)
+            // Ellenőrizzük, hogy a keretes kép létezik-e (nem 404-es)
             if (framedImg.style.display === 'none' || framedImg.style.opacity === '0') {
                 // Megmutatjuk a keretet
                 framedImg.style.opacity = '1';
                 framelessImg.style.opacity = '0';
-                btn.innerText = "Keret nĂ©lkĂĽl";
+                btn.innerText = "Keret nélkül";
             } else {
-                // ElrejtjĂĽk a keretet
+                // Elrejtjük a keretet
                 framedImg.style.opacity = '0';
                 framelessImg.style.opacity = '1';
                 btn.innerText = "Keretben";
             }
         }
 
-        // --- 4. SCROLL ANIMĂCIĂ“ (Intersection Observer) ---
+        // --- 4. SCROLL ANIMÁCIÓ (Intersection Observer) ---
         const observerOptions = {
             threshold: 0.1
         };

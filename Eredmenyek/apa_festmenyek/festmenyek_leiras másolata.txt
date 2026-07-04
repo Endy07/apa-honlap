@@ -1,0 +1,83 @@
+A fájl Karai Mihály festményeinek részletes AI számára készített vizuális és tematikus leírásait tartalmazza.
+Ezek az információk felhasználhatóak képfelismerő betanításhoz, vizuális kereséshez, vagy RAG-alapú (Retrieval-Augmented Generation) lekérdezésekhez.
+
+---
+ÁLTALÁNOS AI JAVASLATOK / STÍLUSJEGYEK
+- Művész: Karai Mihály
+- Stílus: Kortárs absztrakt, expresszionista, modern festészet.
+- Színvilág (Color Palette): Dominánsak a meleg színek (tűzpiros, narancssárga, napsárga, arany, lazac), melyeket gyakran hideg, kontrasztos árnyalatokkal (türkizkék, sötétkék, zöld) tör meg.
+- Textúra és Technika: Erőteljes ecsetvonások, vastag (impasto) festékrétegek, dinamikus kaparások, geometrikus formák (négyzetek, körök, vonalak) és organikus, áramló formák keveredése.
+- Témák és Hangulat: Nyár, forróság, naplemente, víztükröződések, absztrakt városképek, emberi alakok (sziluettek), szenvedély, energia.
+- Kapcsolatok (Párok):
+  - A "d45190df18d013a48540242d4e02b588..." kép interior változata az "interior_1.jpg".
+  - A "732e9d819fbbee1e6b2126f580f51743..." kép interior változata az "interior_2.jpg".
+  - A "keretezve_1.jpg" megegyezik a "keretnelkul_1.jpg" festménnyel.
+  - A "keretezve_2.jpg" megegyezik a "keretnelkul_2.jpg" festménnyel.
+
+---
+RÉSZLETES KÉPLEÍRÁSOK
+
+1.
+Fájlnév: 014fb97bae01374ff673a7f51de018af-karai-mihaly-absztrakt-festmeny-kepmeret-80x60-cm.jpg
+Cím: Absztrakt festmény (80x60 cm)
+Leírás: Függőleges és vízszintes, rácsszerű kompozíció, intenzív meleg színekkel (piros, narancs, sárga). A festményen fehér és sárga hasításszerű, lendületes vonalak húzódnak. Geometrikus négyzetek és hasábok jelennek meg a háttérben.
+
+2.
+Fájlnév: 579ee3610e2f00108ae1ad3b4efe881f-karai-mihaly-a-kep-merete-80x60-cm.jpg
+Cím: Absztrakt festmény (80x60 cm)
+Leírás: Kontrasztos színblokkokból építkező kép. A bal felső rész türkizkék, a bal alsó élénkpiros, a jobb oldalon sötétkék és élénk meleg foltok dominálnak. A jobb alsó sarokban egy vastag ecsetvonásokkal festett kereszt-szerű minta látható (sötétkék).
+
+3.
+Fájlnév: 732e9d819fbbee1e6b2126f580f51743-karai-mihaly-szines-modern-absztrakt-festmeny-90-x-90-cm.jpg (valamint interior_2.jpg)
+Cím: Színes modern absztrakt festmény (90x90 cm)
+Leírás: Fluid, áramló formák, melyek egy szürreális tájképre, vagy geológiai képződményekre emlékeztetnek. Fehér alapon nagy, élénk foltok: kék hegy-szerű idomok, piros lángoló formák, és limezöld ívek. Tiszta, friss hatású kompozíció.
+
+4.
+Fájlnév: 76a52a2610ed517750b4d73efabbe595-karai-mihaly-absztrakt-festmeny-140x40x4-cm.jpg
+Cím: Absztrakt festmény (140x40 cm)
+Leírás: Extrém, hosszúkás függőleges formátum. Fent élénk piros, ami középen izzó napsárgába megy át. Alul apró, négyzetes, színes (kék, sárga, zöld, piros) ecsetvonások halmaza, mely egy vízen tükröződő esti városképre emlékeztet. Az alap sötétkék.
+
+5.
+Fájlnév: 8548dfcda68a1463e1ed276bce0b0b0c-karai-mihaly-absztrakt-festmeny-kepmeret-140x40-cm.jpg
+Cím: Absztrakt festmény (140x40 cm)
+Leírás: Az előző képhez nagyon hasonló, hosszúkás formátumú "tükröződő város" téma. A tetején egybefüggő vörös mező, középen izzó sárga és narancs sáv, alul pedig rózsaszín-fehér-piros blokkok, melyek a legalsó vízszintes kék sávon tükröződnek.
+
+6.
+Fájlnév: 9714f6cd20df8b60a6cfa68e340bdcb2-karai-mihaly-absztrakt-festmeny-40x70-cm.jpg
+Cím: Absztrakt festmény (40x70 cm)
+Leírás: Meleg, sárga-arany-piros árnyalatú festmény, amely egy absztrakt naplementét vagy tengerparti tájat idéz. Az alsó harmadot egy éles, vízszintes élénkkék (türkiz/sötétkék) vonal metszi át. Erőteljes a fény-árnyék játék a középső világos sávban.
+
+7.
+Fájlnév: c74fb23ff889ff7fc5bc22904e957ac7-karai-mihaly-kortars-absztrakt-festmeny-kepmeret-70x30-cm.jpg
+Cím: Kortárs absztrakt festmény (70x30 cm)
+Leírás: Függőleges kompozíció. A felső sávban sárgás-narancsos buborék/kör motívumok láthatók világító fényoszlopokkal. Az alsó rész élénk rózsaszín-málna-piros, fehéres és világoskék vízszintes húzásokkal, ami víztükröződés hatását kelti.
+
+8.
+Fájlnév: cf6c30f8ab61eea749199ee138ae02df-karai-mihaly-nyari-hoseg-kepmeret-100x70-cm.jpg
+Cím: Nyári hőség (100x70 cm)
+Leírás: Figurális absztrakt kép. Egy fehér bikinit (vagy fehér felsőt és alsót) viselő női alak torzója rajzolódik ki az izzó, vörös-narancs-sárga absztrakt háttérből. Az alak szinte beleolvad a környező energiába, a címhez hűen a nyári hőséget sugározva.
+
+9.
+Fájlnév: d0e8f21d863d3647ce7ce2705fbb0aeb-karai-mihaly-absztrakt-festmeny-kepmeret-70x70-cm.jpg
+Cím: Absztrakt festmény szív motívummal (70x70 cm)
+Leírás: Négyzet alakú, sötétebb (barna, szürke) és világos (fehér) textúrákkal operáló kép. A bal alsó negyedben egy hangsúlyos, élénk piros-narancs színű szív forma jelenik meg. Erősen kapart, rusztikus felület.
+
+10.
+Fájlnév: d45190df18d013a48540242d4e02b588-karai-mihaly-szines-modern-absztrakt-festmeny-90x100-cm.jpg (valamint interior_1.jpg)
+Cím: Színes modern absztrakt festmény (90x100 cm)
+Leírás: Kifinomult, pasztellesebb színvilágú festmény (barack, okker, rózsaszín, barna, fehér). Dinamikus, hálószerű karcolások, kaparások és vastag fehér ecsetvonások keverednek. Egy organikus, szétnyíló virágra vagy absztrakt tájra emlékeztet.
+
+11.
+Fájlnév: e862397c8ee36bfab0bbe2de56b503e2-karai-mihaly-absztrakt-festmeny-kepmeret-60x60-cm.jpg
+Cím: Absztrakt festmény (60x60 cm)
+Leírás: A kép felső részén vastag, fehér és narancssárga festékkel húzott körök (nap szimbólumok) láthatók. Alatta a kép nagy része téglalap alakú piros, rózsaszín, sárga, kék és zöld színblokkokból áll össze, egy város vagy épületek stilizált látképét adva.
+
+12.
+Fájlnév: keretnelkul_1.jpg és keretezve_1.jpg
+Cím: Absztrakt festmény (Mérete a fájlnév alapján 70x100cm, vélhetően egyezik egy másik alappal, de a tartalom egyedi)
+Leírás: Nagyon sötét tónusú kép, ahol a bordó, mélybarna és piros színek dominálnak. Erős a kontraszt a fehér, éles ecsetvonásokkal és a beékelt sárga foltokkal. Kaotikus, feszültséggel teli absztrakt kompozíció.
+
+13.
+Fájlnév: keretnelkul_2.jpg és keretezve_2.jpg
+Cím: Hangulat (80x60 cm)
+Leírás: Lángoló, lüktető vörös és narancssárga energia uralkodik a kép középpontjában. A szélek felé zöldes és sárgás átmenetek fedezhetőek fel. A központban örvénylő, vastag festékfelhordások (impasto) sugározzák a szenvedélyes 'hangulatot'.
