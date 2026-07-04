@@ -803,8 +803,49 @@
                         if(rowData) rowData.voiceNoteExt = ext;
                         renderTable();
                         scheduleSave();
+                    } else if (res.status === 422) {
+                        // Már létezik a fájl, le kell kérjük a SHA-t, hogy felülírhassuk
+                        notif.innerText = `Létező hangjegyzet felülírása...`;
+                        
+                        const getRes = await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/Eredmenyek/hangjegyzetek/${encodeURIComponent(fileName)}`, {
+                            headers: { 'Authorization': `token ${ghConfig.token}` }
+                        });
+                        
+                        if (getRes.ok) {
+                            const existingFile = await getRes.json();
+                            body.sha = existingFile.sha;
+                            body.message = `Hangjegyzet frissítése: ${fileName}`;
+                            
+                            const updateRes = await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/Eredmenyek/hangjegyzetek/${encodeURIComponent(fileName)}`, {
+                                method: 'PUT',
+                                headers: { 
+                                    'Authorization': `token ${ghConfig.token}`,
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(body)
+                            });
+                            
+                            if (updateRes.ok) {
+                                notif.innerText = `Sikeresen frissítve a GitHubon: ${fileName}`;
+                                notif.style.backgroundColor = 'var(--success)';
+                                
+                                if(!sharedData.ratings[currentVoiceFileRowPath]) sharedData.ratings[currentVoiceFileRowPath] = { scoreEndi: null, scoreApa: null, comment: '', status: '' };
+                                sharedData.ratings[currentVoiceFileRowPath].voiceNoteExt = ext;
+                                const rowData = processedData.find(r => r.file === currentVoiceFileRowPath);
+                                if(rowData) rowData.voiceNoteExt = ext;
+                                renderTable();
+                                scheduleSave();
+                            } else {
+                                notif.innerText = `Hiba a frissítés során. Letöltés telefonra...`;
+                                notif.style.backgroundColor = 'var(--danger)';
+                                downloadLocally(file, fileName);
+                            }
+                        } else {
+                            notif.innerText = `Hiba a SHA lekérésekor. Letöltés telefonra...`;
+                            notif.style.backgroundColor = 'var(--danger)';
+                            downloadLocally(file, fileName);
+                        }
                     } else {
-                        // Ha már létezik (422 Unprocessable Entity), akkor sem baj, kezelhetjük
                         const errorText = await res.text();
                         console.error("Feltöltési hiba:", errorText);
                         notif.innerText = `Hiba a feltöltés során. Letöltés telefonra...`;
@@ -813,8 +854,9 @@
                     }
                     
                     setTimeout(() => {
-                        notif.innerText = 'Értékelések kimásolva a vágólapra! Most már beillesztheted (Ctrl+V) Messengerbe vagy Discordba.';
+                        notif.innerText = 'Kész!';
                         notif.style.backgroundColor = 'var(--success)';
+                        setTimeout(() => showNotification(false), 2000);
                     }, 5000);
                 };
             } catch(err) {
