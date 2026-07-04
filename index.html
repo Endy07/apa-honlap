@@ -780,7 +780,7 @@
                     };
                     
                     // Feltöltés a hangjegyzetek mappába
-                    const res = await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/Eredmenyek/hangjegyzetek/${fileName}`, {
+                    const res = await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/Eredmenyek/hangjegyzetek/${encodeURIComponent(fileName)}`, {
                         method: 'PUT',
                         headers: { 
                             'Authorization': `token ${ghConfig.token}`,
