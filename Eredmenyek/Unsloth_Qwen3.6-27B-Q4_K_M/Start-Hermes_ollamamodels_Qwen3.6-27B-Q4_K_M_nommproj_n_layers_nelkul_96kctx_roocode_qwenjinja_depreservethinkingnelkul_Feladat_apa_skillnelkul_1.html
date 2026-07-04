@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KĂˇrai MihĂˇly | FestĹ‘mĹ±vĂ©sz</title>
+    <title>Kárai Mihály | Festőművész</title>
     
-    <!-- Google Fonts: ElegĂˇns Serif Ă©s Modern Sans -->
+    <!-- Google Fonts: Elegáns Serif és Modern Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* --- ALAP BEĂLLĂŤTĂSOK Ă‰S VĂLTOZĂ“K --- */
+        /* --- ALAP BEÁLLÍTÁSOK ÉS VÁLTOZÓK --- */
         :root {
-            /* Alap tĂ©ma: Galeria FehĂ©r (VilĂˇgos, tiszta) */
-            --bg-color: #F9F9F7; /* Meleg fehĂ©r */
-            --text-color: #2C2C2C; /* SzĂ©nszĂĽrke */
-            --accent-color: #8C7B70; /* HalvĂˇny rĂ©z */
+            /* Alap téma: Galeria Fehér (Világos, tiszta) */
+            --bg-color: #F9F9F7; /* Meleg fehér */
+            --text-color: #2C2C2C; /* Szénszürke */
+            --accent-color: #8C7B70; /* Halvány réz */
             --secondary-bg: #EBEBE6;
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Montserrat', sans-serif;
@@ -24,7 +24,7 @@
             --paper-texture: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIi8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNjY2MiIG9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4=');
         }
 
-        /* TĂ©ma VĂˇltozĂłk (JS Ăˇltal vezĂ©relt) */
+        /* Téma Változók (JS által vezérelt) */
         body {
             background-color: var(--bg-color);
             background-image: var(--paper-texture);
@@ -37,7 +37,7 @@
             line-height: 1.6;
         }
 
-        /* --- TIPOGRĂFIA --- */
+        /* --- TIPOGRÁFIA --- */
         h1, h2, h3, h4 {
             font-family: var(--font-serif);
             font-weight: 400;
@@ -49,7 +49,7 @@
             font-family: var(--font-serif);
         }
 
-        /* --- NAVIGĂCIĂ“ --- */
+        /* --- NAVIGÁCIÓ --- */
         nav {
             position: fixed;
             top: 0;
@@ -59,8 +59,8 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            mix-blend-mode: difference; /* Ez adja a mĹ±vĂ©szi hatĂˇst sĂ¶tĂ©t/vilĂˇgos hĂˇttĂ©ren */
-            color: #fff; /* A difference miatt ez invertĂˇlĂłdik */
+            mix-blend-mode: difference; /* Ez adja a művészi hatást sötét/világos háttéren */
+            color: #fff; /* A difference miatt ez invertálódik */
         }
 
         .logo {
@@ -95,7 +95,7 @@
             width: 100%;
         }
 
-        /* --- HERO SZEKCIĂ“ --- */
+        /* --- HERO SZEKCIÓ --- */
         header {
             height: 100vh;
             display: flex;
@@ -138,7 +138,7 @@
             animation: bounce 2s infinite;
         }
 
-        /* --- GALĂ‰RIA (MASONRY STĂŤLUS) --- */
+        /* --- GALÉRIA (MASONRY STÍLUS) --- */
         .gallery-section {
             padding: 4rem 2rem;
             max-width: 1600px;
@@ -180,7 +180,7 @@
             transition: filter 0.4s ease;
         }
 
-        /* Keret nĂ©lkĂĽli kĂ©peknek mĂˇs ĂˇrnyĂ©k */
+        /* Keret nélküli képeknek más árnyék */
         .artwork-card.no-frame img {
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
@@ -211,7 +211,7 @@
             margin: 0 auto;
         }
 
-        /* --- INTERIĂ“K --- */
+        /* --- INTERIÓK --- */
         .interior-section {
             padding: 6rem 0;
             background-color: var(--secondary-bg);
@@ -268,7 +268,7 @@
             padding: 1rem 2rem;
         }
 
-        /* --- Ă‰LETPĂLYA / NĂ‰V --- */
+        /* --- ÉLETPÁLYA / NÉV --- */
         .bio-section {
             padding: 8rem 2rem;
             text-align: center;
@@ -292,7 +292,7 @@
             z-index: 1;
         }
 
-        /* --- TĂ‰MA VĂLTĂ“ PANEL --- */
+        /* --- TÉMA VÁLTÓ PANEL --- */
         .theme-switcher-toggle {
             position: fixed;
             bottom: 2rem;
@@ -369,7 +369,7 @@
             transform: scale(1.1);
         }
 
-        /* --- ANIMĂCIĂ“K --- */
+        /* --- ANIMÁCIÓK --- */
         @keyframes fadeUp {
             to {
                 opacity: 1;
@@ -395,147 +395,147 @@
 </head>
 <body>
 
-    <!-- NavigĂˇciĂł -->
+    <!-- Navigáció -->
     <nav>
-        <div class="logo">KĂˇrai MihĂˇly</div>
+        <div class="logo">Kárai Mihály</div>
         <div class="nav-links">
-            <a href="#gallery">MĹ±vek</a>
-            <a href="#interiors">InteriĹ‘rĂ¶k</a>
-            <a href="#bio">Ă‰letpĂˇlya</a>
+            <a href="#gallery">Művek</a>
+            <a href="#interiors">Interiőrök</a>
+            <a href="#bio">Életpálya</a>
         </div>
     </nav>
 
-    <!-- Hero / BevezetĹ‘ -->
+    <!-- Hero / Bevezető -->
     <header>
-        <h1 class="hero-title">KĂˇrai MihĂˇly</h1>
-        <p class="hero-subtitle">FestĹ‘mĹ±vĂ©sz â€˘ 1961</p>
-        <div class="scroll-indicator">GĂ¶rgess lejjebb</div>
+        <h1 class="hero-title">Kárai Mihály</h1>
+        <p class="hero-subtitle">Festőművész • 1961</p>
+        <div class="scroll-indicator">Görgess lejjebb</div>
     </header>
 
-    <!-- Ă‰letpĂˇlya / Bio -->
+    <!-- Életpálya / Bio -->
     <section id="bio" class="bio-section">
         <span class="bio-year">1961</span>
         <div class="bio-text">
-            <h2>A mĹ±vĂ©szet nyelve</h2>
+            <h2>A művészet nyelve</h2>
             <br>
             <p class="serif-italic">
-                "A festĂ©szet nem a lĂˇthatĂł megjelenĂ­tĂ©se, hanem a lĂˇthatatlan lĂˇthatĂłvĂˇ tĂ©tele."
+                "A festészet nem a látható megjelenítése, hanem a láthatatlan láthatóvá tétele."
             </p>
             <br>
             <p>
-                KĂˇrai MihĂˇly munkĂˇssĂˇga a szĂ­nek Ă©s formĂˇk mĂ©lyrehatĂł vizsgĂˇlatĂˇn alapul. 
-                TĂ¶bb Ă©vtizedes tapasztalatait Ă¶nti vĂˇszonra, lĂ©trehozva olyan alkotĂˇsokat, 
-                amelyek a megfigyelĹ‘t a csend Ă©s a gondolat vilĂˇgĂˇba kalauzolja.
+                Kárai Mihály munkássága a színek és formák mélyreható vizsgálatán alapul. 
+                Több évtizedes tapasztalatait önti vászonra, létrehozva olyan alkotásokat, 
+                amelyek a megfigyelőt a csend és a gondolat világába kalauzolja.
             </p>
         </div>
     </section>
 
-    <!-- GalĂ©ria -->
+    <!-- Galéria -->
     <section id="gallery" class="gallery-section">
         <div class="section-header">
-            <h2>VĂˇlogatott MĹ±vek</h2>
-            <p class="serif-italic">Keretben Ă©s keret nĂ©lkĂĽl</p>
+            <h2>Válogatott Művek</h2>
+            <p class="serif-italic">Keretben és keret nélkül</p>
         </div>
 
         <div class="gallery-grid">
-            <!-- 1. MĹ±: Keretezve -->
+            <!-- 1. Mű: Keretezve -->
             <div class="artwork-card">
-                <img src="../apa_festmenyek/keretezve_1.jpg" alt="KĂˇrai MihĂˇly festmĂ©nye keretben">
+                <img src="../apa_festmenyek/keretezve_1.jpg" alt="Kárai Mihály festménye keretben">
                 <div class="artwork-info">
-                    <h3 class="artwork-title">CĂ­m 1 (Keretben)</h3>
-                    <p class="artwork-desc">LeĂ­rĂˇs a festmenyek_leiras.txt-bĹ‘l</p>
+                    <h3 class="artwork-title">Cím 1 (Keretben)</h3>
+                    <p class="artwork-desc">Leírás a festmenyek_leiras.txt-ből</p>
                 </div>
             </div>
 
-            <!-- 2. MĹ±: Keret nĂ©lkĂĽl -->
+            <!-- 2. Mű: Keret nélkül -->
             <div class="artwork-card no-frame">
-                <img src="../apa_festmenyek/keretnelkul_1.jpg" alt="KĂˇrai MihĂˇly festmĂ©nye">
+                <img src="../apa_festmenyek/keretnelkul_1.jpg" alt="Kárai Mihály festménye">
                 <div class="artwork-info">
-                    <h3 class="artwork-title">CĂ­m 1 (RĂ©szlet)</h3>
-                    <p class="artwork-desc">A mĹ±vĂ©szeti lĂˇtĂˇsmĂłd tisztasĂˇga.</p>
+                    <h3 class="artwork-title">Cím 1 (Részlet)</h3>
+                    <p class="artwork-desc">A művészeti látásmód tisztasága.</p>
                 </div>
             </div>
 
-            <!-- 3. MĹ±: Keretezve -->
+            <!-- 3. Mű: Keretezve -->
             <div class="artwork-card">
-                <img src="../apa_festmenyek/keretezve_2.jpg" alt="KĂˇrai MihĂˇly festmĂ©nye keretben">
+                <img src="../apa_festmenyek/keretezve_2.jpg" alt="Kárai Mihály festménye keretben">
                 <div class="artwork-info">
-                    <h3 class="artwork-title">CĂ­m 2 (Keretben)</h3>
-                    <p class="artwork-desc">LeĂ­rĂˇs a festmenyek_leiras.txt-bĹ‘l</p>
+                    <h3 class="artwork-title">Cím 2 (Keretben)</h3>
+                    <p class="artwork-desc">Leírás a festmenyek_leiras.txt-ből</p>
                 </div>
             </div>
 
-            <!-- 4. MĹ±: Keret nĂ©lkĂĽl -->
+            <!-- 4. Mű: Keret nélkül -->
             <div class="artwork-card no-frame">
-                <img src="../apa_festmenyek/keretnelkul_2.jpg" alt="KĂˇrai MihĂˇly festmĂ©nye">
+                <img src="../apa_festmenyek/keretnelkul_2.jpg" alt="Kárai Mihály festménye">
                 <div class="artwork-info">
-                    <h3 class="artwork-title">CĂ­m 2 (RĂ©szlet)</h3>
-                    <p class="artwork-desc">SzĂ­nek harmĂłniĂˇja.</p>
+                    <h3 class="artwork-title">Cím 2 (Részlet)</h3>
+                    <p class="artwork-desc">Színek harmóniája.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- InteriĹ‘rĂ¶k -->
+    <!-- Interiőrök -->
     <section id="interiors" class="interior-section">
         <div class="interior-grid">
             <div class="interior-item">
-                <img src="../apa_festmenyek/interior_1.jpg" alt="InteriĹ‘r 1">
+                <img src="../apa_festmenyek/interior_1.jpg" alt="Interiőr 1">
                 <div class="interior-overlay">
-                    <div class="interior-text">Ă‰letĂ©rzĂ©k</div>
+                    <div class="interior-text">Életérzék</div>
                 </div>
             </div>
             <div class="interior-item">
-                <img src="../apa_festmenyek/interior_2.jpg" alt="InteriĹ‘r 2">
+                <img src="../apa_festmenyek/interior_2.jpg" alt="Interiőr 2">
                 <div class="interior-overlay">
-                    <div class="interior-text">TĂ©r Ă©s IdĹ‘</div>
+                    <div class="interior-text">Tér és Idő</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- LĂˇblĂ©c -->
+    <!-- Lábléc -->
     <footer style="padding: 4rem 2rem; text-align: center; font-size: 0.8rem; opacity: 0.6;">
-        <p>&copy; 2026 KĂˇrai MihĂˇly. Minden jog fenntartva.</p>
-        <p class="serif-italic">KĂ©szĂ­tette: Szeretettel, a fiĂˇtĂłl.</p>
+        <p>&copy; 2026 Kárai Mihály. Minden jog fenntartva.</p>
+        <p class="serif-italic">Készítette: Szeretettel, a fiától.</p>
     </footer>
 
-    <!-- TĂ©ma VĂˇltĂł -->
+    <!-- Téma Váltó -->
     <button class="theme-switcher-toggle" onclick="toggleThemePanel()">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path></svg>
     </button>
 
     <div class="theme-panel" id="themePanel">
-        <h4>TĂ©ma VĂˇlasztĂł</h4>
+        <h4>Téma Választó</h4>
         <div class="theme-options">
-            <!-- 1. Galeria FehĂ©r (Alap) -->
+            <!-- 1. Galeria Fehér (Alap) -->
             <button class="theme-btn" style="background: #F9F9F7;" onclick="setTheme('#F9F9F7', '#2C2C2C', '#8C7B70', '#EBEBE6')"></button>
             
-            <!-- 2. Ă‰jfekete (SĂ¶tĂ©t, drĂˇmai) -->
+            <!-- 2. Éjfekete (Sötét, drámai) -->
             <button class="theme-btn" style="background: #121212;" onclick="setTheme('#121212', '#E0E0E0', '#D4AF37', '#1E1E1E')"></button>
             
-            <!-- 3. OlajzĂ¶ld (MĂ©ly, termĂ©szetkĂ¶zeli) -->
+            <!-- 3. Olajzöld (Mély, természetközeli) -->
             <button class="theme-btn" style="background: #2F3E35;" onclick="setTheme('#2F3E35', '#F0F0F0', '#A8C3A6', '#232E26')"></button>
             
-            <!-- 4. RĂ©z Ă©s KrĂ©m (Meleg, klasszikus) -->
+            <!-- 4. Réz és Krém (Meleg, klasszikus) -->
             <button class="theme-btn" style="background: #FDF6E3;" onclick="setTheme('#FDF6E3', '#5D4037', '#BCAAA4', '#EFEBE9')"></button>
             
-            <!-- 5. Ă‰jkĂ©k (Komoly, modern) -->
+            <!-- 5. Éjkék (Komoly, modern) -->
             <button class="theme-btn" style="background: #0F172A;" onclick="setTheme('#0F172A', '#CBD5E1', '#38BDF8', '#1E293B')"></button>
             
-            <!-- 6. Pasztell SzĂĽrke (Minimalista) -->
+            <!-- 6. Pasztell Szürke (Minimalista) -->
             <button class="theme-btn" style="background: #E5E5E5;" onclick="setTheme('#E5E5E5', '#171717', '#737373', '#D4D4D4')"></button>
         </div>
     </div>
 
     <script>
-        // TĂ©ma panel nyitĂˇsa/zĂˇrĂˇsa
+        // Téma panel nyitása/zárása
         function toggleThemePanel() {
             const panel = document.getElementById('themePanel');
             panel.classList.toggle('active');
         }
 
-        // TĂ©ma beĂˇllĂ­tĂˇsa
+        // Téma beállítása
         function setTheme(bg, text, accent, secondary) {
             const root = document.documentElement;
             root.style.setProperty('--bg-color', bg);
@@ -543,11 +543,11 @@
             root.style.setProperty('--accent-color', accent);
             root.style.setProperty('--secondary-bg', secondary);
             
-            // Panel bezĂˇrĂˇsa vĂˇlasztĂˇs utĂˇn (opcionĂˇlis)
+            // Panel bezárása választás után (opcionális)
             // document.getElementById('themePanel').classList.remove('active');
         }
 
-        // Scroll animĂˇciĂł (Intersection Observer)
+        // Scroll animáció (Intersection Observer)
         const observerOptions = {
             threshold: 0.1
         };
@@ -561,7 +561,7 @@
             });
         }, observerOptions);
 
-        // Elemek figyelĂ©se
+        // Elemek figyelése
         document.querySelectorAll('.artwork-card, .bio-text, .section-header').forEach(el => {
             el.style.opacity = "0";
             el.style.transform = "translateY(30px)";

@@ -42,7 +42,7 @@ foreach ($file in $files) {
         New-Item -ItemType Directory -Path $destDir -Force | Out-Null
     }
     
-    $content = Get-Content -Path $file.FullName -Raw
+    $content = Get-Content -Path $file.FullName -Raw -Encoding UTF8
     
     # -------------------------------------------------------------
     # DINAMIKUS KÉP FELDERÍTÉS ÉS MÁSOLÁS (Intelligens útvonal-javítás)
