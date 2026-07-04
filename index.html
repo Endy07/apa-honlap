@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apa / Kárai Mihály Értékelő Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --surface: #1a2235;
+            --surface-hover: #232d46;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #2e3c5a;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --score-bg: #1e293b;
+            --score-active: #3b82f6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 1rem 2rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .header-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            background-color: var(--surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--surface-hover);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .table-wrapper {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 1000px;
+        }
+
+        th, td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .th-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            user-select: none;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .th-title:hover {
+            color: white;
+        }
+
+        .sort-icon {
+            font-size: 0.7rem;
+            color: var(--accent);
+        }
+
+        .filter-input {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 0.4rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            box-sizing: border-box;
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .col-id { width: 60px; font-weight: bold; color: var(--accent); }
+        .col-name { width: 250px; }
+        .col-status { width: 200px; }
+        .col-score { width: 450px; }
+        .col-comment { width: auto; }
+
+        .filename {
+            font-family: monospace;
+            color: #60a5fa;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            word-break: break-all;
+        }
+
+        /* Státusz gombok */
+        .status-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .status-btn {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .status-btn:hover { background-color: var(--surface-hover); color: white; }
+        
+        .status-btn.active-danger { background-color: rgba(239, 68, 68, 0.2); border-color: var(--danger); color: #fca5a5; }
+        .status-btn.active-warning { background-color: rgba(245, 158, 11, 0.2); border-color: var(--warning); color: #fcd34d; }
+        .status-btn.active-success { background-color: rgba(16, 185, 129, 0.2); border-color: var(--success); color: #6ee7b7; }
+
+        /* Kattintható számok dizájnja */
+        .score-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .score-btn {
+            background-color: var(--score-bg);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .score-btn:hover {
+            background-color: var(--surface-hover);
+            color: white;
+        }
+
+        .score-btn.active {
+            background-color: var(--score-active);
+            border-color: var(--score-active);
+            color: white;
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+        }
+
+        .comment-textarea {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 0.6rem;
+            border-radius: 6px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+        }
+
+        .comment-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        #notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: none;
+            font-weight: 500;
+            animation: slideIn 0.3s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 10000;
+        }
+        .modal {
+            background: var(--surface); padding: 2rem; border-radius: 12px; width: 450px;
+            border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .modal h2 { margin-top: 0; margin-bottom: 1.5rem; }
+        .modal label { display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem; }
+        .modal input { 
+            width: 100%; padding: 0.8rem; margin-bottom: 1.5rem; 
+            background: var(--bg-color); color: white; border: 1px solid var(--border); 
+            border-radius: 6px; box-sizing: border-box; font-family: monospace;
+        }
+        .modal input:focus { outline: none; border-color: var(--accent); }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 1rem; }
+
+        .saving-indicator {
+            display: inline-block;
+            width: 8px; height: 8px; border-radius: 50%;
+            background-color: var(--success);
+            margin-left: 10px;
+            box-shadow: 0 0 8px var(--success);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .saving-indicator.saving {
+            background-color: var(--warning);
+            box-shadow: 0 0 8px var(--warning);
+            opacity: 1;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div>
+            <h1>Apa Weboldal Variációk <span id="save-status" class="saving-indicator"></span></h1>
+            <div class="header-desc">Dinamikus lista Github szinkronizációval.</div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn" onclick="openSettings()">
+                ⚙️ Beállítások (GitHub)
+            </button>
+            <button class="btn" id="blacklist-clear-btn" onclick="clearBlacklist()" style="display: none;">
+                ♻️ Feketelista ürítése
+            </button>
+            <button class="btn btn-primary" onclick="exportData()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Értékelések Másolása
+            </button>
+        </div>
+    </header>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-id">
+                        <div class="th-title" onclick="handleSort('id')"># <span id="sort-icon-id" class="sort-icon"></span></div>
+                        <input type="text" class="filter-input" placeholder="Keres..." oninput="handleFilter('id', this.value)">
+                    </th>
+                    <th class="col-name">
+                        <div class="th-title" onclick="handleSort('file')">Fájlnév <span id="sort-icon-file" class="sort-icon"></span></div>
+                        <input type="text" class="filter-input" placeholder="Keres..." oninput="handleFilter('file', this.value)">
+                    </th>
+                    <th class="col-status">
+                        <div class="th-title" onclick="handleSort('status')">Állapot <span id="sort-icon-status" class="sort-icon"></span></div>
+                        <input type="text" class="filter-input" placeholder="Keres..." oninput="handleFilter('status', this.value)">
+                    </th>
+                    <th class="col-score">
+                        <div class="th-title" onclick="handleSort('scoreEndi')">Pontszám <span id="sort-icon-score" class="sort-icon"></span></div>
+                        <input type="text" class="filter-input" placeholder="Keres..." disabled style="opacity: 0.3;">
+                    </th>
+                    <th class="col-comment">
+                        <div class="th-title" onclick="handleSort('comment')">Megjegyzés <span id="sort-icon-comment" class="sort-icon"></span></div>
+                        <input type="text" class="filter-input" placeholder="Keres..." oninput="handleFilter('comment', this.value)">
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Betöltés...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="notification">Értékelések kimásolva a vágólapra! Most már beillesztheted (Ctrl+V) Messengerbe vagy Discordba.</div>
+
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settings-modal">
+    <div class="modal">
+        <h2>GitHub Szinkronizáció</h2>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Add meg a GitHub tokenedet (Personal Access Token), hogy az értékelések és a feketelista közvetlenül a GitHub repo-dba mentsődjenek. Ezt a böngésződ helyileg biztonságban tárolja.
+        </p>
+        <label>Repository neve (pl. Kriszi/Kriszihonlap):</label>
+        <input type="text" id="gh-repo" placeholder="tulajdonos/reponév">
+        
+        <label>GitHub Token (ghp_...):</label>
+        <input type="password" id="gh-token" placeholder="Token beillesztése">
+        
+        <div class="modal-actions">
+            <button class="btn" onclick="closeSettings()">Mégse</button>
+            <button class="btn btn-primary" onclick="saveSettings()">Mentés és Betöltés</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const tbody = document.getElementById('table-body');
+    const storageKey = 'apa_osszefoglalo_gh';
+
+    // Állapotok
+    let rawFiles = []; 
+    let processedData = []; 
+    
+    // Szűrési és rendezési paraméterek
+    let currentSort = { col: 'id', asc: true };
+    let currentFilters = { id: '', file: '', status: '', comment: '' };
+
+    // Adatszerkezet (ezt szinkronizáljuk a GitHubra)
+    let sharedData = {
+        ratings: {},
+        blacklist: []
+    };
+    
+    let ghConfig = JSON.parse(localStorage.getItem(storageKey)) || { repo: '', token: '' };
+    let fileSha = null;
+
+    // --- BASE64 HELPER (UTF-8 támogatással) ---
+    function b64EncodeUnicode(str) {
+        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+            function toSolidBytes(match, p1) {
+                return String.fromCharCode('0x' + p1);
+        }));
+    }
+    
+    function b64DecodeUnicode(str) {
+        return decodeURIComponent(atob(str).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+    }
+
+    // --- GITHUB API FUNKCIÓK ---
+    
+    async function initData() {
+        if (!ghConfig.repo || !ghConfig.token) {
+            // Fallback localStorage ha nincs github beállítva
+            sharedData.ratings = JSON.parse(localStorage.getItem('apa_osszefoglalo_ratings')) || {};
+            sharedData.blacklist = JSON.parse(localStorage.getItem('apa_osszefoglalo_blacklist')) || [];
+            
+            // Migráció a régi verzióból ha van
+            let oldData = JSON.parse(localStorage.getItem('kriszi_pioca_ratings')) || {};
+            if (Object.keys(oldData).length > 0 && Object.keys(sharedData.ratings).length === 0) {
+                for (const [key, val] of Object.entries(oldData)) {
+                    sharedData.ratings[key] = {
+                        scoreEndi: val.score,
+                        scoreKriszi: null,
+                        comment: val.comment,
+                        status: val.status
+                    };
+                }
+            }
+            let oldBlacklist = JSON.parse(localStorage.getItem('kriszi_pioca_blacklist')) || [];
+            if (oldBlacklist.length > 0 && sharedData.blacklist.length === 0) {
+                sharedData.blacklist = oldBlacklist;
+            }
+
+            await loadHtmlFiles();
+            return;
+        }
+
+        try {
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Szinkronizáció a GitHubbal...</td></tr>`;
+            
+            const res = await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/shared_data.json`, {
+                headers: { 
+                    'Authorization': `token ${ghConfig.token}`,
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                cache: 'no-store'
+            });
+            
+            if (res.ok) {
+                const data = await res.json();
+                fileSha = data.sha;
+                const text = b64DecodeUnicode(data.content);
+                sharedData = JSON.parse(text);
+                
+                if (!sharedData.ratings) sharedData.ratings = {};
+                if (!sharedData.blacklist) sharedData.blacklist = [];
+            } else if (res.status === 404) {
+                // Nem létezik még a fájl, üresen indulunk
+                sharedData = { ratings: {}, blacklist: [] };
+            } else {
+                console.error('Github fetch hiba', await res.text());
+                alert("Hiba történt a GitHub letöltésekor. Lehet, hogy rossz a Repo név vagy a Token!");
+            }
+        } catch (e) {
+            console.error("Nem sikerült letölteni a githubról", e);
+        }
+        
+        await loadHtmlFiles();
+    }
+
+    let saveTimeout = null;
+    function scheduleSave() {
+        if (!ghConfig.repo || !ghConfig.token) {
+            localStorage.setItem('apa_osszefoglalo_ratings', JSON.stringify(sharedData.ratings));
+            localStorage.setItem('apa_osszefoglalo_blacklist', JSON.stringify(sharedData.blacklist));
+            return;
+        }
+        
+        const indicator = document.getElementById('save-status');
+        indicator.classList.add('saving');
+        
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(saveToGithub, 2000);
+    }
+
+    async function saveToGithub() {
+        const indicator = document.getElementById('save-status');
+        try {
+            const content = b64EncodeUnicode(JSON.stringify(sharedData, null, 2));
+            const body = {
+                message: "Update ratings and blacklist via Web UI",
+                content: content
+            };
+            if (fileSha) body.sha = fileSha;
+
+            const res = await fetch(`https://api.github.com/repos/${ghConfig.repo}/contents/shared_data.json`, {
+                method: 'PUT',
+                headers: { 
+                    'Authorization': `token ${ghConfig.token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+            
+            if (res.ok) {
+                const data = await res.json();
+                fileSha = data.content.sha;
+                console.log("Sikeresen mentve a GitHubra!");
+                indicator.classList.remove('saving');
+                indicator.style.opacity = '1';
+                setTimeout(() => indicator.style.opacity = '0', 2000);
+            } else {
+                console.error("Github mentési hiba", await res.text());
+                indicator.classList.remove('saving');
+                indicator.style.backgroundColor = 'var(--danger)';
+            }
+        } catch (e) {
+            console.error("Hiba a mentés során", e);
+            indicator.classList.remove('saving');
+        }
+    }
+
+
+    // --- MEGJELENÍTÉS ---
+
+    function updateBlacklistUI() {
+        const btn = document.getElementById('blacklist-clear-btn');
+        if (sharedData.blacklist && sharedData.blacklist.length > 0) {
+            btn.style.display = 'inline-flex';
+            btn.innerHTML = `♻️ Feketelista ürítése (${sharedData.blacklist.length})`;
+        } else {
+            btn.style.display = 'none';
+        }
+    }
+
+    async function loadHtmlFiles() {
+        try {
+            const response = await fetch('files.json?t=' + new Date().getTime());
+            if (!response.ok) throw new Error("files.json nem található");
+            
+            rawFiles = await response.json();
+            rawFiles.sort(); 
+            
+            buildData();
+            renderTable();
+        } catch (error) {
+            console.log("Hiba: ", error);
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Hiba: Nem találom a fájl listát (files.json). Kérlek futtasd le a 'feltoltes.bat' szkriptet!</td></tr>`;
+        }
+    }
+
+    function buildData() {
+        let currentId = 1;
+        processedData = rawFiles
+            .filter(file => !(sharedData.blacklist || []).includes(file))
+            .map((file) => {
+                const data = sharedData.ratings[file] || { scoreEndi: null, scoreApa: null, comment: '', status: '' };
+                return {
+                    id: currentId++,
+                    file: file,
+                    scoreEndi: data.scoreEndi,
+                    scoreApa: data.scoreApa,
+                    comment: data.comment || '',
+                    status: data.status || ''
+                };
+            });
+        updateBlacklistUI();
+    }
+
+    window.handleSort = function(col) {
+        if (currentSort.col === col) {
+            currentSort.asc = !currentSort.asc;
+        } else {
+            currentSort.col = col;
+            currentSort.asc = true;
+        }
+        
+        document.querySelectorAll('.sort-icon').forEach(el => el.innerHTML = '');
+        document.getElementById(`sort-icon-${col === 'scoreEndi' ? 'score' : col}`).innerHTML = currentSort.asc ? '▲' : '▼';
+
+        renderTable();
+    }
+
+    window.handleFilter = function(col, value) {
+        currentFilters[col] = value.toLowerCase();
+        renderTable();
+    }
+
+    function renderTable() {
+        let displayData = processedData.filter(row => {
+            if (currentFilters.id && !row.id.toString().includes(currentFilters.id)) return false;
+            if (currentFilters.file && !row.file.toLowerCase().includes(currentFilters.file)) return false;
+            
+            let statusText = "";
+            if (row.status === 'danger') statusText = "hibás";
+            if (row.status === 'warning') statusText = "részben hibás";
+            if (row.status === 'success') statusText = "jó";
+            if (currentFilters.status && !statusText.includes(currentFilters.status)) return false;
+
+            if (currentFilters.comment && !row.comment.toLowerCase().includes(currentFilters.comment)) return false;
+            return true;
+        });
+
+        displayData.sort((a, b) => {
+            let valA = a[currentSort.col];
+            let valB = b[currentSort.col];
+
+            if (valA === null) valA = -1;
+            if (valB === null) valB = -1;
+
+            if (typeof valA === 'string') valA = valA.toLowerCase();
+            if (typeof valB === 'string') valB = valB.toLowerCase();
+
+            if (valA < valB) return currentSort.asc ? -1 : 1;
+            if (valA > valB) return currentSort.asc ? 1 : -1;
+            return 0;
+        });
+
+        tbody.innerHTML = '';
+        if (displayData.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-secondary);">Nincs találat a szűrések alapján.</td></tr>`;
+            return;
+        }
+
+        displayData.forEach(row => {
+            const tr = document.createElement('tr');
+            
+            const btnDanger = row.status === 'danger' ? 'active-danger' : '';
+            const btnWarning = row.status === 'warning' ? 'active-warning' : '';
+            const btnSuccess = row.status === 'success' ? 'active-success' : '';
+
+            let getScoreHtml = (user, currentScore) => {
+                let html = `<div style="margin-bottom: 6px; display: flex; align-items: center;"><strong style="color:var(--text-secondary);display:inline-block;width:55px;">${user}:</strong> <div class="score-container" style="display:inline-flex;">`;
+                for(let i = 0; i <= 10; i++) {
+                    const isActive = currentScore == i ? 'active' : '';
+                    html += `<div class="score-btn ${isActive}" onclick="handleScoreClick('${row.file}', '${user}', ${i})">${i}</div>`;
+                }
+                html += '</div></div>';
+                return html;
+            };
+
+            tr.innerHTML = `
+                <td class="col-id">#${row.id}</td>
+                <td class="col-name">
+                    <span class="filename">${row.file}</span>
+                    <a href="${row.file}" target="_blank" class="btn">
+                        Megnyitás
+                    </a>
+                    <button class="btn" onclick="blacklistFile('${row.file}')" style="margin-left: 5px; border-color: var(--danger); color: var(--danger);">
+                        🗑️ Elrejtés
+                    </button>
+                </td>
+                <td class="col-status">
+                    <div class="status-container">
+                        <button class="status-btn ${btnDanger}" onclick="handleStatusClick('${row.file}', 'danger')">❌ Hibás oldal</button>
+                        <button class="status-btn ${btnWarning}" onclick="handleStatusClick('${row.file}', 'warning')">⚠️ Részben hibás</button>
+                        <button class="status-btn ${btnSuccess}" onclick="handleStatusClick('${row.file}', 'success')">✅ Nincs hiba</button>
+                    </div>
+                </td>
+                <td class="col-score">
+                    ${getScoreHtml('Endi', row.scoreEndi)}
+                    ${getScoreHtml('Apa', row.scoreApa)}
+                </td>
+                <td class="col-comment">
+                    <textarea class="comment-textarea" placeholder="Ide írd a részletes véleményed, vagy hogy mi a hiba..." oninput="saveComment('${row.file}', this.value)">${row.comment}</textarea>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // --- ESEMÉNYKEZELŐK ---
+
+    window.handleStatusClick = function(file, newStatus) {
+        if(!sharedData.ratings[file]) sharedData.ratings[file] = { scoreEndi: null, scoreApa: null, comment: '', status: '' };
+        
+        if (sharedData.ratings[file].status === newStatus) {
+            sharedData.ratings[file].status = '';
+        } else {
+            sharedData.ratings[file].status = newStatus;
+        }
+
+        const rowData = processedData.find(r => r.file === file);
+        if(rowData) rowData.status = sharedData.ratings[file].status;
+        renderTable();
+        scheduleSave();
+    }
+
+    window.handleScoreClick = function(file, user, selectedScore) {
+        if(!sharedData.ratings[file]) sharedData.ratings[file] = { scoreEndi: null, scoreApa: null, comment: '', status: '' };
+        
+        const prop = user === 'Endi' ? 'scoreEndi' : 'scoreApa';
+        const currentScore = sharedData.ratings[file][prop];
+
+        if (currentScore !== null && currentScore != selectedScore) {
+            const confirmed = confirm(`Ezt az oldalt már értékelte ${user} (${currentScore} pont). Biztosan módosítod ${selectedScore} pontra?`);
+            if (!confirmed) return;
+        }
+
+        sharedData.ratings[file][prop] = selectedScore;
+
+        const rowData = processedData.find(r => r.file === file);
+        if(rowData) rowData[prop] = selectedScore;
+        renderTable();
+        scheduleSave();
+    }
+
+    window.saveComment = function(file, commentText) {
+        if(!sharedData.ratings[file]) sharedData.ratings[file] = { scoreEndi: null, scoreApa: null, comment: '', status: '' };
+        sharedData.ratings[file].comment = commentText;
+
+        const rowData = processedData.find(r => r.file === file);
+        if(rowData) rowData.comment = commentText;
+        scheduleSave();
+    }
+
+    window.blacklistFile = function(file) {
+        if(confirm(`Biztosan feketelistára teszed ezt a fájlt? Később senkinek nem fog megjelenni a listában: ${file}`)) {
+            if(!sharedData.blacklist) sharedData.blacklist = [];
+            sharedData.blacklist.push(file);
+            buildData();
+            renderTable();
+            scheduleSave();
+        }
+    }
+
+    window.clearBlacklist = function() {
+        if(confirm(`Biztosan üríted a feketelistát? (${sharedData.blacklist.length} fájl újra megjelenik mindenkinek)`)) {
+            sharedData.blacklist = [];
+            buildData();
+            renderTable();
+            scheduleSave();
+        }
+    }
+
+    // --- BEÁLLÍTÁSOK ---
+    window.openSettings = function() {
+        document.getElementById('gh-repo').value = ghConfig.repo || '';
+        document.getElementById('gh-token').value = ghConfig.token || '';
+        document.getElementById('settings-modal').style.display = 'flex';
+    }
+
+    window.closeSettings = function() {
+        document.getElementById('settings-modal').style.display = 'none';
+    }
+
+    window.saveSettings = function() {
+        ghConfig.repo = document.getElementById('gh-repo').value.trim();
+        ghConfig.token = document.getElementById('gh-token').value.trim();
+        localStorage.setItem(storageKey, JSON.stringify(ghConfig));
+        closeSettings();
+        initData(); // Újratöltjük az egészet a githubról
+    }
+
+    // --- EXPORTÁLÁS ---
+    window.exportData = function() {
+        let exportText = "📋 APA OLDALAK ÉRTÉKELÉSEI ÉS HIBÁI:\n\n";
+        let hasData = false;
+
+        processedData.forEach(row => {
+            const { id, file, scoreEndi, scoreApa, comment, status } = row;
+            
+            if (scoreEndi !== null || scoreApa !== null || (comment && comment.trim() !== '') || status !== '') {
+                hasData = true;
+                exportText += `🔹 [#${id}] ${file}\n`;
+                
+                if (status === 'danger') exportText += `   Állapot: ❌ HIBÁS\n`;
+                if (status === 'warning') exportText += `   Állapot: ⚠️ RÉSZBEN HIBÁS\n`;
+                if (status === 'success') exportText += `   Állapot: ✅ JÓ\n`;
+                
+                if (scoreEndi !== null) exportText += `   Endi pont: ${scoreEndi}/10\n`;
+                if (scoreApa !== null) exportText += `   Apa pont: ${scoreApa}/10\n`;
+                if (comment && comment.trim() !== '') exportText += `   Megjegyzés: ${comment.trim()}\n`;
+                exportText += "\n";
+            }
+        });
+
+        if (!hasData) {
+            exportText = "Még nincs kitöltve egyetlen értékelés sem.";
+        }
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(exportText).then(() => {
+                showNotification();
+            }).catch(err => {
+                fallbackCopy(exportText);
+            });
+        } else {
+            fallbackCopy(exportText);
+        }
+    }
+
+    function fallbackCopy(text) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            showNotification();
+        } catch (err) {
+            alert("Kérlek másold ki kézzel az alábbi ablakból:\n\n" + text);
+        }
+        document.body.removeChild(textArea);
+    }
+
+    function showNotification() {
+        const notif = document.getElementById('notification');
+        notif.style.display = 'block';
+        setTimeout(() => {
+            notif.style.display = 'none';
+        }, 4000);
+    }
+
+    // Indítás
+    initData();
+</script>
+
+</body>
+</html>
