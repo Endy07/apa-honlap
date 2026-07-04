@@ -1,24 +1,24 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="hu" data-theme="vaszon">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kárai Mihály — Festőművész</title>
+<title>KĂˇrai MihĂˇly â€” FestĹ‘mĹ±vĂ©sz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════
-   THEME SYSTEM — 7 Harmonic Themes
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   THEME SYSTEM â€” 7 Harmonic Themes
    60-30-10 color ratio applied per theme
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 :root {
   --transition-speed: 0.6s;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter', -apple-system, sans-serif;
 }
 
-/* Theme: vaszon (warm canvas — default) */
+/* Theme: vaszon (warm canvas â€” default) */
 [data-theme="vaszon"] {
   --bg-primary: #f5f0e8; --bg-secondary: #ebe4d6; --bg-card: rgba(245,240,232,0.85);
   --text-primary: #2c2418; --text-secondary: #6b5d4f; --text-accent: #8b4513;
@@ -27,7 +27,7 @@
   --grain-opacity: 0.04; --glow: rgba(212,184,150,0.3);
 }
 
-/* Theme: fehér (clean gallery — bright) */
+/* Theme: fehĂ©r (clean gallery â€” bright) */
 [data-theme="feher"] {
   --bg-primary: #ffffff; --bg-secondary: #f8f7f5; --bg-card: rgba(255,255,255,0.9);
   --text-primary: #1a1a1a; --text-secondary: #555555; --text-accent: #333333;
@@ -36,7 +36,7 @@
   --grain-opacity: 0.03; --glow: rgba(200,195,185,0.3);
 }
 
-/* Theme: est (dark gallery — elegant night) */
+/* Theme: est (dark gallery â€” elegant night) */
 [data-theme="est"] {
   --bg-primary: #0d0d0d; --bg-secondary: #141414; --bg-card: rgba(20,20,20,0.85);
   --text-primary: #e8e0d4; --text-secondary: #9a9088; --text-accent: #d4a843;
@@ -45,7 +45,7 @@
   --grain-opacity: 0.05; --glow: rgba(212,168,67,0.2);
 }
 
-/* Theme: gal (purple gallery — artistic) */
+/* Theme: gal (purple gallery â€” artistic) */
 [data-theme="gal"] {
   --bg-primary: #120e1a; --bg-secondary: #1a1428; --bg-card: rgba(26,20,40,0.85);
   --text-primary: #e8e0f0; --text-secondary: #a098b8; --text-accent: #c45c8a;
@@ -54,7 +54,7 @@
   --grain-opacity: 0.04; --glow: rgba(196,92,138,0.2);
 }
 
-/* Theme: bohem (terracotta — warm bohém) */
+/* Theme: bohem (terracotta â€” warm bohĂ©m) */
 [data-theme="bohem"] {
   --bg-primary: #f4e4d4; --bg-secondary: #e8d4c0; --bg-card: rgba(244,228,212,0.85);
   --text-primary: #3d1f0f; --text-secondary: #7a4a35; --text-accent: #c0573e;
@@ -63,7 +63,7 @@
   --grain-opacity: 0.04; --glow: rgba(192,87,62,0.25);
 }
 
-/* Theme: meleg (warm orange — sunset) */
+/* Theme: meleg (warm orange â€” sunset) */
 [data-theme="meleg"] {
   --bg-primary: #fdf6ee; --bg-secondary: #f5e8d0; --bg-card: rgba(253,246,238,0.85);
   --text-primary: #3a2210; --text-secondary: #7a5a3a; --text-accent: #d4722a;
@@ -72,7 +72,7 @@
   --grain-opacity: 0.04; --glow: rgba(212,114,42,0.25);
 }
 
-/* Theme: erd (forest — deep green) */
+/* Theme: erd (forest â€” deep green) */
 [data-theme="erd"] {
   --bg-primary: #0f1a14; --bg-secondary: #162420; --bg-card: rgba(22,36,32,0.85);
   --text-primary: #d4e8d0; --text-secondary: #7a9a70; --text-accent: #4db89a;
@@ -81,9 +81,9 @@
   --grain-opacity: 0.04; --glow: rgba(77,184,154,0.2);
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    RESET & BASE
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
@@ -95,9 +95,9 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    GRAIN TEXTURE OVERLAY
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 body::before {
   content: ''; position: fixed; inset: 0;
   pointer-events: none; z-index: 9999; opacity: var(--grain-opacity);
@@ -105,9 +105,9 @@ body::before {
   background-size: 200px 200px; mix-blend-mode: multiply;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    FLOATING PILLS NAVIGATION
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .nav-pill {
   position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
   display: flex; gap: 8px; padding: 10px 20px;
@@ -124,9 +124,9 @@ body::before {
 }
 .nav-pill a:hover, .nav-pill a.active { color: var(--text-accent); background: var(--glow); }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    HERO SECTION
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .hero {
   position: relative; height: 100vh; min-height: 600px;
   display: flex; align-items: center; justify-content: center;
@@ -160,9 +160,9 @@ body::before {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    SECTION COMMON
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 section { padding: 120px 24px; position: relative; }
 .section-label {
   font-family: var(--font-body); font-weight: 200; font-size: 0.75rem;
@@ -183,9 +183,9 @@ section { padding: 120px 24px; position: relative; }
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ═══════════════════════════════════════════
-   ABOUT SECTION — Diagonal Split
-   ═══════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   ABOUT SECTION â€” Diagonal Split
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .about {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 0; min-height: 80vh; align-items: center;
@@ -216,9 +216,9 @@ section { padding: 120px 24px; position: relative; }
   margin: 40px 0; line-height: 1.5;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    INTERIOR SECTION
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .interior-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
   max-width: 1200px; margin: 0 auto;
@@ -250,9 +250,9 @@ section { padding: 120px 24px; position: relative; }
   font-size: 0.8rem; letter-spacing: 0.1em; opacity: 0.8;
 }
 
-/* ═══════════════════════════════════════════
-   FRAME COMPARISON — Drag Slider
-   ═══════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   FRAME COMPARISON â€” Drag Slider
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .frame-section { max-width: 900px; margin: 0 auto; }
 .frame-compare {
   position: relative; width: 100%; aspect-ratio: 3/4;
@@ -270,7 +270,7 @@ section { padding: 120px 24px; position: relative; }
   z-index: 10; box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 .frame-handle::before {
-  content: '◀ ▶'; position: absolute; top: 50%; left: 50%;
+  content: 'â—€ â–¶'; position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   background: #fff; color: #333; padding: 8px 10px;
   border-radius: 100px; font-size: 0.7rem; letter-spacing: 0.1em;
@@ -282,9 +282,9 @@ section { padding: 120px 24px; position: relative; }
   font-style: italic;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    MASONRY GALLERY
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .gallery { max-width: 1400px; margin: 0 auto; }
 .masonry {
   columns: 3; column-gap: 20px;
@@ -317,9 +317,9 @@ section { padding: 120px 24px; position: relative; }
   font-size: 0.75rem; letter-spacing: 0.05em; opacity: 0.8;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    LIGHTBOX
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .lightbox {
   position: fixed; inset: 0; z-index: 10000;
   background: rgba(0,0,0,0.92); backdrop-filter: blur(20px);
@@ -354,9 +354,9 @@ section { padding: 120px 24px; position: relative; }
 }
 .lightbox-close:hover { background: rgba(255,255,255,0.2); }
 
-/* ═══════════════════════════════════════════
-   QUOTE SECTION — Full Bleed
-   ═══════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   QUOTE SECTION â€” Full Bleed
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .quote-section {
   min-height: 60vh; display: flex; align-items: center; justify-content: center;
   text-align: center; padding: 120px 24px;
@@ -374,9 +374,9 @@ section { padding: 120px 24px; position: relative; }
   color: var(--text-accent); margin-top: 32px;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    CONTACT SECTION
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .contact { max-width: 600px; margin: 0 auto; text-align: center; }
 .contact-form { margin-top: 40px; }
 .form-group {
@@ -411,9 +411,9 @@ section { padding: 120px 24px; position: relative; }
 }
 .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--shadow); }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    FOOTER
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 footer {
   text-align: center; padding: 60px 24px;
   border-top: 1px solid var(--border);
@@ -425,9 +425,9 @@ footer p {
   font-size: 0.8rem; color: var(--text-secondary); letter-spacing: 0.05em;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    THEME TOGGLE BUTTON + PANEL
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .theme-toggle {
   position: fixed; bottom: 30px; right: 30px; z-index: 10000;
   width: 52px; height: 52px; border-radius: 50%;
@@ -471,9 +471,9 @@ footer p {
   white-space: nowrap; letter-spacing: 0.05em;
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    RESPONSIVE
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (max-width: 1024px) {
   .about { grid-template-columns: 1fr; }
   .about-image-wrap { clip-path: none; height: 50vh; }
@@ -492,9 +492,9 @@ footer p {
   .theme-panel { bottom: 74px; right: 20px; }
 }
 
-/* ═══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PREFERS REDUCED MOTION
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -505,195 +505,195 @@ footer p {
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      NAVIGATION
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <nav class="nav-pill" id="navPill">
-  <a href="#hero" class="active">Kezdőlap</a>
-  <a href="#about">Rólam</a>
-  <a href="#interior">Belstílus</a>
-  <a href="#gallery">Galéria</a>
+  <a href="#hero" class="active">KezdĹ‘lap</a>
+  <a href="#about">RĂłlam</a>
+  <a href="#interior">BelstĂ­lus</a>
+  <a href="#gallery">GalĂ©ria</a>
   <a href="#contact">Kapcsolat</a>
 </nav>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      HERO
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section class="hero" id="hero">
   <canvas id="heroCanvas"></canvas>
   <div class="hero-content">
-    <p class="hero-eyebrow">Festőművész · 1961</p>
-    <h1 class="hero-title">Kárai <em>Mihály</em></h1>
-    <p class="hero-subtitle">A szín és forma tükrében — kortárs absztrakt expresszionizmus</p>
+    <p class="hero-eyebrow">FestĹ‘mĹ±vĂ©sz Â· 1961</p>
+    <h1 class="hero-title">KĂˇrai <em>MihĂˇly</em></h1>
+    <p class="hero-subtitle">A szĂ­n Ă©s forma tĂĽkrĂ©ben â€” kortĂˇrs absztrakt expresszionizmus</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      ABOUT
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section class="about" id="about">
   <div class="about-image-wrap reveal">
-    <img src="broll_texture.png" alt="Kárai Mihály — festői textúra">
+    <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/broll_texture.png" alt="KĂˇrai MihĂˇly â€” festĹ‘i textĂşra">
   </div>
   <div class="about-text">
-    <p class="section-label reveal">A Művész</p>
-    <h2 class="section-title reveal">A festészet mint <br>életérzés</h2>
+    <p class="section-label reveal">A MĹ±vĂ©sz</p>
+    <h2 class="section-title reveal">A festĂ©szet mint <br>Ă©letĂ©rzĂ©s</h2>
     <p class="reveal">
-      Kárai Mihály (sz. 1961) kortárs festőművész, aki munkásságában az absztrakt expresszionizmus és a lírai absztrakció határán mozog. Akril- és olajfestékekkel, vastag impasto technikával, palettakéses kaparásokkal dolgozik — mindegyik alkotás egy-egy emocionális utazás a színek és formák világában.
+      KĂˇrai MihĂˇly (sz. 1961) kortĂˇrs festĹ‘mĹ±vĂ©sz, aki munkĂˇssĂˇgĂˇban az absztrakt expresszionizmus Ă©s a lĂ­rai absztrakciĂł hatĂˇrĂˇn mozog. Akril- Ă©s olajfestĂ©kekkel, vastag impasto technikĂˇval, palettakĂ©ses kaparĂˇsokkal dolgozik â€” mindegyik alkotĂˇs egy-egy emocionĂˇlis utazĂˇs a szĂ­nek Ă©s formĂˇk vilĂˇgĂˇban.
     </p>
     <p class="reveal">
-      Művei a meleg spektrum — tűzpiros, kadmiumnarancs, arany — és a kontrasztozó hideg tónusok — ciánkék, smaragdzöld — közötti feszültséget kutatják. Kompozíciói térbeli mélységet, atmoszferikus horizontokat és ritmikus geometriai blokkokat ötvöznek.
+      MĹ±vei a meleg spektrum â€” tĹ±zpiros, kadmiumnarancs, arany â€” Ă©s a kontrasztozĂł hideg tĂłnusok â€” ciĂˇnkĂ©k, smaragdzĂ¶ld â€” kĂ¶zĂ¶tti feszĂĽltsĂ©get kutatjĂˇk. KompozĂ­ciĂłi tĂ©rbeli mĂ©lysĂ©get, atmoszferikus horizontokat Ă©s ritmikus geometriai blokkokat Ă¶tvĂ¶znek.
     </p>
     <blockquote class="about-quote reveal">
-      „A festészet nem a látottak lemásolása, hanem az érzett tükörbe tartása."
+      â€žA festĂ©szet nem a lĂˇtottak lemĂˇsolĂˇsa, hanem az Ă©rzett tĂĽkĂ¶rbe tartĂˇsa."
     </blockquote>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      INTERIOR PRESENTATIONS
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="interior">
   <div style="text-align:center; max-width:700px; margin:0 auto 60px;">
-    <p class="section-label reveal">Belstílus</p>
-    <h2 class="section-title reveal">A művészet étere</h2>
+    <p class="section-label reveal">BelstĂ­lus</p>
+    <h2 class="section-title reveal">A mĹ±vĂ©szet Ă©tere</h2>
     <p class="reveal" style="font-family:var(--font-display);font-weight:300;font-style:italic;font-size:1.1rem;color:var(--text-secondary);">
-      Hogyan élik meg a festmények a mindennapi térben — belsőépítészeti környezetben bemutatva.
+      Hogyan Ă©lik meg a festmĂ©nyek a mindennapi tĂ©rben â€” belsĹ‘Ă©pĂ­tĂ©szeti kĂ¶rnyezetben bemutatva.
     </p>
   </div>
   <div class="interior-grid">
     <div class="interior-card reveal">
-      <img src="interior_1.jpg" alt="Modern absztrakt festmény belső térben — 90x100 cm">
+      <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/interior_1.jpg" alt="Modern absztrakt festmĂ©ny belsĹ‘ tĂ©rben â€” 90x100 cm">
       <div class="interior-label">
-        <h3>Színes modern absztrakt</h3>
-        <p>90 × 100 cm · Lazac, mályva, púderrózsaszín</p>
+        <h3>SzĂ­nes modern absztrakt</h3>
+        <p>90 Ă— 100 cm Â· Lazac, mĂˇlyva, pĂşderrĂłzsaszĂ­n</p>
       </div>
     </div>
     <div class="interior-card reveal">
-      <img src="interior_2.jpg" alt="Absztrakt festmény belső térben — 90x90 cm">
+      <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/interior_2.jpg" alt="Absztrakt festmĂ©ny belsĹ‘ tĂ©rben â€” 90x90 cm">
       <div class="interior-label">
-        <h3>Szürreális organikus táj</h3>
-        <p>90 × 90 cm · Mélykék, lángpiros, fehér</p>
+        <h3>SzĂĽrreĂˇlis organikus tĂˇj</h3>
+        <p>90 Ă— 90 cm Â· MĂ©lykĂ©k, lĂˇngpiros, fehĂ©r</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      FRAME COMPARISON
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="frames">
   <div style="text-align:center; max-width:700px; margin:0 auto 60px;">
-    <p class="section-label reveal">Keret vs Keret nélkül</p>
-    <h2 class="section-title reveal">A keret hatása</h2>
+    <p class="section-label reveal">Keret vs Keret nĂ©lkĂĽl</p>
+    <h2 class="section-title reveal">A keret hatĂˇsa</h2>
   </div>
   <div class="frame-section">
     <div class="frame-compare reveal" data-pair="1">
-      <img src="keretnelkul_1.jpg" alt="Absztrakt festmény keret nélkül">
-      <img class="frame-after" src="keretezve_1.jpg" alt="Absztrakt festmény keretezve">
+      <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/keretnelkul_1.jpg" alt="Absztrakt festmĂ©ny keret nĂ©lkĂĽl">
+      <img class="frame-after" src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/keretezve_1.jpg" alt="Absztrakt festmĂ©ny keretezve">
       <div class="frame-handle"></div>
     </div>
-    <p class="frame-instruction reveal">Húzd a mozgatógombot ◀ ▶ a keret hatás megnézéséhez</p>
+    <p class="frame-instruction reveal">HĂşzd a mozgatĂłgombot â—€ â–¶ a keret hatĂˇs megnĂ©zĂ©sĂ©hez</p>
     <div class="frame-compare reveal" data-pair="2">
-      <img src="keretnelkul_2.jpg" alt="Hangulat festmény keret nélkül">
-      <img class="frame-after" src="keretezve_2.jpg" alt="Hangulat festmény keretezve">
+      <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/keretnelkul_2.jpg" alt="Hangulat festmĂ©ny keret nĂ©lkĂĽl">
+      <img class="frame-after" src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/keretezve_2.jpg" alt="Hangulat festmĂ©ny keretezve">
       <div class="frame-handle"></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      MASONRY GALLERY
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="gallery">
   <div style="text-align:center; max-width:700px; margin:0 auto 60px;">
-    <p class="section-label reveal">Galéria</p>
-    <h2 class="section-title reveal">Alkotások</h2>
+    <p class="section-label reveal">GalĂ©ria</p>
+    <h2 class="section-title reveal">AlkotĂˇsok</h2>
   </div>
   <div class="gallery">
     <div class="masonry">
-      <div class="masonry-item reveal" data-title="Absztrakt festmény" data-dim="80 × 60 cm" data-desc="Meleg tónusú, rácsszerű szerkezet, impasto textúra">
-        <img src="014fb97bae01374ff673a7f51de018af-karai-mihaly-absztrakt-festmeny-kepmeret-80x60-cm.jpg" alt="Absztrakt festmény — rácsszerű kompozíció, 80x60 cm">
-        <div class="masonry-overlay"><h3>Absztrakt festmény</h3><p>80 × 60 cm</p></div>
+      <div class="masonry-item reveal" data-title="Absztrakt festmĂ©ny" data-dim="80 Ă— 60 cm" data-desc="Meleg tĂłnusĂş, rĂˇcsszerĹ± szerkezet, impasto textĂşra">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/014fb97bae01374ff673a7f51de018af-karai-mihaly-absztrakt-festmeny-kepmeret-80x60-cm.jpg" alt="Absztrakt festmĂ©ny â€” rĂˇcsszerĹ± kompozĂ­ciĂł, 80x60 cm">
+        <div class="masonry-overlay"><h3>Absztrakt festmĂ©ny</h3><p>80 Ă— 60 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="A kép mérete" data-dim="80 × 60 cm" data-desc="Color-blocking, geometrikus dualitás, ciánkék és tűzpiros">
-        <img src="579ee3610e2f00108ae1ad3b4efe881f-karai-mihaly-a-kep-merete-80x60-cm.jpg" alt="A kép mérete — color-blocking kompozíció, 80x60 cm">
-        <div class="masonry-overlay"><h3>A kép mérete</h3><p>80 × 60 cm</p></div>
+      <div class="masonry-item reveal" data-title="A kĂ©p mĂ©rete" data-dim="80 Ă— 60 cm" data-desc="Color-blocking, geometrikus dualitĂˇs, ciĂˇnkĂ©k Ă©s tĹ±zpiros">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/579ee3610e2f00108ae1ad3b4efe881f-karai-mihaly-a-kep-merete-80x60-cm.jpg" alt="A kĂ©p mĂ©rete â€” color-blocking kompozĂ­ciĂł, 80x60 cm">
+        <div class="masonry-overlay"><h3>A kĂ©p mĂ©rete</h3><p>80 Ă— 60 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Színes modern absztrakt" data-dim="90 × 90 cm" data-desc="Szürreális organikus táj, jég és tűz összecsapása">
-        <img src="732e9d819fbbee1e6b2126f580f51743-karai-mihaly-szines-modern-absztrakt-festmeny-90-x-90-cm.jpg" alt="Színes modern absztrakt — szürreális táj, 90x90 cm">
-        <div class="masonry-overlay"><h3>Színes modern absztrakt</h3><p>90 × 90 cm</p></div>
+      <div class="masonry-item reveal" data-title="SzĂ­nes modern absztrakt" data-dim="90 Ă— 90 cm" data-desc="SzĂĽrreĂˇlis organikus tĂˇj, jĂ©g Ă©s tĹ±z Ă¶sszecsapĂˇsa">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/732e9d819fbbee1e6b2126f580f51743-karai-mihaly-szines-modern-absztrakt-festmeny-90-x-90-cm.jpg" alt="SzĂ­nes modern absztrakt â€” szĂĽrreĂˇlis tĂˇj, 90x90 cm">
+        <div class="masonry-overlay"><h3>SzĂ­nes modern absztrakt</h3><p>90 Ă— 90 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Panoráma absztrakt" data-dim="140 × 40 cm" data-desc="Városi tükröződés, naplemente és éjszakai vízparti">
-        <img src="76a52a2610ed517750b4d73efabbe595-karai-mihaly-absztrakt-festmeny-140x40x4-cm.jpg" alt="Panoráma absztrakt — városi tükröződés, 140x40 cm">
-        <div class="masonry-overlay"><h3>Panoráma absztrakt</h3><p>140 × 40 cm</p></div>
+      <div class="masonry-item reveal" data-title="PanorĂˇma absztrakt" data-dim="140 Ă— 40 cm" data-desc="VĂˇrosi tĂĽkrĂ¶zĹ‘dĂ©s, naplemente Ă©s Ă©jszakai vĂ­zparti">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/76a52a2610ed517750b4d73efabbe595-karai-mihaly-absztrakt-festmeny-140x40x4-cm.jpg" alt="PanorĂˇma absztrakt â€” vĂˇrosi tĂĽkrĂ¶zĹ‘dĂ©s, 140x40 cm">
+        <div class="masonry-overlay"><h3>PanorĂˇma absztrakt</h3><p>140 Ă— 40 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Vörös torony" data-dim="140 × 40 cm" data-desc="Vérvörös égbolt, izzó torony, hullámzó tükör">
-        <img src="8548dfcda68a1463e1ed276bce0b0b0c-karai-mihaly-absztrakt-festmeny-kepmeret-140x40-cm.jpg" alt="Vörös torony — absztrakt városkép, 140x40 cm">
-        <div class="masonry-overlay"><h3>Vörös torony</h3><p>140 × 40 cm</p></div>
+      <div class="masonry-item reveal" data-title="VĂ¶rĂ¶s torony" data-dim="140 Ă— 40 cm" data-desc="VĂ©rvĂ¶rĂ¶s Ă©gbolt, izzĂł torony, hullĂˇmzĂł tĂĽkĂ¶r">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/8548dfcda68a1463e1ed276bce0b0b0c-karai-mihaly-absztrakt-festmeny-kepmeret-140x40-cm.jpg" alt="VĂ¶rĂ¶s torony â€” absztrakt vĂˇroskĂ©p, 140x40 cm">
+        <div class="masonry-overlay"><h3>VĂ¶rĂ¶s torony</h3><p>140 Ă— 40 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Sivatagi oázis" data-dim="40 × 70 cm" data-desc="Horizontális tájkép-absztrakció, türkiz oázis perzselő sivatagban">
-        <img src="9714f6cd20df8b60a6cfa68e340bdcb2-karai-mihaly-absztrakt-festmeny-40x70-cm.jpg" alt="Sivatagi oázis — horizontális absztrakció, 40x70 cm">
-        <div class="masonry-overlay"><h3>Sivatagi oázis</h3><p>40 × 70 cm</p></div>
+      <div class="masonry-item reveal" data-title="Sivatagi oĂˇzis" data-dim="40 Ă— 70 cm" data-desc="HorizontĂˇlis tĂˇjkĂ©p-absztrakciĂł, tĂĽrkiz oĂˇzis perzselĹ‘ sivatagban">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/9714f6cd20df8b60a6cfa68e340bdcb2-karai-mihaly-absztrakt-festmeny-40x70-cm.jpg" alt="Sivatagi oĂˇzis â€” horizontĂˇlis absztrakciĂł, 40x70 cm">
+        <div class="masonry-overlay"><h3>Sivatagi oĂˇzis</h3><p>40 Ă— 70 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Kortárs absztrakt" data-dim="70 × 30 cm" data-desc="Narancs-arany és málna-rózsaszín, fénysugár kompozíció">
-        <img src="c74fb23ff889ff7fc5bc22904e957ac7-karai-mihaly-kortars-absztrakt-festmeny-kepmeret-70x30-cm.jpg" alt="Kortárs absztrakt — fénysugár, 70x30 cm">
-        <div class="masonry-overlay"><h3>Kortárs absztrakt</h3><p>70 × 30 cm</p></div>
+      <div class="masonry-item reveal" data-title="KortĂˇrs absztrakt" data-dim="70 Ă— 30 cm" data-desc="Narancs-arany Ă©s mĂˇlna-rĂłzsaszĂ­n, fĂ©nysugĂˇr kompozĂ­ciĂł">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/c74fb23ff889ff7fc5bc22904e957ac7-karai-mihaly-kortars-absztrakt-festmeny-kepmeret-70x30-cm.jpg" alt="KortĂˇrs absztrakt â€” fĂ©nysugĂˇr, 70x30 cm">
+        <div class="masonry-overlay"><h3>KortĂˇrs absztrakt</h3><p>70 Ă— 30 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Nyári hőség" data-dim="100 × 70 cm" data-desc="Figurális-absztrakt fúzió, női torzó, izzó narancs és vörös">
-        <img src="cf6c30f8ab61eea749199ee138ae02df-karai-mihaly-nyari-hoseg-kepmeret-100x70-cm.jpg" alt="Nyári hőség — figurális absztrakció, 100x70 cm">
-        <div class="masonry-overlay"><h3>Nyári hőség</h3><p>100 × 70 cm</p></div>
+      <div class="masonry-item reveal" data-title="NyĂˇri hĹ‘sĂ©g" data-dim="100 Ă— 70 cm" data-desc="FigurĂˇlis-absztrakt fĂşziĂł, nĹ‘i torzĂł, izzĂł narancs Ă©s vĂ¶rĂ¶s">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/cf6c30f8ab61eea749199ee138ae02df-karai-mihaly-nyari-hoseg-kepmeret-100x70-cm.jpg" alt="NyĂˇri hĹ‘sĂ©g â€” figurĂˇlis absztrakciĂł, 100x70 cm">
+        <div class="masonry-overlay"><h3>NyĂˇri hĹ‘sĂ©g</h3><p>100 Ă— 70 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Szív motívum" data-dim="70 × 70 cm" data-desc="Nyers, indusztriális textúra, élénk piros szív a rozsdabarnában">
-        <img src="d0e8f21d863d3647ce7ce2705fbb0aeb-karai-mihaly-absztrakt-festmeny-kepmeret-70x70-cm.jpg" alt="Szív motívum — absztrakt, 70x70 cm">
-        <div class="masonry-overlay"><h3>Szív motívum</h3><p>70 × 70 cm</p></div>
+      <div class="masonry-item reveal" data-title="SzĂ­v motĂ­vum" data-dim="70 Ă— 70 cm" data-desc="Nyers, indusztriĂˇlis textĂşra, Ă©lĂ©nk piros szĂ­v a rozsdabarnĂˇban">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/d0e8f21d863d3647ce7ce2705fbb0aeb-karai-mihaly-absztrakt-festmeny-kepmeret-70x70-cm.jpg" alt="SzĂ­v motĂ­vum â€” absztrakt, 70x70 cm">
+        <div class="masonry-overlay"><h3>SzĂ­v motĂ­vum</h3><p>70 Ă— 70 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Színes modern absztrakt" data-dim="90 × 100 cm" data-desc="Pasztell atmoszféra, lazac, mályva, púderrózsaszín">
-        <img src="d45190df8d013a48540242d4e02b588-karai-mihaly-szines-modern-absztrakt-festmeny-90x100-cm.jpg" alt="Színes modern absztrakt — pasztell, 90x100 cm">
-        <div class="masonry-overlay"><h3>Színes modern absztrakt</h3><p>90 × 100 cm</p></div>
+      <div class="masonry-item reveal" data-title="SzĂ­nes modern absztrakt" data-dim="90 Ă— 100 cm" data-desc="Pasztell atmoszfĂ©ra, lazac, mĂˇlyva, pĂşderrĂłzsaszĂ­n">
+        <img src="d45190df8d013a48540242d4e02b588-karai-mihaly-szines-modern-absztrakt-festmeny-90x100-cm.jpg" alt="SzĂ­nes modern absztrakt â€” pasztell, 90x100 cm">
+        <div class="masonry-overlay"><h3>SzĂ­nes modern absztrakt</h3><p>90 Ă— 100 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Városi mozaik" data-dim="60 × 60 cm" data-desc="Háromsávos kompozíció, lüktető városi mozaik">
-        <img src="e862397c8ee36bfab0bbe2de56b503e2-karai-mihaly-absztrakt-festmeny-kepmeret-60x60-cm.jpg" alt="Városi mozaik — strukturált absztrakt, 60x60 cm">
-        <div class="masonry-overlay"><h3>Városi mozaik</h3><p>60 × 60 cm</p></div>
+      <div class="masonry-item reveal" data-title="VĂˇrosi mozaik" data-dim="60 Ă— 60 cm" data-desc="HĂˇromsĂˇvos kompozĂ­ciĂł, lĂĽktetĹ‘ vĂˇrosi mozaik">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/e862397c8ee36bfab0bbe2de56b503e2-karai-mihaly-absztrakt-festmeny-kepmeret-60x60-cm.jpg" alt="VĂˇrosi mozaik â€” strukturĂˇlt absztrakt, 60x60 cm">
+        <div class="masonry-overlay"><h3>VĂˇrosi mozaik</h3><p>60 Ă— 60 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Nyers energia" data-dim="~70 × 100 cm" data-desc="Burgundi vörös, karmazsin, fehér kaparások — chiaroscuro">
-        <img src="keretnelkul_1.jpg" alt="Nyers energia — sötét absztrakt, ~70x100 cm">
-        <div class="masonry-overlay"><h3>Nyers energia</h3><p>~70 × 100 cm</p></div>
+      <div class="masonry-item reveal" data-title="Nyers energia" data-dim="~70 Ă— 100 cm" data-desc="Burgundi vĂ¶rĂ¶s, karmazsin, fehĂ©r kaparĂˇsok â€” chiaroscuro">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/keretnelkul_1.jpg" alt="Nyers energia â€” sĂ¶tĂ©t absztrakt, ~70x100 cm">
+        <div class="masonry-overlay"><h3>Nyers energia</h3><p>~70 Ă— 100 cm</p></div>
       </div>
-      <div class="masonry-item reveal" data-title="Hangulat" data-dim="80 × 60 cm" data-desc="Pulzáló vörös-magenta felhő, misztikus atmoszféra">
-        <img src="keretnelkul_2.jpg" alt="Hangulat — pulzáló absztrakció, 80x60 cm">
-        <div class="masonry-overlay"><h3>Hangulat</h3><p>80 × 60 cm</p></div>
+      <div class="masonry-item reveal" data-title="Hangulat" data-dim="80 Ă— 60 cm" data-desc="PulzĂˇlĂł vĂ¶rĂ¶s-magenta felhĹ‘, misztikus atmoszfĂ©ra">
+        <img src="../../Apa_0702/unsloth_Qwen3.6-35B-A3B-MTP-GGUF/keretnelkul_2.jpg" alt="Hangulat â€” pulzĂˇlĂł absztrakciĂł, 80x60 cm">
+        <div class="masonry-overlay"><h3>Hangulat</h3><p>80 Ă— 60 cm</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      QUOTE
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section class="quote-section">
   <div>
     <p class="quote-text reveal">
-      „A festészet az a nyelv, amivel a színek beszélnek — és a csend a leghangosabb üzenet."
+      â€žA festĂ©szet az a nyelv, amivel a szĂ­nek beszĂ©lnek â€” Ă©s a csend a leghangosabb ĂĽzenet."
     </p>
-    <p class="quote-author reveal">— Kárai Mihály</p>
+    <p class="quote-author reveal">â€” KĂˇrai MihĂˇly</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      CONTACT
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="contact">
   <div class="contact">
     <p class="section-label reveal">Kapcsolat</p>
-    <h2 class="section-title reveal">Beszéljünk a művészetről</h2>
+    <h2 class="section-title reveal">BeszĂ©ljĂĽnk a mĹ±vĂ©szetrĹ‘l</h2>
     <p class="reveal" style="font-family:var(--font-display);font-weight:300;font-style:italic;font-size:1.1rem;color:var(--text-secondary);margin-bottom:20px;">
-      Vásárlás, kiállítás, vagy egyszerűen csak egy beszélgetés — mindig nyitott vagyok.
+      VĂˇsĂˇrlĂˇs, kiĂˇllĂ­tĂˇs, vagy egyszerĹ±en csak egy beszĂ©lgetĂ©s â€” mindig nyitott vagyok.
     </p>
-    <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Köszönjük az üzenetet!');">
+    <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('KĂ¶szĂ¶njĂĽk az ĂĽzenetet!');">
       <div class="form-group">
         <input type="text" id="name" placeholder=" " required>
-        <label for="name">Név</label>
+        <label for="name">NĂ©v</label>
       </div>
       <div class="form-group">
         <input type="email" id="email" placeholder=" " required>
@@ -701,25 +701,25 @@ footer p {
       </div>
       <div class="form-group">
         <textarea id="message" rows="4" placeholder=" " required></textarea>
-        <label for="message">Üzenet</label>
+        <label for="message">Ăśzenet</label>
       </div>
-      <button type="submit" class="form-submit">Üzenet küldése</button>
+      <button type="submit" class="form-submit">Ăśzenet kĂĽldĂ©se</button>
     </form>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      FOOTER
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <footer>
-  <p>© 2026 Kárai Mihály — Minden jog fenntartva</p>
+  <p>Â© 2026 KĂˇrai MihĂˇly â€” Minden jog fenntartva</p>
 </footer>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      LIGHTBOX
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <button class="lightbox-close" id="lightboxClose">âś•</button>
   <img src="" alt="" id="lightboxImg">
   <div class="lightbox-caption">
     <h3 id="lightboxTitle"></h3>
@@ -727,31 +727,31 @@ footer p {
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      THEME TOGGLE
-     ═══════════════════════════════════════════ -->
-<button class="theme-toggle" id="themeToggle" aria-label="Téma váltás" onclick="themePanel.classList.toggle('open')">◑</button>
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<button class="theme-toggle" id="themeToggle" aria-label="TĂ©ma vĂˇltĂˇs" onclick="themePanel.classList.toggle('open')">â—‘</button>
 <div class="theme-panel" id="themePanel">
-  <h4>Téma választás</h4>
+  <h4>TĂ©ma vĂˇlasztĂˇs</h4>
   <div class="theme-swatches">
-    <div class="theme-swatch active" data-theme="vaszon" data-tooltip="Vászon" style="background:linear-gradient(135deg,#f5f0e8,#8b4513);" onclick="setTheme('vaszon')"></div>
-    <div class="theme-swatch" data-theme="feher" data-tooltip="Fehér" style="background:linear-gradient(135deg,#fff,#ccc);" onclick="setTheme('feher')"></div>
-    <div class="theme-swatch" data-theme="est" data-tooltip="Éj" style="background:linear-gradient(135deg,#0d0d0d,#d4a843);" onclick="setTheme('est')"></div>
-    <div class="theme-swatch" data-theme="gal" data-tooltip="Galéria" style="background:linear-gradient(135deg,#120e1a,#c45c8a);" onclick="setTheme('gal')"></div>
-    <div class="theme-swatch" data-theme="bohem" data-tooltip="Bohém" style="background:linear-gradient(135deg,#f4e4d4,#c0573e);" onclick="setTheme('bohem')"></div>
+    <div class="theme-swatch active" data-theme="vaszon" data-tooltip="VĂˇszon" style="background:linear-gradient(135deg,#f5f0e8,#8b4513);" onclick="setTheme('vaszon')"></div>
+    <div class="theme-swatch" data-theme="feher" data-tooltip="FehĂ©r" style="background:linear-gradient(135deg,#fff,#ccc);" onclick="setTheme('feher')"></div>
+    <div class="theme-swatch" data-theme="est" data-tooltip="Ă‰j" style="background:linear-gradient(135deg,#0d0d0d,#d4a843);" onclick="setTheme('est')"></div>
+    <div class="theme-swatch" data-theme="gal" data-tooltip="GalĂ©ria" style="background:linear-gradient(135deg,#120e1a,#c45c8a);" onclick="setTheme('gal')"></div>
+    <div class="theme-swatch" data-theme="bohem" data-tooltip="BohĂ©m" style="background:linear-gradient(135deg,#f4e4d4,#c0573e);" onclick="setTheme('bohem')"></div>
     <div class="theme-swatch" data-theme="meleg" data-tooltip="Meleg" style="background:linear-gradient(135deg,#fdf6ee,#d4722a);" onclick="setTheme('meleg')"></div>
-    <div class="theme-swatch" data-theme="erd" data-tooltip="Erdő" style="background:linear-gradient(135deg,#0f1a14,#4db89a);" onclick="setTheme('erd')"></div>
+    <div class="theme-swatch" data-theme="erd" data-tooltip="ErdĹ‘" style="background:linear-gradient(135deg,#0f1a14,#4db89a);" onclick="setTheme('erd')"></div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      JAVASCRIPT
-     ═══════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <script>
 (function() {
   'use strict';
 
-  /* ═══ THEME SYSTEM ═══ */
+  /* â•â•â• THEME SYSTEM â•â•â• */
   const html = document.documentElement;
   const saved = localStorage.getItem('karai-theme');
   if (saved) html.setAttribute('data-theme', saved);
@@ -765,7 +765,7 @@ footer p {
     document.getElementById('themePanel').classList.remove('open');
   };
 
-  /* ═══ SCROLL REVEAL ═══ */
+  /* â•â•â• SCROLL REVEAL â•â•â• */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -777,7 +777,7 @@ footer p {
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  /* ═══ NAV PILLS — auto-hide + active ═══ */
+  /* â•â•â• NAV PILLS â€” auto-hide + active â•â•â• */
   const nav = document.getElementById('navPill');
   let lastScroll = 0;
   const navLinks = nav.querySelectorAll('a');
@@ -798,7 +798,7 @@ footer p {
     lastScroll = scrollY;
   }, { passive: true });
 
-  /* ═══ LIGHTBOX ═══ */
+  /* â•â•â• LIGHTBOX â•â•â• */
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightboxImg');
   const lbTitle = document.getElementById('lightboxTitle');
@@ -826,7 +826,7 @@ footer p {
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
-  /* ═══ FRAME COMPARISON SLIDERS ═══ */
+  /* â•â•â• FRAME COMPARISON SLIDERS â•â•â• */
   document.querySelectorAll('.frame-compare').forEach(container => {
     const handle = container.querySelector('.frame-handle');
     const after = container.querySelector('.frame-after');
@@ -849,7 +849,7 @@ footer p {
     container.addEventListener('click', (e) => { if (!dragging) update(e.clientX); });
   });
 
-  /* ═══ CANVAS HERO ═══ */
+  /* â•â•â• CANVAS HERO â•â•â• */
   const canvas = document.getElementById('heroCanvas');
   const ctx = canvas.getContext('2d');
   let w, h, blobs = [], particles = [];
@@ -946,3 +946,4 @@ footer p {
 </script>
 </body>
 </html>
+

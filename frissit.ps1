@@ -6,12 +6,6 @@ if (-not (Test-Path $apaPath)) {
     New-Item -ItemType Directory -Path $apaPath | Out-Null
 }
 
-# Másoljuk a festmények mappát egy az egyben a GitHub-ra
-$festmenyekSource = Join-Path $hermesPath "apa_festmenyek"
-if (Test-Path $festmenyekSource) {
-    Copy-Item -Path $festmenyekSource -Destination $apaPath -Recurse -Force
-}
-
 $files = Get-ChildItem -Path $hermesPath -Filter *.html -Recurse | Where-Object {
     if ($_.FullName.StartsWith($apaPath)) { return $false }
     if ($_.FullName -eq "C:\xampp\htdocs\2026\Hermes\APA\index.html") { return $false }
@@ -36,10 +30,73 @@ foreach ($file in $files) {
         New-Item -ItemType Directory -Path $destDir -Force | Out-Null
     }
     
-    # Érintetlenül másoljuk a HTML fájlokat, mivel a képek mappáját is feltöltjük
-    Copy-Item -Path $file.FullName -Destination $destFile -Force
+    $content = Get-Content -Path $file.FullName -Raw
     
-    # Lista építése (HTML számára)
+    # -------------------------------------------------------------
+    # DINAMIKUS KÉP FELDERÍTÉS ÉS MÁSOLÁS (Intelligens útvonal-javítás)
+    # -------------------------------------------------------------
+    $content = [regex]::Replace($content, '(?i)(?:src|href)="([^"]+)"', {
+        param($m)
+        $val = $m.Groups[1].Value
+        $attr = $m.Value.Substring(0, $m.Value.IndexOf('='))
+        
+        # 1. Ha a link hardkódolt localhost-os (előző script miatt)
+        if ($val -match "^http://localhost/2026/Hermes/(.*)") {
+            $val = $matches[1]
+            $sourceItem = Join-Path $hermesPath $val
+        } 
+        # 2. Ha relatív link (nem webes, nem data)
+        elseif ($val -notmatch "^http" -and $val -notmatch "^data:" -and $val -notmatch "^#") {
+            try {
+                $sourceItem = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($file.DirectoryName, $val.Replace('/','\')))
+            } catch {
+                return $m.Value
+            }
+        } 
+        # 3. Egyéb esetek (pl. külső linkek)
+        else {
+            return $m.Value
+        }
+        
+        $sourceItemClean = $sourceItem -replace '\?.*$', ''
+        
+        # Ha létezik a kép a lemezen
+        if (Test-Path $sourceItemClean -PathType Leaf) {
+            if ($sourceItemClean.StartsWith($hermesPath)) {
+                $itemRelPath = $sourceItemClean.Substring($hermesPath.Length + 1)
+                $itemDest = Join-Path $apaPath $itemRelPath
+                $itemDestDir = Split-Path $itemDest -Parent
+                
+                if (-not (Test-Path $itemDestDir)) {
+                    New-Item -ItemType Directory -Path $itemDestDir -Force | Out-Null
+                }
+                
+                # Átmásoljuk a képet a GitHub-os mappába!
+                Copy-Item -Path $sourceItemClean -Destination $itemDest -Force
+                
+                # Kiszámoljuk az új relatív útvonalat a HTML fájlból a képhez
+                $newRelUrl = $itemRelPath.Replace('\','/')
+                $depth = ($relPath -split '\\').Count - 1
+                $backPath = ""
+                for ($i = 0; $i -lt $depth; $i++) { $backPath += "../" }
+                
+                $finalUrl = $backPath + $newRelUrl
+                
+                if ($sourceItem -match '(\?.*)$') {
+                    $finalUrl += $matches[1]
+                }
+                
+                return "$attr=`"$finalUrl`""
+            }
+        }
+        
+        return $m.Value
+    })
+    
+    # HTML fájl elmentése az új linkekkel
+    Set-Content -Path $destFile -Value $content -Encoding UTF8
+    
+    # Lista építése
     $htmlRelPath = "Eredmenyek/" + $relPath.Replace('\', '/')
     $fileList += $htmlRelPath
 }

@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="hu" data-theme="classic-paper">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kárai Mihály - Festmények</title>
+    <title>KĂˇrai MihĂˇly - FestmĂ©nyek</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ALAPBEÁLLÍTÁSOK ÉS VÁLTOZÓK (60-30-10 SZABÁLY) --- */
+        /* --- ALAPBEĂLLĂŤTĂSOK Ă‰S VĂLTOZĂ“K (60-30-10 SZABĂLY) --- */
         :root {
-            /* Alapértelmezett téma: Classic Paper */
-            --bg-color: #f4f1ea;       /* 60% - Háttér (Papír hatás) */
-            --text-color: #2c2c2c;     /* 30% - Szöveg (Sötét szürke) */
-            --accent-color: #8a6d56;   /* 10% - Kiemelés (Barna/Arany) */
+            /* AlapĂ©rtelmezett tĂ©ma: Classic Paper */
+            --bg-color: #f4f1ea;       /* 60% - HĂˇttĂ©r (PapĂ­r hatĂˇs) */
+            --text-color: #2c2c2c;     /* 30% - SzĂ¶veg (SĂ¶tĂ©t szĂĽrke) */
+            --accent-color: #8a6d56;   /* 10% - KiemelĂ©s (Barna/Arany) */
             --card-bg: rgba(255, 255, 255, 0.6);
             --border-color: #dcd6cc;
             --shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -24,8 +24,8 @@
             --font-body: 'Montserrat', sans-serif;
         }
 
-        /* --- TÉMÁK --- */
-        /* 1. Classic Paper (Alap) - Fehér/Papír alap */
+        /* --- TĂ‰MĂK --- */
+        /* 1. Classic Paper (Alap) - FehĂ©r/PapĂ­r alap */
         [data-theme="classic-paper"] {
             --bg-color: #f4f1ea;
             --text-color: #2c2c2c;
@@ -33,7 +33,7 @@
             --card-bg: rgba(255, 255, 255, 0.7);
         }
 
-        /* 2. Midnight Canvas - Sötét, drámai */
+        /* 2. Midnight Canvas - SĂ¶tĂ©t, drĂˇmai */
         [data-theme="midnight-canvas"] {
             --bg-color: #1a1a1d;
             --text-color: #e0e0e0;
@@ -43,15 +43,15 @@
             --texture-overlay: none;
         }
 
-        /* 3. Sage & Stone - Természetes, nyugodt */
+        /* 3. Sage & Stone - TermĂ©szetes, nyugodt */
         [data-theme="sage-stone"] {
             --bg-color: #e6e8e6;
             --text-color: #333d33;
-            --accent-color: #788b7b; /* Zöldes */
+            --accent-color: #788b7b; /* ZĂ¶ldes */
             --card-bg: rgba(255, 255, 255, 0.5);
         }
 
-        /* 4. Terracotta Soul - Meleg, földes */
+        /* 4. Terracotta Soul - Meleg, fĂ¶ldes */
         [data-theme="terracotta-soul"] {
             --bg-color: #f2e3d5;
             --text-color: #4a3b32;
@@ -59,15 +59,15 @@
             --card-bg: rgba(255, 255, 255, 0.4);
         }
 
-        /* 5. Nordic Frost - Tiszta, hideg, elegáns */
+        /* 5. Nordic Frost - Tiszta, hideg, elegĂˇns */
         [data-theme="nordic-frost"] {
             --bg-color: #f0f4f8;
             --text-color: #333c4d;
-            --accent-color: #5a7d9a; /* Kékes */
+            --accent-color: #5a7d9a; /* KĂ©kes */
             --card-bg: rgba(255, 255, 255, 0.8);
         }
 
-        /* 6. Royal Velvet - Mély lila, luxus */
+        /* 6. Royal Velvet - MĂ©ly lila, luxus */
         [data-theme="royal-velvet"] {
             --bg-color: #2a1b3d;
             --text-color: #e8d8f0;
@@ -76,7 +76,7 @@
             --border-color: #4a3560;
         }
 
-        /* --- GLOBAL STÍLUSOK --- */
+        /* --- GLOBAL STĂŤLUSOK --- */
         * {
             margin: 0;
             padding: 0;
@@ -92,7 +92,7 @@
             line-height: 1.6;
         }
 
-        /* Textúra réteg */
+        /* TextĂşra rĂ©teg */
         body::before {
             content: "";
             position: fixed;
@@ -122,7 +122,7 @@
             color: var(--accent-color);
         }
 
-        /* --- NAVIGÁCIÓ --- */
+        /* --- NAVIGĂCIĂ“ --- */
         nav {
             position: fixed;
             top: 0;
@@ -133,7 +133,7 @@
             align-items: center;
             z-index: 1000;
             backdrop-filter: blur(10px);
-            background: rgba(255,255,255,0.05); /* Finom üveghatás */
+            background: rgba(255,255,255,0.05); /* Finom ĂĽveghatĂˇs */
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -155,7 +155,7 @@
             letter-spacing: 2px;
         }
 
-        /* --- Témaváltó Panel --- */
+        /* --- TĂ©mavĂˇltĂł Panel --- */
         .theme-switcher {
             position: fixed;
             right: 20px;
@@ -191,7 +191,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: white; /* Alapértelmezett pont */
+            background-color: white; /* AlapĂ©rtelmezett pont */
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -200,7 +200,7 @@
             opacity: 1;
         }
 
-        /* Színek a gombokon */
+        /* SzĂ­nek a gombokon */
         .t1 { background-color: #f4f1ea; }
         .t2 { background-color: #1a1a1d; }
         .t3 { background-color: #e6e8e6; }
@@ -208,7 +208,7 @@
         .t5 { background-color: #f0f4f8; }
         .t6 { background-color: #2a1b3d; }
 
-        /* --- HERO SZEKCIÓ --- */
+        /* --- HERO SZEKCIĂ“ --- */
         header {
             height: 100vh;
             display: flex;
@@ -245,7 +245,7 @@
             opacity: 0.6;
         }
 
-        /* --- SZÖVEGES SZEKCIÓK --- */
+        /* --- SZĂ–VEGES SZEKCIĂ“K --- */
         section {
             padding: 6rem 10%;
             min-height: 80vh;
@@ -272,7 +272,7 @@
             text-align: justify;
         }
 
-        /* --- GALÉRIA (GRID) --- */
+        /* --- GALĂ‰RIA (GRID) --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -297,11 +297,11 @@
 
         .art-image {
             width: 100%;
-            height: 350px; /* Álló táj, mint egy festmény */
+            height: 350px; /* ĂllĂł tĂˇj, mint egy festmĂ©ny */
             overflow: hidden;
             margin-bottom: 1rem;
             position: relative;
-            background-color: #ddd; /* Placeholder szín */
+            background-color: #ddd; /* Placeholder szĂ­n */
         }
 
         .art-image img {
@@ -335,7 +335,7 @@
             padding-top: 0.5rem;
         }
 
-        /* --- KÉPEK STÍLUSOS KERETELÉSE (CSS) --- */
+        /* --- KĂ‰PEK STĂŤLUSOS KERETELĂ‰SE (CSS) --- */
         .painting-border {
             box-shadow: inset 0 0 20px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2);
         }
@@ -349,7 +349,7 @@
             opacity: 0.7;
         }
 
-        /* --- ANIMÁCIÓK --- */
+        /* --- ANIMĂCIĂ“K --- */
         @keyframes fadeUp {
             to {
                 opacity: 1;
@@ -366,7 +366,7 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             header h1 { font-size: 3rem; }
-            .nav-links { display: none; } /* Egyszerűsítés mobilon */
+            .nav-links { display: none; } /* EgyszerĹ±sĂ­tĂ©s mobilon */
             .theme-switcher { display: flex; flex-direction: row; top: auto; bottom: 20px; right: 50%; transform: translateX(50%); }
             section { padding: 4rem 5%; }
         }
@@ -374,7 +374,7 @@
 </head>
 <body>
 
-    <!-- Témaváltó Panel -->
+    <!-- TĂ©mavĂˇltĂł Panel -->
     <div class="theme-switcher">
         <div class="theme-btn t1 active" onclick="setTheme('classic-paper')" title="Classic Paper"></div>
         <div class="theme-btn t2" onclick="setTheme('midnight-canvas')" title="Midnight Canvas"></div>
@@ -385,18 +385,18 @@
     </div>
 
     <nav>
-        <div class="logo">Kárai Mihály</div>
+        <div class="logo">KĂˇrai MihĂˇly</div>
         <div class="nav-links">
-            <a href="#home">Főoldal</a>
-            <a href="#about">Rólam</a>
-            <a href="#gallery">Galéria</a>
+            <a href="#home">FĹ‘oldal</a>
+            <a href="#about">RĂłlam</a>
+            <a href="#gallery">GalĂ©ria</a>
             <a href="#contact">Kapcsolat</a>
         </div>
     </nav>
 
     <header id="home">
-        <h1>Művészet <br> és Lélek</h1>
-        <p>Kárai Mihály festőművész világa – ahol a színek beszélnek és a vászon életre kel.</p>
+        <h1>MĹ±vĂ©szet <br> Ă©s LĂ©lek</h1>
+        <p>KĂˇrai MihĂˇly festĹ‘mĹ±vĂ©sz vilĂˇga â€“ ahol a szĂ­nek beszĂ©lnek Ă©s a vĂˇszon Ă©letre kel.</p>
         <div class="scroll-indicator">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
@@ -405,74 +405,74 @@
     </header>
 
     <section id="about" class="intro-text">
-        <h2>A Művész</h2>
+        <h2>A MĹ±vĂ©sz</h2>
         <p>
-            <!-- IDE ILLESZD BE AZ ÉLETRAJZI SZÖVEGET -->
-            Kárai Mihály 1961-ben született. Festőművészetem során arra törekszem, hogy a látvány és az érzés határmezsgyéjén mozogjak. 
-            Műveim nem csupán a valóság leképezését szolgálják, hanem a belső világom tükrei. A színek játékán és a textúrák mélységén keresztül 
-            próbálok üzenetet közvetíteni a néző felé.
+            <!-- IDE ILLESZD BE AZ Ă‰LETRAJZI SZĂ–VEGET -->
+            KĂˇrai MihĂˇly 1961-ben szĂĽletett. FestĹ‘mĹ±vĂ©szetem sorĂˇn arra tĂ¶rekszem, hogy a lĂˇtvĂˇny Ă©s az Ă©rzĂ©s hatĂˇrmezsgyĂ©jĂ©n mozogjak. 
+            MĹ±veim nem csupĂˇn a valĂłsĂˇg lekĂ©pezĂ©sĂ©t szolgĂˇljĂˇk, hanem a belsĹ‘ vilĂˇgom tĂĽkrei. A szĂ­nek jĂˇtĂ©kĂˇn Ă©s a textĂşrĂˇk mĂ©lysĂ©gĂ©n keresztĂĽl 
+            prĂłbĂˇlok ĂĽzenetet kĂ¶zvetĂ­teni a nĂ©zĹ‘ felĂ©.
         </p>
         <p>
-            <!-- IDE ILLESZD BE A FESTMÉNYEK LEÍRÁSÁT A TXT FÁJLBÓL -->
-            A bemutatott galériában a természet szépsége, a csendes életek és az emberi érzelmek ábrázolására fókuszáló alkotások láthatók.
+            <!-- IDE ILLESZD BE A FESTMĂ‰NYEK LEĂŤRĂSĂT A TXT FĂJLBĂ“L -->
+            A bemutatott galĂ©riĂˇban a termĂ©szet szĂ©psĂ©ge, a csendes Ă©letek Ă©s az emberi Ă©rzelmek ĂˇbrĂˇzolĂˇsĂˇra fĂłkuszĂˇlĂł alkotĂˇsok lĂˇthatĂłk.
         </p>
     </section>
 
     <section id="gallery">
-        <h2 style="text-align: center; font-size: 3rem; margin-bottom: 3rem;">Kiválasztott Művek</h2>
+        <h2 style="text-align: center; font-size: 3rem; margin-bottom: 3rem;">KivĂˇlasztott MĹ±vek</h2>
         
         <div class="gallery-grid">
             
-            <!-- 1. Festmény -->
+            <!-- 1. FestmĂ©ny -->
             <div class="art-card">
                 <div class="art-image painting-border">
-                    <!-- IDE ILLESZD BE A KÉP ELÉRHETŐSÉGÉT (pl. src="apa_festmenyek/kep.jpg") -->
-                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb392796a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Festmény 1">
+                    <!-- IDE ILLESZD BE A KĂ‰P ELĂ‰RHETĹSĂ‰GĂ‰T (pl. src="apa_festmenyek/kep.jpg") -->
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb392796a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="FestmĂ©ny 1">
                 </div>
                 <div class="art-info">
-                    <h3>Alkonyat a Duna partján</h3>
-                    <p>Olaj, vászon</p>
-                    <!-- IDE ILLESZD BE A RÖVID LEÍRÁST -->
-                    <p>A folyó dinamikája és a naplemente színeinek játéka.</p>
+                    <h3>Alkonyat a Duna partjĂˇn</h3>
+                    <p>Olaj, vĂˇszon</p>
+                    <!-- IDE ILLESZD BE A RĂ–VID LEĂŤRĂST -->
+                    <p>A folyĂł dinamikĂˇja Ă©s a naplemente szĂ­neinek jĂˇtĂ©ka.</p>
                     <div class="art-meta">120 x 80 cm, 2023</div>
                 </div>
             </div>
 
-            <!-- 2. Festmény -->
+            <!-- 2. FestmĂ©ny -->
             <div class="art-card">
                 <div class="art-image painting-border">
-                    <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Festmény 2">
+                    <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="FestmĂ©ny 2">
                 </div>
                 <div class="art-info">
-                    <h3>Csendes táj</h3>
-                    <p>Akril, vászon</p>
-                    <p>A természet csendje és harmóniája.</p>
+                    <h3>Csendes tĂˇj</h3>
+                    <p>Akril, vĂˇszon</p>
+                    <p>A termĂ©szet csendje Ă©s harmĂłniĂˇja.</p>
                     <div class="art-meta">90 x 60 cm, 2022</div>
                 </div>
             </div>
 
-            <!-- 3. Festmény -->
+            <!-- 3. FestmĂ©ny -->
             <div class="art-card">
                 <div class="art-image painting-border">
-                    <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Festmény 3">
+                    <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="FestmĂ©ny 3">
                 </div>
                 <div class="art-info">
-                    <h3>Abstrakt Érzelmek</h3>
+                    <h3>Abstrakt Ă‰rzelmek</h3>
                     <p>Techinika vegyes</p>
-                    <p>Az érzelmek szabad ábrázolása formákban.</p>
+                    <p>Az Ă©rzelmek szabad ĂˇbrĂˇzolĂˇsa formĂˇkban.</p>
                     <div class="art-meta">100 x 100 cm, 2024</div>
                 </div>
             </div>
 
-            <!-- 4. Festmény -->
+            <!-- 4. FestmĂ©ny -->
             <div class="art-card">
                 <div class="art-image painting-border">
-                    <img src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Festmény 4">
+                    <img src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="FestmĂ©ny 4">
                 </div>
                 <div class="art-info">
-                    <h3>Városi hangulat</h3>
-                    <p>Olaj, vászon</p>
-                    <p>A modern élet rohanása és a magány.</p>
+                    <h3>VĂˇrosi hangulat</h3>
+                    <p>Olaj, vĂˇszon</p>
+                    <p>A modern Ă©let rohanĂˇsa Ă©s a magĂˇny.</p>
                     <div class="art-meta">80 x 60 cm, 2021</div>
                 </div>
             </div>
@@ -482,33 +482,33 @@
 
     <section id="contact" class="intro-text">
         <h2>Kapcsolat</h2>
-        <p>Ha érdekelnek az alkotások vagy megvásárolná valamelyiket, forduljon bizalommal.</p>
-        <p style="margin-top: 2rem; font-weight: bold; color: var(--accent-color);">Kárai Mihály</p>
+        <p>Ha Ă©rdekelnek az alkotĂˇsok vagy megvĂˇsĂˇrolnĂˇ valamelyiket, forduljon bizalommal.</p>
+        <p style="margin-top: 2rem; font-weight: bold; color: var(--accent-color);">KĂˇrai MihĂˇly</p>
         <p>email@peldafestmeny.hu</p>
     </section>
 
     <footer>
-        <p>&copy; 2026 Kárai Mihály. Minden jog fenntartva. <br> Design by AI Assistant.</p>
+        <p>&copy; 2026 KĂˇrai MihĂˇly. Minden jog fenntartva. <br> Design by AI Assistant.</p>
     </footer>
 
     <script>
-        // --- Témaváltó Logika ---
+        // --- TĂ©mavĂˇltĂł Logika ---
         function setTheme(themeName) {
             document.documentElement.setAttribute('data-theme', themeName);
             
-            // Aktív gomb jelölése
+            // AktĂ­v gomb jelĂ¶lĂ©se
             const buttons = document.querySelectorAll('.theme-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
-            // Megkeressük a gombot, ami az onclick-ben ezt a témát hívja
+            // MegkeressĂĽk a gombot, ami az onclick-ben ezt a tĂ©mĂˇt hĂ­vja
             const activeBtn = document.querySelector(`.theme-btn[onclick="setTheme('${themeName}')"]`);
             if(activeBtn) activeBtn.classList.add('active');
 
-            // Mentés a LocalStorage-ba, hogy maradjon
+            // MentĂ©s a LocalStorage-ba, hogy maradjon
             localStorage.setItem('theme', themeName);
         }
 
-        // Oldal betöltésekor betesszük az előzőleg mentett témát
+        // Oldal betĂ¶ltĂ©sekor betesszĂĽk az elĹ‘zĹ‘leg mentett tĂ©mĂˇt
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
@@ -516,7 +516,7 @@
             }
         });
 
-        // --- Scroll Animációk (Egyszerű verzió) ---
+        // --- Scroll AnimĂˇciĂłk (EgyszerĹ± verziĂł) ---
         const observerOptions = {
             threshold: 0.1
         };
@@ -539,3 +539,4 @@
     </script>
 </body>
 </html>
+

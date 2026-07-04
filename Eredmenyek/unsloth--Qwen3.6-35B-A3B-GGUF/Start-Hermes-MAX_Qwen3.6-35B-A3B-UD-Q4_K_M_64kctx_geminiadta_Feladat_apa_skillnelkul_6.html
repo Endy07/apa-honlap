@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kárai Mihály | Festőművész</title>
+    <title>KĂˇrai MihĂˇly | FestĹ‘mĹ±vĂ©sz</title>
     
-    <!-- Google Fonts: Elegancia és Modernitás -->
+    <!-- Google Fonts: Elegancia Ă©s ModernitĂˇs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
             --cursor-size: 20px;
         }
 
-        /* Téma 1: A Múzeum (Alapértelmezett - Sötét, drámai) */
+        /* TĂ©ma 1: A MĂşzeum (AlapĂ©rtelmezett - SĂ¶tĂ©t, drĂˇmai) */
         [data-theme="museum"] {
             --bg-primary: #0f0f0f;
             --bg-secondary: #1a1a1a;
@@ -33,19 +33,19 @@
             --overlay: rgba(0,0,0,0.7);
         }
 
-        /* Téma 2: A Galéria (Tiszta, fehér, minimalista) */
+        /* TĂ©ma 2: A GalĂ©ria (Tiszta, fehĂ©r, minimalista) */
         [data-theme="gallery"] {
-            --bg-primary: #f4f4f0; /* Meleg fehér */
+            --bg-primary: #f4f4f0; /* Meleg fehĂ©r */
             --bg-secondary: #e8e8e4;
             --text-main: #1a1a1a;
             --text-muted: #555555;
-            --accent: #2c3e50; /* Sötétkék */
+            --accent: #2c3e50; /* SĂ¶tĂ©tkĂ©k */
             --overlay: rgba(255,255,255,0.8);
         }
 
-        /* Téma 3: Az Atelier (Festői, barna, papír hatású) */
+        /* TĂ©ma 3: Az Atelier (FestĹ‘i, barna, papĂ­r hatĂˇsĂş) */
         [data-theme="atelier"] {
-            --bg-primary: #dcd6c9; /* Régi papír */
+            --bg-primary: #dcd6c9; /* RĂ©gi papĂ­r */
             --bg-secondary: #cbbfa8;
             --text-main: #3e2723;
             --text-muted: #5d4037;
@@ -53,17 +53,17 @@
             --overlay: rgba(62, 39, 35, 0.6);
         }
 
-        /* Téma 4: Az Éjszaka (Mélykék, misztikus) */
+        /* TĂ©ma 4: Az Ă‰jszaka (MĂ©lykĂ©k, misztikus) */
         [data-theme="midnight"] {
             --bg-primary: #0b1021;
             --bg-secondary: #162038;
             --text-main: #a8b2d1;
             --text-muted: #8892b0;
-            --accent: #64ffda; /* Cián */
+            --accent: #64ffda; /* CiĂˇn */
             --overlay: rgba(11, 16, 33, 0.8);
         }
 
-        /* Téma 5: A Tavasz (Lágy zöld, élettel teli) */
+        /* TĂ©ma 5: A Tavasz (LĂˇgy zĂ¶ld, Ă©lettel teli) */
         [data-theme="spring"] {
             --bg-primary: #f0f7f4;
             --bg-secondary: #dceee5;
@@ -73,7 +73,7 @@
             --overlay: rgba(240, 247, 244, 0.85);
         }
 
-        /* Téma 6: A Terrakotta (Meleg, földes, modern) */
+        /* TĂ©ma 6: A Terrakotta (Meleg, fĂ¶ldes, modern) */
         [data-theme="terracotta"] {
             --bg-primary: #fdfbf7;
             --bg-secondary: #f2e8d5;
@@ -107,7 +107,7 @@
             line-height: 1.6;
         }
 
-        /* Festői textúra (Szemcsézés) */
+        /* FestĹ‘i textĂşra (SzemcsĂ©zĂ©s) */
         body::after {
             content: "";
             position: fixed;
@@ -184,7 +184,7 @@
             border-color: var(--accent);
         }
 
-        /* Színek a gombokhoz */
+        /* SzĂ­nek a gombokhoz */
         .btn-museum { background: #0f0f0f; }
         .btn-gallery { background: #f4f4f0; }
         .btn-atelier { background: #dcd6c9; }
@@ -212,7 +212,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Ide kerülhetne egy nagy festmény háttérnek */
+            /* Ide kerĂĽlhetne egy nagy festmĂ©ny hĂˇttĂ©rnek */
             background-size: cover;
             background-position: center;
             opacity: 0.4;
@@ -351,7 +351,7 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            aspect-ratio: 3/4; /* Alap arány */
+            aspect-ratio: 3/4; /* Alap arĂˇny */
         }
 
         .gallery-item.wide { aspect-ratio: 16/9; }
@@ -528,27 +528,27 @@
     <!-- Egyedi kurzor -->
     <div class="custom-cursor"></div>
 
-    <!-- Témaváltó Panel -->
+    <!-- TĂ©mavĂˇltĂł Panel -->
     <div class="theme-switcher">
-        <div class="theme-btn btn-museum active" onclick="setTheme('museum')" title="A Múzeum (Sötét)"></div>
-        <div class="theme-btn btn-gallery" onclick="setTheme('gallery')" title="A Galéria (Fehér)"></div>
+        <div class="theme-btn btn-museum active" onclick="setTheme('museum')" title="A MĂşzeum (SĂ¶tĂ©t)"></div>
+        <div class="theme-btn btn-gallery" onclick="setTheme('gallery')" title="A GalĂ©ria (FehĂ©r)"></div>
         <div class="theme-btn btn-atelier" onclick="setTheme('atelier')" title="Az Atelier (Barna)"></div>
-        <div class="theme-btn btn-midnight" onclick="setTheme('midnight')" title="Az Éjszaka (Kék)"></div>
-        <div class="theme-btn btn-spring" onclick="setTheme('spring')" title="A Tavasz (Zöld)"></div>
+        <div class="theme-btn btn-midnight" onclick="setTheme('midnight')" title="Az Ă‰jszaka (KĂ©k)"></div>
+        <div class="theme-btn btn-spring" onclick="setTheme('spring')" title="A Tavasz (ZĂ¶ld)"></div>
         <div class="theme-btn btn-terracotta" onclick="setTheme('terracotta')" title="Terrakotta (Meleg)"></div>
     </div>
 
     <!-- Hero Section -->
     <header>
         <!-- 
-             FONTOS: Ide tegyél egy nagy, lenyűgöző festményt háttérnek. 
-             Pl: apa_festmenyek/interior_1.jpg vagy egy külön banner kép.
+             FONTOS: Ide tegyĂ©l egy nagy, lenyĹ±gĂ¶zĹ‘ festmĂ©nyt hĂˇttĂ©rnek. 
+             Pl: apa_festmenyek/interior_1.jpg vagy egy kĂĽlĂ¶n banner kĂ©p.
         -->
         <div class="hero-bg" style="background-image: url('apa_festmenyek/interior_1.jpg');"></div>
         
         <div class="hero-content">
-            <h1 class="hero-title">Kárai Mihály</h1>
-            <p class="hero-subtitle">Festőművész • 1961 -</p>
+            <h1 class="hero-title">KĂˇrai MihĂˇly</h1>
+            <p class="hero-subtitle">FestĹ‘mĹ±vĂ©sz â€˘ 1961 -</p>
         </div>
 
         <div class="scroll-indicator">
@@ -559,21 +559,21 @@
 
     <!-- About Section -->
     <section id="about">
-        <h2 class="section-title reveal">Az Művész</h2>
+        <h2 class="section-title reveal">Az MĹ±vĂ©sz</h2>
         <div class="about-container reveal">
             <div class="about-image-wrapper">
-                <!-- Ide a művész portréja vagy egy részlet -->
-                <img src="apa_festmenyek/interior_2.jpg" alt="Kárai Mihály stúdiója" class="about-image">
+                <!-- Ide a mĹ±vĂ©sz portrĂ©ja vagy egy rĂ©szlet -->
+                <img src="apa_festmenyek/interior_2.jpg" alt="KĂˇrai MihĂˇly stĂşdiĂłja" class="about-image">
             </div>
             <div class="about-text">
                 <p>
-                    Kárai Mihály, 1961-ben született festőművész, munkássága a hagyományos technikák és a modern érzékiség szinergiáját tükrözi. Festményei nem csupán képek; ablakok egy mélyebb valóságba, ahol a fény és az árnyék táncot jár.
+                    KĂˇrai MihĂˇly, 1961-ben szĂĽletett festĹ‘mĹ±vĂ©sz, munkĂˇssĂˇga a hagyomĂˇnyos technikĂˇk Ă©s a modern Ă©rzĂ©kisĂ©g szinergiĂˇjĂˇt tĂĽkrĂ¶zi. FestmĂ©nyei nem csupĂˇn kĂ©pek; ablakok egy mĂ©lyebb valĂłsĂˇgba, ahol a fĂ©ny Ă©s az ĂˇrnyĂ©k tĂˇncot jĂˇr.
                 </p>
                 <p>
-                    Művészete során a természet erejét és az emberi lélek finom rezdüléseit próbálja megörökíteni. A vászonra kerülő színek nem véletlenszerűek: mindegyik egy-egy érzelmi hullám, egy-egy megélt pillanat tanúja.
+                    MĹ±vĂ©szete sorĂˇn a termĂ©szet erejĂ©t Ă©s az emberi lĂ©lek finom rezdĂĽlĂ©seit prĂłbĂˇlja megĂ¶rĂ¶kĂ­teni. A vĂˇszonra kerĂĽlĹ‘ szĂ­nek nem vĂ©letlenszerĹ±ek: mindegyik egy-egy Ă©rzelmi hullĂˇm, egy-egy megĂ©lt pillanat tanĂşja.
                 </p>
                 <p style="font-family: var(--font-serif); font-style: italic; color: var(--accent);">
-                    "A festészet nem az, amit látsz, hanem az, amit másokra kényszerítesz, hogy lássanak."
+                    "A festĂ©szet nem az, amit lĂˇtsz, hanem az, amit mĂˇsokra kĂ©nyszerĂ­tesz, hogy lĂˇssanak."
                 </p>
             </div>
         </div>
@@ -581,65 +581,65 @@
 
     <!-- Gallery Section -->
     <section id="gallery">
-        <h2 class="section-title reveal">Válogatás a Művekből</h2>
+        <h2 class="section-title reveal">VĂˇlogatĂˇs a MĹ±vekbĹ‘l</h2>
         
         <div class="gallery-grid">
             <!-- 
-                 FONTOS: A 'src' attribútumokat cseréld le a saját mappádban lévő képekre! 
+                 FONTOS: A 'src' attribĂştumokat cserĂ©ld le a sajĂˇt mappĂˇdban lĂ©vĹ‘ kĂ©pekre! 
                  Pl: src="apa_festmenyek/keretezve_1.jpg"
             -->
 
-            <!-- Festmény 1 -->
+            <!-- FestmĂ©ny 1 -->
             <div class="gallery-item reveal" onclick="openLightbox(this)">
-                <!-- Helyettesítő kép (placeholder) - Cseréld le a sajátodra! -->
-                <img src="apa_festmenyek/keretezve_1.jpg" alt="Festmény 1" class="gallery-img">
+                <!-- HelyettesĂ­tĹ‘ kĂ©p (placeholder) - CserĂ©ld le a sajĂˇtodra! -->
+                <img src="apa_festmenyek/keretezve_1.jpg" alt="FestmĂ©ny 1" class="gallery-img">
                 <div class="gallery-overlay">
-                    <h3 class="painting-title">Cím (Példa)</h3>
-                    <p class="painting-desc">Olaj, vászon • 2024</p>
+                    <h3 class="painting-title">CĂ­m (PĂ©lda)</h3>
+                    <p class="painting-desc">Olaj, vĂˇszon â€˘ 2024</p>
                 </div>
             </div>
 
-            <!-- Festmény 2 -->
+            <!-- FestmĂ©ny 2 -->
             <div class="gallery-item tall reveal" onclick="openLightbox(this)">
-                <img src="apa_festmenyek/keretnelkul_1.jpg" alt="Festmény 2" class="gallery-img">
+                <img src="apa_festmenyek/keretnelkul_1.jpg" alt="FestmĂ©ny 2" class="gallery-img">
                 <div class="gallery-overlay">
-                    <h3 class="painting-title">Cím (Példa)</h3>
-                    <p class="painting-desc">Akvarell • 2023</p>
+                    <h3 class="painting-title">CĂ­m (PĂ©lda)</h3>
+                    <p class="painting-desc">Akvarell â€˘ 2023</p>
                 </div>
             </div>
 
-            <!-- Festmény 3 -->
+            <!-- FestmĂ©ny 3 -->
             <div class="gallery-item wide reveal" onclick="openLightbox(this)">
-                <img src="apa_festmenyek/keretezve_2.jpg" alt="Festmény 3" class="gallery-img">
+                <img src="apa_festmenyek/keretezve_2.jpg" alt="FestmĂ©ny 3" class="gallery-img">
                 <div class="gallery-overlay">
-                    <h3 class="painting-title">Cím (Példa)</h3>
-                    <p class="painting-desc">Olaj, vászon • 2025</p>
+                    <h3 class="painting-title">CĂ­m (PĂ©lda)</h3>
+                    <p class="painting-desc">Olaj, vĂˇszon â€˘ 2025</p>
                 </div>
             </div>
 
-             <!-- Festmény 4 -->
+             <!-- FestmĂ©ny 4 -->
              <div class="gallery-item reveal" onclick="openLightbox(this)">
-                <img src="apa_festmenyek/keretnelkul_2.jpg" alt="Festmény 4" class="gallery-img">
+                <img src="apa_festmenyek/keretnelkul_2.jpg" alt="FestmĂ©ny 4" class="gallery-img">
                 <div class="gallery-overlay">
-                    <h3 class="painting-title">Cím (Példa)</h3>
-                    <p class="painting-desc">Technika ismeretlen • 2026</p>
+                    <h3 class="painting-title">CĂ­m (PĂ©lda)</h3>
+                    <p class="painting-desc">Technika ismeretlen â€˘ 2026</p>
                 </div>
             </div>
 
-             <!-- További képek ide másolhatók -->
+             <!-- TovĂˇbbi kĂ©pek ide mĂˇsolhatĂłk -->
              <div class="gallery-item reveal" onclick="openLightbox(this)">
-                <img src="apa_festmenyek/interior_1.jpg" alt="Belső tér" class="gallery-img">
+                <img src="apa_festmenyek/interior_1.jpg" alt="BelsĹ‘ tĂ©r" class="gallery-img">
                 <div class="gallery-overlay">
-                    <h3 class="painting-title">Belső Tér I.</h3>
-                    <p class="painting-desc">Stúdió nézet</p>
+                    <h3 class="painting-title">BelsĹ‘ TĂ©r I.</h3>
+                    <p class="painting-desc">StĂşdiĂł nĂ©zet</p>
                 </div>
             </div>
 
              <div class="gallery-item reveal" onclick="openLightbox(this)">
-                <img src="apa_festmenyek/interior_2.jpg" alt="Belső tér" class="gallery-img">
+                <img src="apa_festmenyek/interior_2.jpg" alt="BelsĹ‘ tĂ©r" class="gallery-img">
                 <div class="gallery-overlay">
-                    <h3 class="painting-title">Belső Tér II.</h3>
-                    <p class="painting-desc">Stúdió nézet</p>
+                    <h3 class="painting-title">BelsĹ‘ TĂ©r II.</h3>
+                    <p class="painting-desc">StĂşdiĂł nĂ©zet</p>
                 </div>
             </div>
 
@@ -648,14 +648,14 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">Kárai Mihály</div>
+        <div class="footer-logo">KĂˇrai MihĂˇly</div>
         <p class="copyright">&copy; 2026 Minden jog fenntartva. Tervezte: Hermes.</p>
     </footer>
 
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img src="" alt="Nagyított kép" class="lightbox-img" id="lightbox-img">
+        <img src="" alt="NagyĂ­tott kĂ©p" class="lightbox-img" id="lightbox-img">
     </div>
 
     <!-- JavaScript -->
