@@ -1768,8 +1768,8 @@
         /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
            HERO CANVAS â€” Abstract Paint Animation
            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-        var canvas = document.getElementById('heroCanvas');
-        var ctx = canvas ? canvas.getContext('2d') : null;
+        const canvas = document.getElementById('heroCanvas');
+        const ctx = canvas.getContext('2d');
         var animFrame;
 
         function resizeCanvas() {
