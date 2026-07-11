@@ -1,1580 +1,908 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Kárai Mihály Festőművész Weboldal - Generátor"""
+"""Generate Karai Mihály artist portfolio website."""
+import json, os, base64
 
-import os
+paintings = [
+    {"id":1,"file":"014fb97bae01374ff673a7f51de018af-karai-mihaly-absztrakt-festmeny-kepmeret-80x60-cm.jpg","title":"Absztrakt kompozíció I.","size":"80×60 cm","desc":"Meleg tónusú, textúrált kompozíció rácsszerű szerkezettel. Homályos okker és lazacszínű blokkokat erőteljes, sötétvörös és narancssárga sávok kereszteznek. A bal alsó sarokból kiinduló, átlós fehér és sárga hasításszerű vonalak úgy hatnak, mint a szélben hajladozó nád, vagy egy üveg felületébe karmolt fényjáték. Vastag impasto rétegek plasztikussá teszik a felületet."},
+    {"id":2,"file":"579ee3610e2f00108ae1ad3b4efe881f-karai-mihaly-a-kep-merete-80x60-cm.jpg","title":"Dualitás","size":"80×60 cm","desc":"Geometrikus, color-blocking elveken alapuló, nagy kontrasztú festmény. A bal felső rész hűvös ciánkék mező, alatta tűzpiros oszlop. A jobb oldal kaotikusabb; apró ecsetvonásokból felépített mozaikszerű textúra sárga, rózsaszín, piros és fekete színekkel. A jobb alsó negyed sötétkék, vastag fekete és fehér X-formával. Nyugodt üres terek és sűrű, zajos textúrák találkozása."},
+    {"id":3,"file":"732e9d819fbbee1e6b2126f580f51743-karai-mihaly-szines-modern-absztrakt-festmeny-90-x-90-cm.jpg","title":"Tűz és Jég","size":"90×90 cm","desc":"Szürreális, organikus formákból álló, tájképszerű absztrakció. Élő fehér és halvány pasztell rózsaszín felhőzetből emelkednek ki robusztus, masszív foltok: mélykék jéghegy-szerű forma és lángnyelvszerű, agresszív piros alakzat. Középen zöld és vörös foltok morzsolódó textúrával. Elementáris erők összecsapása."},
+    {"id":4,"file":"76a52a2610ed517750b4d73efabbe595-karai-mihaly-absztrakt-festmeny-140x40x4-cm.jpg","title":"Éjszakai tükör","size":"140×40 cm","desc":"Extrém panorámaszerű elrendezés. A felső harmad sötét vörös, lefelé haladva izzó narancssárgába és napsárgába olvad. Az alsó harmad sötétkék alapon sűrű, négyzetes impasto blokkokból áll — neonfényű felhőkarcolók vízi tükröződése. Pulzáló éjszakai nagyvárosi hangulat."},
+    {"id":5,"file":"8548dfcda68a1463e1ed276bce0b0b0c-karai-mihaly-absztrakt-festmeny-kepmeret-140x40-cm.jpg","title":"Izzó torony","size":"140×40 cm","desc":"Vérvörös háttérből élesen kiugrik fehér-sárga, felhőkarcoló-szerű középső forma, mint egy izzó torony. Az alsó negyedben vibráló rózsaszín és magenta lekerekített formák, sötétkék horizontvonal felett. A tüzes égbolt és a hideg víz radikális kontrasztja."},
+    {"id":6,"file":"9714f6cd20df8b60a6cfa68e340bdcb2-karai-mihaly-absztrakt-festmeny-40x70-cm.jpg","title":"Sivatagi oázis","size":"40×70 cm","desc":"Horizontális tájkép-absztrakció. Arany, sárga és tompa piros meleg tónusai egy sivatagi naplementét idéznek. A vizuális súlypont egy éles, horizontális türkiz/ciánkék csík az alsó harmadban — mintha egy perzselő sivatag közepén hirtelen egy hűvös oázis vize csillanna meg. Meditatív, fókuszált alkotás."},
+    {"id":7,"file":"c74fb23ff889ff7fc5bc22904e957ac7-karai-mihaly-kortars-absztrakt-festmeny-kepmeret-70x30-cm.jpg","title":"Fénysugár","size":"70×30 cm","desc":"Vékony, függőleges formátum két világosan elválasztható régióra. A felső rész meleg narancs és aranysárga hátterén fehéres, organikus körök — sejtek, napkorongok, lencse-becsillanás. A középpontból vakítóan fehér fénysugár ereszkedik le. Az alsó fele intenzív málna-rózsaszínbe és kárminpirosba megy át, halványkék szilánkokkal — fodrozódó víztükör élménye."},
+    {"id":8,"file":"cf6c30f8ab61eea749199ee138ae02df-karai-mihaly-nyari-hoseg-kepmeret-100x70-cm.jpg","title":"Nyári hőség","size":"100×70 cm","desc":"Figurális-absztrakt fúzió. Központi téma egy női alak torzója, térdtől a nyakig, hófehér, kétrészes fürdőruhában. A testfelület és a körülötte lévő tér vad, izzó narancs, vörös, sárga és magenta színekben ég. A test szinte nincs lehatárolva, kontúrjai beleolvadnak a kaotikus, tüzes háttérbe — a nyári nap fizikai ereje."},
+    {"id":9,"file":"d0e8f21d863d3647ce7ce2705fbb0aeb-karai-mihaly-absztrakt-festmeny-kepmeret-70x70-cm.jpg","title":"Szív","size":"70×70 cm","desc":"Négyzetes kompozíció, textúrájában a leginkább nyers és indusztriális. Rozsdabarnák, hamuszürkék és kopottas fehérek — málló vakolat, betonfal, viharvert fém. Ebből a komor környezetből tör elő a bal alsó negyedben egy hatalmas, aszimmetrikus, élénk kadmiumpiros/narancs szív. Melankólia és hirtelen felszakadó szenvedély allegóriája."},
+    {"id":10,"file":"d45190df18d013a48540242d4e02b588-karai-mihaly-szines-modern-absztrakt-festmeny-90x100-cm.jpg","title":"Virágnyílás","size":"90×100 cm","desc":"Finom, elegáns, feminin atmoszférát árasztó festmény. Lazacszín, mályva, púderrózsaszín, halvány okker és off-white színek dominálnak. Az ecsetvonások úgy örvénylenek a középpont körül, mint egy szétnyíló virág szirmai, vagy széttört üvegablak szilánkjai. Vékony, légiesebb rétegek — harmonikus térélmény."},
+    {"id":11,"file":"e862397c8ee36bfab0bbe2de56b503e2-karai-mihaly-absztrakt-festmeny-kepmeret-60x60-cm.jpg","title":"Kozmikus piac","size":"60×60 cm","desc":"Három sávra bontható négyzetes kép. A legfelső sáv világos arany-narancs alapon expresszív fehér és vörös koncentrikus köröket tartalmaz — forgó napokra utalva. Középen horizontális, stabil málnapiros sáv. Az alsó fele lüktető, sűrű városi mozaik: apró négyzetek sárga, narancs, piros, zöld és ciánkék színekben — madártávlati városkép perzselő napok alatt."},
+    {"id":12,"file":"keretnelkul_1.jpg","title":"Destrukció","size":"70×100 cm","desc":"A gyűjtemény talán legsötétebb, legagresszívebb tónusú darabja. Szinte feketébe hajló burgundi vörös, mélybarna és karmazsin fojtogató alapját erőszakos, gyors kaparó mozdulatokkal felvitt hófehér és sárgás festékfoltok, valamint éles vonalak törik át. Kaotikus kompozíció, organikus formák küzdelme — nyers, zsigeri energia. Dramatikus chiaroscuro hatás."},
+    {"id":13,"file":"keretnelkul_2.jpg","title":"Hangulat","size":"80×60 cm","desc":"Áramló, lüktető tiszta energia uralja. A vászon nagy részét hatalmas, ködszerű, homogén vörös-magenta felhő foglalja el. A szélek felé napsárga és fűzöld ecsethúzások bukkannak fel. A kép alján sötétebb, mélyvörös, forgó göc — fekete lyuk vagy szív — körül az egész kép örvénylik. Forró, misztikus és mélyen érzelmes atmoszféra."}
+]
 
-output_path = r"C:\xampp\htdocs\2026\Hermes\apa_festmenyek\apa_festmenyek.html"
+themes = {
+    "vaszon": {"name":"Vászon","bg":"#F5F0E8","bg2":"#EDE5D5","text":"#2C2420","accent":"#8B4513","accent2":"#D4A574","card":"#FFFFFF","card_border":"#D4C5B0","hero_overlay":"rgba(44,36,32,0.35)","nav_bg":"rgba(245,240,232,0.92)","shadow":"rgba(139,69,19,0.12)","gradient1":"#D4A574","gradient2":"#8B4513","muted":"#7A6B5D","light_text":"#F5F0E8","section_alt":"#EDE5D5","btn_bg":"#8B4513","btn_text":"#F5F0E8","btn_hover":"#A0522D","blob1":"#D4A574","blob2":"#C4956A","grain_opacity":"0.03"},
+    "feher": {"name":"Fehér Galéria","bg":"#FFFFFF","bg2":"#FAFAFA","text":"#1A1A1A","accent":"#C45D3A","accent2":"#E8A88A","card":"#FFFFFF","card_border":"#E8E8E8","hero_overlay":"rgba(0,0,0,0.30)","nav_bg":"rgba(255,255,255,0.95)","shadow":"rgba(0,0,0,0.08)","gradient1":"#E8A88A","gradient2":"#C45D3A","muted":"#888888","light_text":"#FFFFFF","section_alt":"#FAFAFA","btn_bg":"#C45D3A","btn_text":"#FFFFFF","btn_hover":"#A84A2C","blob1":"#E8A88A","blob2":"#F0C4B0","grain_opacity":"0.02"},
+    "est": {"name":"Éjszaka","bg":"#0D0D1A","bg2":"#141428","text":"#E8E0F0","accent":"#A855F7","accent2":"#6366F1","card":"#1A1A2E","card_border":"#2D2B55","hero_overlay":"rgba(13,13,26,0.50)","nav_bg":"rgba(13,13,26,0.95)","shadow":"rgba(168,85,247,0.15)","gradient1":"#A855F7","gradient2":"#6366F1","muted":"#8888AA","light_text":"#E8E0F0","section_alt":"#141428","btn_bg":"#A855F7","btn_text":"#FFFFFF","btn_hover":"#9333EA","blob1":"#7C3AED","blob2":"#4F46E5","grain_opacity":"0.04"},
+    "gal": {"name":"Fehér Galéria","bg":"#FFFFFF","bg2":"#F8F8F8","text":"#111111","accent":"#222222","accent2":"#666666","card":"#FFFFFF","card_border":"#EEEEEE","hero_overlay":"rgba(0,0,0,0.25)","nav_bg":"rgba(255,255,255,0.97)","shadow":"rgba(0,0,0,0.06)","gradient1":"#333333","gradient2":"#111111","muted":"#999999","light_text":"#FFFFFF","section_alt":"#F8F8F8","btn_bg":"#111111","btn_text":"#FFFFFF","btn_hover":"#333333","blob1":"#CCCCCC","blob2":"#EEEEEE","grain_opacity":"0.01"},
+    "bohem": {"name":"Bohém","bg":"#FFF5EE","bg2":"#FFE8D6","text":"#3D1F0E","accent":"#C0392B","accent2":"#E67E22","card":"#FFFAF5","card_border":"#E8C9A0","hero_overlay":"rgba(61,31,14,0.35)","nav_bg":"rgba(255,245,238,0.93)","shadow":"rgba(192,57,43,0.10)","gradient1":"#E67E22","gradient2":"#C0392B","muted":"#8B6F5E","light_text":"#FFF5EE","section_alt":"#FFE8D6","btn_bg":"#C0392B","btn_text":"#FFF5EE","btn_hover":"#A93226","blob1":"#E67E22","blob2":"#D35400","grain_opacity":"0.04"},
+    "meleg": {"name":"Meleg Tűz","bg":"#1A0A00","bg2":"#2A1005","text":"#FFE4C4","accent":"#FF6B35","accent2":"#FFB347","card":"#2A1005","card_border":"#4A2010","hero_overlay":"rgba(26,10,0,0.55)","nav_bg":"rgba(26,10,0,0.95)","shadow":"rgba(255,107,53,0.15)","gradient1":"#FF6B35","gradient2":"#FFB347","muted":"#CC9966","light_text":"#FFE4C4","section_alt":"#2A1005","btn_bg":"#FF6B35","btn_text":"#1A0A00","btn_hover":"#FF8C5A","blob1":"#FF6B35","blob2":"#FF4500","grain_opacity":"0.05"},
+    "erd": {"name":"Erdő","bg":"#1A2E1A","bg2":"#0F1F0F","text":"#D4E8C2","accent":"#4CAF50","accent2":"#8BC34A","card":"#1E3320","card_border":"#2D4A2D","hero_overlay":"rgba(26,46,26,0.45)","nav_bg":"rgba(26,46,26,0.95)","shadow":"rgba(76,175,80,0.12)","gradient1":"#4CAF50","gradient2":"#8BC34A","muted":"#6B8E6B","light_text":"#D4E8C2","section_alt":"#0F1F0F","btn_bg":"#4CAF50","btn_text":"#1A2E1A","btn_hover":"#66BB6A","blob1":"#4CAF50","blob2":"#388E3C","grain_opacity":"0.04"}
+}
 
-# ============================================================================
-# PART 1: HTML head, CSS variables, themes, base styles
-# ============================================================================
-part1 = r'''<!DOCTYPE html>
-<html lang="hu" data-theme="vaszon">
+# CSS variables generator
+def css_vars(theme_key):
+    t = themes[theme_key]
+    return f"""  --bg: {t['bg']};
+  --bg2: {t['bg2']};
+  --text: {t['text']};
+  --accent: {t['accent']};
+  --accent2: {t['accent2']};
+  --card: {t['card']};
+  --card-border: {t['card_border']};
+  --muted: {t['muted']};
+  --light-text: {t['light_text']};
+  --section-alt: {t['section_alt']};
+  --btn-bg: {t['btn_bg']};
+  --btn-text: {t['btn_text']};
+  --btn-hover: {t['btn_hover']};
+  --nav-bg: {t['nav_bg']};
+  --shadow: {t['shadow']};
+  --gradient1: {t['gradient1']};
+  --gradient2: {t['gradient2']};
+  --blob1: {t['blob1']};
+  --blob2: {t['blob2']};
+  --grain-opacity: {t['grain_opacity']};
+  --hero-overlay: {t['hero_overlay']};"""
+
+# Grain SVG
+grain_svg = "<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter></svg>"
+grain_b64 = "data:image/svg+xml," + base64.b64encode(grain_svg.encode()).decode()
+
+# Build JS themes object
+js_themes = json.dumps(themes, ensure_ascii=False)
+
+# Build gallery items
+gallery_items = ""
+for i, p in enumerate(paintings):
+    gallery_items += f"""
+    <div class="gallery-item" data-index="{i}" onclick="openLightbox({i})">
+      <div class="gallery-img-wrap">
+        <img src="festmenyek/{p['file']}" alt="{p['title']}" loading="lazy">
+        <div class="gallery-overlay">
+          <h4>{p['title']}</h4>
+          <span class="gallery-meta">{p['size']} · Akril/Olaj vásznon</span>
+        </div>
+      </div>
+    </div>"""
+
+# Build featured items
+featured_items = ""
+for i, p in enumerate(paintings):
+    featured_items += f"""
+    <div class="featured-item">
+      <div class="featured-item-bg" style="background-image: url('festmenyek/{p['file']}');"></div>
+      <div class="featured-item-content">
+        <span class="section-label">Mű #{p['id']}</span>
+        <h3>{p['title']}</h3>
+        <div class="size">{p['size']} · Akril/Olaj vásznon</div>
+        <p>{p['desc']}</p>
+      </div>
+    </div>"""
+
+# Build theme switcher buttons
+theme_buttons = ""
+for key, theme in themes.items():
+    theme_buttons += f"""  <button class="theme-switcher-btn {'active' if key == 'vaszon' else ''}" data-theme="{key}">
+    <div class="tooltip">{theme['name']}</div>
+  </button>
+"""
+
+# Build lightbox paintings JS array
+lightbox_js = ""
+for i, p in enumerate(paintings):
+    lightbox_js += f"""  {{ src: "festmenyek/{p['file']}", title: "{p['title']}", meta: "{p['size']} · Akril/Olaj vásznon" }},
+"""
+
+output_path = r"C:\xampp\htdocs\2026\Hermes\unsloth_Qwen3.6-35B-A3B-MTP-GGUF\Start-Hermes-MAX Qwen3.6-35B-A3B-MTP-UD-Q5_K_S_GGUF_128kctx_hermesadta_chattemplate_kwargs_enablethinking_true_preservethinking_true_codingra_topk20_Feladat_apa_Hermesben_1.html"
+
+html = f"""<!DOCTYPE html>
+<html lang="hu">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Kárai Mihály | Kortárs Absztrakt Festőművész</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kárai Mihály — Festőművész</title>
+<meta name="description" content="Kárai Mihály festőművész kortárs absztrakt expresszionista művészete.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════════════════
-   THEME ENGINE — 7 paletták, 60-30-10 szabály
-   ═══════════════════════════════════════════════════════════ */
-:root {
-  --transition-speed: 0.8s;
+:root {{
+{css_vars('vaszon')}
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
-}
-
-/* 1. VÁZSON — Alapértelmezett, fehér vászon */
-[data-theme="vaszon"] {
-  --c1: #f5f0e8;    /* 60% Főszín — vászonfehér */
-  --c2: #2c2c2c;    /* 30% Másodlagos — sötét szürke */
-  --c3: #c1440e;    /* 10% Kiemelő — karai vörös */
-  --bg: #f5f0e8;
-  --bg-secondary: #ebe5d9;
-  --text: #2c2c2c;
-  --text-muted: #7a756e;
-  --accent: #c1440e;
-  --accent-glow: rgba(193, 68, 14, 0.15);
-  --card-bg: rgba(255,255,255,0.6);
-  --card-border: rgba(44,44,44,0.08);
-  --grain-opacity: 0.03;
-  --overlay: rgba(245,240,232,0.85);
-}
-
-/* 2. ÉJSZAKA — Galéria sötétben */
-[data-theme="est"] {
-  --c1: #0a0a0c;
-  --c2: #1a1a24;
-  --c3: #e8d5b7;
-  --bg: #0a0a0c;
-  --bg-secondary: #12121a;
-  --text: #e8d5b7;
-  --text-muted: #8a8590;
-  --accent: #e8d5b7;
-  --accent-glow: rgba(232, 213, 183, 0.1);
-  --card-bg: rgba(26,26,36,0.7);
-  --card-border: rgba(232,213,183,0.1);
-  --grain-opacity: 0.05;
-  --overlay: rgba(10,10,12,0.9);
-}
-
-/* 3. GALÉRIA — Fehér fal, spot fények */
-[data-theme="gal"] {
-  --c1: #ffffff;
-  --c2: #1a1a1a;
-  --c3: #333333;
-  --bg: #ffffff;
-  --bg-secondary: #f8f8f8;
-  --text: #1a1a1a;
-  --text-muted: #888888;
-  --accent: #1a1a1a;
-  --accent-glow: rgba(0,0,0,0.05);
-  --card-bg: rgba(255,255,255,0.9);
-  --card-border: rgba(0,0,0,0.06);
-  --grain-opacity: 0.015;
-  --overlay: rgba(255,255,255,0.92);
-}
-
-/* 4. BOHEM — Meleg, földszínek */
-[data-theme="bohem"] {
-  --c1: #f4e4d4;
-  --c2: #5c3d2e;
-  --c3: #b85c38;
-  --bg: #f4e4d4;
-  --bg-secondary: #e8d5c0;
-  --text: #3d2518;
-  --text-muted: #8a6b5a;
-  --accent: #b85c38;
-  --accent-glow: rgba(184, 92, 56, 0.12);
-  --card-bg: rgba(255,240,225,0.6);
-  --card-border: rgba(92,61,46,0.1);
-  --grain-opacity: 0.04;
-  --overlay: rgba(244,228,212,0.88);
-}
-
-/* 5. MELEG — Tűzspiros, naplemente */
-[data-theme="meleg"] {
-  --c1: #1a0a05;
-  --c2: #3d1508;
-  --c3: #ff6b35;
-  --bg: #1a0a05;
-  --bg-secondary: #2a0f07;
-  --text: #ffd4b8;
-  --text-muted: #a07060;
-  --accent: #ff6b35;
-  --accent-glow: rgba(255, 107, 53, 0.15);
-  --card-bg: rgba(61,21,8,0.6);
-  --card-border: rgba(255,107,53,0.1);
-  --grain-opacity: 0.04;
-  --overlay: rgba(26,10,5,0.9);
-}
-
-/* 6. ERDŐ — Zöld, mohás, természetes */
-[data-theme="erd"] {
-  --c1: #1a2e1a;
-  --c2: #0d1f0d;
-  --c3: #7cb342;
-  --bg: #1a2e1a;
-  --bg-secondary: #142614;
-  --text: #c8e6c0;
-  --text-muted: #6a9a60;
-  --accent: #7cb342;
-  --accent-glow: rgba(124, 179, 66, 0.12);
-  --card-bg: rgba(26,46,26,0.7);
-  --card-border: rgba(124,179,66,0.1);
-  --grain-opacity: 0.04;
-  --overlay: rgba(26,46,26,0.9);
-}
-
-/* 7. SEPIA — Régi fotó, antik */
-[data-theme="sepia"] {
-  --c1: #f4e8d1;
-  --c2: #5c4a32;
-  --c3: #8b6914;
-  --bg: #f4e8d1;
-  --bg-secondary: #e8d8be;
-  --text: #3d2e1a;
-  --text-muted: #8a7a60;
-  --accent: #8b6914;
-  --accent-glow: rgba(139, 105, 20, 0.12);
-  --card-bg: rgba(255,248,230,0.6);
-  --card-border: rgba(92,74,50,0.1);
-  --grain-opacity: 0.06;
-  --overlay: rgba(244,232,209,0.88);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   RESET & BASE
-   ═══════════════════════════════════════════════════════════ */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-body {
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}}
+*, *::before, *::after {{ margin:0; padding:0; box-sizing:border-box; }}
+html {{ scroll-behavior:smooth; font-size:16px; overflow-x:hidden; }}
+body {{
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
   line-height: 1.7;
-  transition: background var(--transition-speed) var(--ease-out-expo),
-              color var(--transition-speed) var(--ease-out-expo);
+  font-weight: 300;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   TEXTURE OVERLAY — Film grain
-   ═══════════════════════════════════════════════════════════ */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: var(--grain-opacity);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 128px 128px;
-  mix-blend-mode: multiply;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   CUSTOM CURSOR
-   ═══════════════════════════════════════════════════════════ */
-.cursor-dot {
-  width: 12px; height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 100000;
-  mix-blend-mode: difference;
-  transition: width 0.3s var(--ease-out-expo), height 0.3s var(--ease-out-expo);
-}
-
-.cursor-ring {
-  width: 44px; height: 44px;
-  border: 1px solid var(--text-muted);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 100000;
-  transition: width 0.4s var(--ease-out-expo), height 0.4s var(--ease-out-expo),
-              border-color 0.4s, opacity 0.3s;
-  opacity: 0.5;
-}
-
-.cursor-ring.hover {
-  width: 72px; height: 72px;
-  border-color: var(--accent);
-  opacity: 0.8;
-}
-
-@media (max-width: 768px) {
-  .cursor-dot, .cursor-ring { display: none; }
-}
-
-/* ═══════════════════════════════════════════════════════════
-   PRELOADER
-   ═══════════════════════════════════════════════════════════ */
-.preloader {
-  position: fixed; inset: 0;
-  background: var(--bg);
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  transition: opacity 0.8s var(--ease-out-expo), visibility 0.8s;
-}
-
-.preloader.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.preloader-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 6vw, 4.5rem);
-  font-weight: 300;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--text);
-  opacity: 0;
-  animation: preloaderFadeIn 1.2s var(--ease-out-expo) 0.2s forwards;
-}
-
-.preloader-line {
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  margin-top: 2rem;
-  animation: preloaderLine 1.5s var(--ease-out-expo) 0.6s forwards;
-}
-
-@keyframes preloaderFadeIn {
-  to { opacity: 1; }
-}
-@keyframes preloaderLine {
-  to { width: 120px; }
-}
-
-/* ═══════════════════════════════════════════════════════════
-   NAVIGATION — Floating pill
-   ═══════════════════════════════════════════════════════════ */
-.nav-pill {
-  position: fixed;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  background: var(--card-bg);
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
-  border: 1px solid var(--card-border);
-  border-radius: 100px;
-  padding: 0.6rem 0.3rem;
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  transition: all var(--transition-speed) var(--ease-out-expo);
-  box-shadow: 0 4px 30px var(--accent-glow);
-}
-
-.nav-pill a {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  text-decoration: none;
-  padding: 0.55rem 1.1rem;
-  border-radius: 100px;
-  transition: all 0.3s var(--ease-out-expo);
-  position: relative;
-}
-
-.nav-pill a:hover,
-.nav-pill a.active {
-  color: var(--text);
-  background: var(--accent-glow);
-}
-
-.nav-pill a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px; height: 4px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-
-/* Theme switcher in nav */
-.theme-switcher {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0 0.5rem;
-  margin-left: 0.5rem;
-  border-left: 1px solid var(--card-border);
-}
-
-.theme-dot {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  border: 1.5px solid var(--card-border);
-  cursor: pointer;
-  transition: all 0.3s var(--ease-out-expo);
-  position: relative;
-}
-
-.theme-dot:hover {
-  transform: scale(1.3);
-  border-color: var(--accent);
-}
-
-.theme-dot.active {
-  border-color: var(--accent);
-  box-shadow: 0 0 8px var(--accent-glow);
-}
-
-.theme-dot.active::after {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-/* Mobile burger */
-.burger {
-  display: none;
-  position: fixed;
-  top: 1.5rem; right: 1.5rem;
-  z-index: 1001;
-  width: 44px; height: 44px;
-  background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--card-border);
-  border-radius: 50%;
-  cursor: pointer;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  transition: all 0.3s;
-}
-
-.burger span {
-  display: block;
-  width: 18px; height: 1.5px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: all 0.3s var(--ease-out-expo);
-}
-
-.burger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
-.burger.open span:nth-child(2) { opacity: 0; }
-.burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-@media (max-width: 768px) {
-  .nav-pill { display: none; }
-  .burger { display: flex; }
-
-  .mobile-menu {
-    position: fixed;
-    inset: 0;
-    background: var(--overlay);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s var(--ease-out-expo);
-  }
-
-  .mobile-menu.open {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .mobile-menu a {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.4s var(--ease-out-expo);
-  }
-
-  .mobile-menu.open a {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .mobile-menu.open a:nth-child(2) { transition-delay: 0.08s; }
-  .mobile-menu.open a:nth-child(3) { transition-delay: 0.16s; }
-  .mobile-menu.open a:nth-child(4) { transition-delay: 0.24s; }
-  .mobile-menu.open a:nth-child(5) { transition-delay: 0.32s; }
-
-  .mobile-themes {
-    display: flex;
-    gap: 0.8rem;
-    margin-top: 2rem;
-    opacity: 0;
-    transition: opacity 0.4s 0.4s;
-  }
-
-  .mobile-menu.open .mobile-themes { opacity: 1; }
-}
-
-/* ═══════════════════════════════════════════════════════════
-   HERO — Morphing blob + canvas paint drops
-   ═══════════════════════════════════════════════════════════ */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  padding: 2rem;
-}
-
-.hero-bg-blob {
-  position: absolute;
-  width: 60vmax; height: 60vmax;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at 30% 40%, var(--accent-glow), transparent 70%);
-  filter: blur(80px);
-  animation: blobMorph 20s ease-in-out infinite;
-  opacity: 0.6;
-}
-
-@keyframes blobMorph {
-  0%, 100% { border-radius: 40% 60% 65% 35% / 40% 45% 55% 50%; transform: translate(0, 0) rotate(0deg); }
-  25% { border-radius: 60% 40% 35% 65% / 55% 35% 65% 45%; transform: translate(3%, -2%) rotate(5deg); }
-  50% { border-radius: 35% 65% 55% 45% / 45% 55% 35% 65%; transform: translate(-2%, 3%) rotate(-3deg); }
-  75% { border-radius: 55% 45% 65% 35% / 65% 45% 45% 55%; transform: translate(2%, 1%) rotate(2deg); }
-}
-
-.hero-content {
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-.hero-eyebrow {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.hero-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(3rem, 10vw, 8rem);
-  line-height: 1;
-  letter-spacing: 0.05em;
-  color: var(--text);
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.hero-name em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-.hero-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(1rem, 2.5vw, 1.6rem);
-  font-style: italic;
-  color: var(--text-muted);
-  max-width: 500px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.hero-scroll-indicator {
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  opacity: 0;
-}
-
-.hero-scroll-indicator span {
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.scroll-line {
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 1; transform: scaleY(1); }
-  50% { opacity: 0.3; transform: scaleY(0.6); }
-}
-
-/* ═══════════════════════════════════════════════════════════
-   SECTION COMMON
-   ═══════════════════════════════════════════════════════════ */
-section {
-  padding: 8rem 2rem;
-  position: relative;
-}
-
-.section-label {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 0.65rem;
-  letter-spacing: 0.5em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.section-label::before {
-  content: '';
-  width: 40px; height: 1px;
-  background: var(--accent);
-}
-
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
-  line-height: 1.15;
-  color: var(--text);
-  margin-bottom: 3rem;
-  max-width: 700px;
-}
-
-/* Reveal animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-
-/* ═══════════════════════════════════════════════════════════
-   GALLERY — Asymmetric masonry, organic cards
-   ═══════════════════════════════════════════════════════════ */
-.gallery-section {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 6rem 2rem 8rem;
-}
-
-.masonry-grid {
-  columns: 3;
-  column-gap: 1.5rem;
-}
-
-@media (max-width: 1024px) { .masonry-grid { columns: 2; } }
-@media (max-width: 640px) { .masonry-grid { columns: 1; max-width: 500px; margin: 0 auto; } }
-
-.gallery-item {
-  break-inside: avoid;
-  margin-bottom: 1.5rem;
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  background: var(--bg-secondary);
-  transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
-}
-
-.gallery-item:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.12);
-}
-
-.gallery-item img {
-  width: 100%;
-  display: block;
-  border-radius: 16px;
-  transition: transform 0.8s var(--ease-out-expo), filter 0.8s;
-  filter: saturate(0.9);
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-  filter: saturate(1.1);
-}
-
-.gallery-item-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity 0.5s var(--ease-out-expo);
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem 1.5rem;
-}
-
-.gallery-item:hover .gallery-item-overlay { opacity: 1; }
-
-.gallery-item-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 0.3rem;
-}
-
-.gallery-item-meta {
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   ABOUT — Diagonal split
-   ═══════════════════════════════════════════════════════════ */
-.about-section {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  padding: 8rem 3rem;
-}
-
-.about-image-wrap {
-  position: relative;
-  overflow: hidden;
-  border-radius: 24px;
-}
-
-.about-image-wrap::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 26px;
-  background: linear-gradient(135deg, var(--accent), transparent 60%);
-  z-index: -1;
-  opacity: 0.4;
-}
-
-.about-image-wrap img {
-  width: 100%;
-  display: block;
-  border-radius: 24px;
-  filter: saturate(0.85);
-  transition: filter 0.6s;
-}
-
-.about-image-wrap:hover img { filter: saturate(1); }
-
-.about-text p {
-  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  max-width: 520px;
-}
-
-.about-text p:first-of-type::first-letter {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3.5rem;
-  float: left;
-  line-height: 0.8;
-  margin-right: 0.5rem;
-  margin-top: 0.1rem;
-  color: var(--accent);
-}
-
-@media (max-width: 900px) {
-  .about-section {
-    grid-template-columns: 1fr;
-    padding: 4rem 1.5rem;
-  }
-}
-
-/* ═══════════════════════════════════════════════════════════
-   QUOTE — Full bleed
-   ═══════════════════════════════════════════════════════════ */
-.quote-section {
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 6rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.quote-section::before {
-  content: '\201C';
-  position: absolute;
-  top: 2rem; left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20rem;
-  color: var(--accent);
-  opacity: 0.06;
-  line-height: 1;
-}
-
-.quote-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.6rem, 4vw, 3.2rem);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--text);
-  max-width: 800px;
-  margin: 0 auto 2rem;
-}
-
-.quote-author {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   CONTACT — Floating labels
-   ═══════════════════════════════════════════════════════════ */
-.contact-section {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 8rem 2rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.form-group {
-  position: relative;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--card-border);
-  padding: 1rem 0;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
-  color: var(--text);
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.form-group textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--accent);
-}
-
-.form-group label {
-  position: absolute;
-  left: 0; top: 1rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  pointer-events: none;
-  transition: all 0.3s var(--ease-out-expo);
-}
-
-.form-group input:focus ~ label,
-.form-group input:not(:placeholder-shown) ~ label,
-.form-group textarea:focus ~ label,
-.form-group textarea:not(:placeholder-shown) ~ label {
-  top: -0.8rem;
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.submit-btn {
-  align-self: flex-start;
-  background: var(--accent);
-  color: var(--bg);
-  border: none;
-  padding: 1rem 3rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  border-radius: 100px;
-  cursor: pointer;
-  transition: all 0.4s var(--ease-out-expo);
-  position: relative;
-  overflow: hidden;
-}
-
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px var(--accent-glow);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   LIGHTBOX
-   ═══════════════════════════════════════════════════════════ */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.95);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.5s var(--ease-out-expo);
-  cursor: zoom-out;
-}
-
-.lightbox.open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.lightbox img {
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 8px;
-  transform: scale(0.9);
-  transition: transform 0.5s var(--ease-out-expo);
-}
-
-.lightbox.open img { transform: scale(1); }
-
-.lightbox-close {
-  position: absolute;
-  top: 2rem; right: 2rem;
-  width: 48px; height: 48px;
-  background: none;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 50%;
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-}
-
-.lightbox-close:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,0.1);
-}
-
-.lightbox-info {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  color: rgba(255,255,255,0.7);
-}
-
-.lightbox-info h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: #fff;
-}
-
-.lightbox-info p {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-top: 0.3rem;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   PAINT DROP CANVAS
-   ═══════════════════════════════════════════════════════════ */
-#paintCanvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.4;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════════════════════ */
-footer {
-  text-align: center;
-  padding: 4rem 2rem;
-  border-top: 1px solid var(--card-border);
-}
-
-footer p {
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   DECORATIVE ELEMENTS
-   ═══════════════════════════════════════════════════════════ */
-.deco-line {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--card-border), transparent);
-  margin: 2rem 0;
-}
-
-/* Smooth theme transition on all elements */
-* {
-  transition-property: background-color, border-color, color;
-  transition-duration: 0s;
-}
-
-body * {
-  transition-duration: var(--transition-speed);
-  transition-timing-function: var(--ease-out-expo);
-}
-
-/* Disable transition on interactive for responsiveness */
-.gallery-item, .nav-pill a, .theme-dot, .burger,
-.form-group input, .form-group textarea, .submit-btn,
-.lightbox-close, .gallery-item img {
-  transition-duration: 0.3s;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   MOBILE GALLERY ADJUSTMENTS
-   ═══════════════════════════════════════════════════════════ */
-@media (max-width: 640px) {
-  section { padding: 4rem 1.2rem; }
-  .gallery-section { padding: 3rem 1.2rem 5rem; }
-  .gallery-item-overlay { padding: 1.2rem 1rem; }
-  .gallery-item-title { font-size: 1rem; }
-  .about-section { padding: 3rem 1.2rem; }
-}
+  transition: background 0.8s var(--ease-out-expo), color 0.8s var(--ease-out-expo);
+}}
+img {{ max-width:100%; height:auto; display:block; }}
+a {{ color:var(--accent); text-decoration:none; transition:color 0.3s ease; }}
+a:hover {{ color:var(--accent2); }}
+
+.grain-overlay {{
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  pointer-events:none; z-index:9999;
+  opacity:var(--grain-opacity);
+  background-image:url("{grain_b64}");
+  background-size:300px 300px;
+}}
+
+nav {{
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  padding:1.2rem 3rem;
+  display:flex; justify-content:space-between; align-items:center;
+  background:var(--nav-bg);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--card-border);
+  transition:all 0.5s var(--ease-out-expo);
+}}
+nav.scrolled {{ padding:0.8rem 3rem; box-shadow:0 4px 30px var(--shadow); }}
+.nav-logo {{
+  font-family:var(--font-heading); font-size:1.6rem; font-weight:400;
+  letter-spacing:0.05em; color:var(--text);
+}}
+.nav-logo span {{ font-weight:300; font-style:italic; color:var(--accent); }}
+.nav-links {{
+  display:flex; gap:2.5rem; list-style:none; align-items:center;
+}}
+.nav-links a {{
+  color:var(--text); font-size:0.85rem; font-weight:300;
+  letter-spacing:0.1em; text-transform:uppercase;
+  position:relative; padding-bottom:4px;
+}}
+.nav-links a::after {{
+  content:''; position:absolute; bottom:0; left:0;
+  width:0; height:1px; background:var(--accent);
+  transition:width 0.4s var(--ease-out-expo);
+}}
+.nav-links a:hover::after, .nav-links a.active::after {{ width:100%; }}
+
+.theme-switcher {{
+  position:fixed; top:50%; right:0; transform:translateY(-50%);
+  z-index:1001; display:flex; flex-direction:column; gap:6px;
+  padding:10px 8px; background:var(--nav-bg);
+  backdrop-filter:blur(20px);
+  border-radius:12px 0 0 12px;
+  border:1px solid var(--card-border); border-right:none;
+  transition:all 0.5s var(--ease-out-expo);
+}}
+.theme-switcher-btn {{
+  width:32px; height:32px; border-radius:50%;
+  border:2px solid var(--card-border); cursor:pointer;
+  transition:all 0.3s ease; position:relative; overflow:hidden;
+}}
+.theme-switcher-btn:hover {{ transform:scale(1.15); border-color:var(--accent); }}
+.theme-switcher-btn.active {{
+  border-color:var(--accent);
+  box-shadow:0 0 0 2px var(--accent);
+}}
+.theme-switcher-btn .tooltip {{
+  position:absolute; right:42px; top:50%; transform:translateY(-50%);
+  background:var(--text); color:var(--bg); padding:4px 12px;
+  border-radius:6px; font-size:0.7rem; white-space:nowrap;
+  opacity:0; pointer-events:none; transition:opacity 0.3s ease;
+  font-family:var(--font-body);
+}}
+.theme-switcher-btn:hover .tooltip {{ opacity:1; }}
+
+.burger {{
+  display:none; flex-direction:column; gap:5px; cursor:pointer;
+  z-index:1002; background:none; border:none; padding:5px;
+}}
+.burger span {{
+  width:24px; height:1.5px; background:var(--text);
+  transition:all 0.3s ease; display:block;
+}}
+.burger.open span:nth-child(1) {{ transform:rotate(45deg) translate(5px,5px); }}
+.burger.open span:nth-child(2) {{ opacity:0; }}
+.burger.open span:nth-child(3) {{ transform:rotate(-45deg) translate(5px,-5px); }}
+
+.hero {{
+  position:relative; height:100vh; min-height:700px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}}
+.hero-bg {{
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(135deg, var(--gradient1), var(--gradient2));
+  opacity:0.15; z-index:0;
+}}
+.hero-overlay {{
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:var(--hero-overlay); z-index:2;
+}}
+.hero-content {{
+  position:relative; z-index:3; text-align:center; padding:2rem; max-width:900px;
+}}
+.hero-subtitle {{
+  font-family:var(--font-body); font-size:0.85rem; font-weight:300;
+  letter-spacing:0.3em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:1.5rem; opacity:0; animation:fadeUp 1s var(--ease-out-expo) 0.3s forwards;
+}}
+.hero-title {{
+  font-family:var(--font-heading); font-size:clamp(3rem,8vw,7rem);
+  font-weight:300; line-height:1.05; margin-bottom:1.5rem;
+  opacity:0; animation:fadeUp 1s var(--ease-out-expo) 0.6s forwards;
+}}
+.hero-title em {{ font-style:italic; font-weight:400; color:var(--accent); }}
+.hero-tagline {{
+  font-family:var(--font-heading); font-size:clamp(1.1rem,2.5vw,1.5rem);
+  font-weight:300; font-style:italic; color:var(--muted);
+  margin-bottom:2.5rem; opacity:0; animation:fadeUp 1s var(--ease-out-expo) 0.9s forwards;
+}}
+.hero-cta {{
+  display:inline-flex; align-items:center; gap:0.8rem;
+  padding:1rem 2.5rem; background:var(--btn-bg); color:var(--btn-text);
+  font-family:var(--font-body); font-size:0.85rem; font-weight:400;
+  letter-spacing:0.15em; text-transform:uppercase; border:none;
+  cursor:pointer; transition:all 0.4s var(--ease-out-expo);
+  opacity:0; animation:fadeUp 1s var(--ease-out-expo) 1.2s forwards;
+}}
+.hero-cta:hover {{
+  background:var(--btn-hover); transform:translateY(-2px);
+  box-shadow:0 8px 30px var(--shadow); color:var(--btn-text);
+}}
+.hero-cta svg {{ width:18px; height:18px; transition:transform 0.3s ease; }}
+.hero-cta:hover svg {{ transform:translateY(3px); }}
+
+.blob {{
+  position:absolute; border-radius:50%; filter:blur(80px);
+  opacity:0.2; z-index:1; animation:blobMorph 20s ease-in-out infinite;
+}}
+.blob-1 {{ width:500px; height:500px; background:var(--blob1); top:-10%; left:-10%; animation-delay:0s; }}
+.blob-2 {{ width:400px; height:400px; background:var(--blob2); bottom:-10%; right:-10%; animation-delay:-7s; }}
+.blob-3 {{
+  width:300px; height:300px; background:var(--accent2);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  animation-delay:-14s;
+}}
+
+.scroll-indicator {{
+  position:absolute; bottom:3rem; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; flex-direction:column; align-items:center; gap:0.8rem;
+  opacity:0; animation:fadeUp 1s var(--ease-out-expo) 1.5s forwards;
+}}
+.scroll-indicator span {{ font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }}
+.scroll-line {{ width:1px; height:40px; background:var(--accent); animation:scrollPulse 2s ease-in-out infinite; }}
+
+section {{ padding:8rem 3rem; position:relative; }}
+.section-alt {{ background:var(--section-alt); }}
+.section-header {{ text-align:center; margin-bottom:5rem; }}
+.section-label {{
+  font-family:var(--font-body); font-size:0.75rem; font-weight:400;
+  letter-spacing:0.3em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:1rem; display:block;
+}}
+.section-title {{
+  font-family:var(--font-heading); font-size:clamp(2.2rem,5vw,4rem);
+  font-weight:300; line-height:1.15;
+}}
+.section-title em {{ font-style:italic; color:var(--accent); }}
+
+.about-grid {{
+  display:grid; grid-template-columns:1fr 1fr; gap:5rem;
+  max-width:1200px; margin:0 auto; align-items:center;
+}}
+.about-image {{
+  position:relative; aspect-ratio:3/4; overflow:hidden;
+}}
+.about-image-placeholder {{
+  width:100%; height:100%;
+  background:linear-gradient(135deg, var(--accent2), var(--accent));
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-heading); font-size:5rem; font-weight:300;
+  color:var(--light-text); font-style:italic;
+}}
+.about-image::after {{
+  content:''; position:absolute; top:20px; left:20px;
+  right:-20px; bottom:-20px; border:1px solid var(--accent);
+  z-index:-1; opacity:0.3;
+}}
+.about-text h3 {{
+  font-family:var(--font-heading); font-size:2rem; font-weight:400;
+  margin-bottom:2rem; font-style:italic;
+}}
+.about-text p {{ margin-bottom:1.5rem; font-size:1rem; line-height:1.9; color:var(--text); opacity:0.85; }}
+.about-stats {{
+  display:flex; gap:3rem; margin-top:3rem; padding-top:2rem;
+  border-top:1px solid var(--card-border);
+}}
+.stat-number {{
+  font-family:var(--font-heading); font-size:2.8rem; font-weight:300;
+  color:var(--accent); line-height:1;
+}}
+.stat-label {{ font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-top:0.5rem; }}
+
+.gallery-grid {{
+  max-width:1400px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2rem;
+}}
+.gallery-item {{
+  position:relative; overflow:hidden; cursor:pointer;
+  transition:transform 0.6s var(--ease-out-expo);
+  opacity:0; transform:translateY(40px);
+}}
+.gallery-item.visible {{ opacity:1; transform:translateY(0); }}
+.gallery-item:hover {{ transform:translateY(-8px); }}
+.gallery-item:nth-child(1) {{ grid-row:span 2; }}
+.gallery-item:nth-child(4) {{ grid-column:span 2; }}
+.gallery-item:nth-child(7) {{ grid-row:span 2; }}
+.gallery-item:nth-child(10) {{ grid-column:span 2; }}
+.gallery-img-wrap {{ position:relative; overflow:hidden; }}
+.gallery-item:nth-child(1) .gallery-img-wrap {{ aspect-ratio:3/4; }}
+.gallery-item:nth-child(4) .gallery-img-wrap {{ aspect-ratio:16/9; }}
+.gallery-item:nth-child(7) .gallery-img-wrap {{ aspect-ratio:3/4; }}
+.gallery-item:nth-child(10) .gallery-img-wrap {{ aspect-ratio:16/9; }}
+.gallery-item:not(:nth-child(1)):not(:nth-child(4)):not(:nth-child(7)):not(:nth-child(10)) .gallery-img-wrap {{ aspect-ratio:4/3; }}
+.gallery-img-wrap img {{ width:100%; height:100%; object-fit:cover; transition:transform 0.8s var(--ease-out-expo); }}
+.gallery-item:hover .gallery-img-wrap img {{ transform:scale(1.05); }}
+.gallery-overlay {{
+  position:absolute; bottom:0; left:0; right:0;
+  padding:3rem 2rem 2rem;
+  background:linear-gradient(transparent, rgba(0,0,0,0.7));
+  transform:translateY(100%);
+  transition:transform 0.5s var(--ease-out-expo);
+}}
+.gallery-item:hover .gallery-overlay {{ transform:translateY(0); }}
+.gallery-overlay h4 {{
+  font-family:var(--font-heading); font-size:1.4rem; font-weight:400; color:#fff; margin-bottom:0.3rem;
+}}
+.gallery-overlay .gallery-meta {{ font-size:0.8rem; color:rgba(255,255,255,0.7); font-weight:300; }}
+
+.featured-section {{ padding:0; overflow:hidden; }}
+.featured-scroll {{
+  display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch; scrollbar-width:none; gap:0;
+}}
+.featured-scroll::-webkit-scrollbar {{ display:none; }}
+.featured-item {{
+  flex:0 0 100vw; scroll-snap-align:start; height:85vh;
+  display:flex; align-items:center; position:relative; overflow:hidden;
+}}
+.featured-item-bg {{
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background-size:cover; background-position:center;
+  filter:brightness(0.6); transition:transform 8s ease;
+}}
+.featured-item:hover .featured-item-bg {{ transform:scale(1.05); }}
+.featured-item-content {{
+  position:relative; z-index:2; padding:4rem 6rem; max-width:600px; color:#fff;
+}}
+.featured-item-content .section-label {{ color:var(--accent2); }}
+.featured-item-content h3 {{
+  font-family:var(--font-heading); font-size:clamp(2rem,4vw,3.5rem);
+  font-weight:300; margin-bottom:1rem; line-height:1.15;
+}}
+.featured-item-content .size {{ font-size:0.9rem; color:var(--accent2); margin-bottom:1.5rem; font-weight:300; }}
+.featured-item-content p {{ font-size:1rem; line-height:1.8; opacity:0.85; font-weight:300; }}
+.featured-nav {{
+  position:absolute; bottom:3rem; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; gap:1rem;
+}}
+.featured-nav button {{
+  width:50px; height:50px; border-radius:50%;
+  border:1px solid rgba(255,255,255,0.4); background:rgba(0,0,0,0.3);
+  color:#fff; cursor:pointer; font-size:1.2rem;
+  transition:all 0.3s ease; backdrop-filter:blur(10px);
+  display:flex; align-items:center; justify-content:center;
+}}
+.featured-nav button:hover {{ background:rgba(255,255,255,0.2); border-color:#fff; }}
+
+.quote-section {{
+  min-height:60vh; display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:8rem 3rem; position:relative;
+}}
+.quote-section::before {{
+  content:'"'; font-family:var(--font-heading); font-size:15rem;
+  color:var(--accent); opacity:0.1; position:absolute;
+  top:1rem; left:50%; transform:translateX(-50%); line-height:1;
+}}
+.quote-text {{
+  font-family:var(--font-heading); font-size:clamp(1.5rem,3.5vw,2.8rem);
+  font-weight:300; font-style:italic; line-height:1.5;
+  max-width:800px; margin:0 auto; color:var(--text); opacity:0.85;
+}}
+.quote-author {{
+  margin-top:2rem; font-size:0.85rem; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--accent); font-weight:400;
+}}
+
+.contact-grid {{
+  display:grid; grid-template-columns:1fr 1fr; gap:5rem;
+  max-width:1100px; margin:0 auto;
+}}
+.contact-info h3 {{
+  font-family:var(--font-heading); font-size:2rem; font-weight:400;
+  font-style:italic; margin-bottom:2rem;
+}}
+.contact-info p {{ margin-bottom:1.5rem; line-height:1.8; color:var(--muted); }}
+.contact-info .contact-detail {{
+  display:flex; align-items:center; gap:1rem; margin-bottom:1.2rem;
+}}
+.contact-icon {{
+  width:40px; height:40px; border-radius:50%;
+  background:var(--accent); color:var(--light-text);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem; flex-shrink:0;
+}}
+.contact-form {{
+  display:flex; flex-direction:column; gap:1.5rem;
+}}
+.form-group {{ position:relative; }}
+.form-group input, .form-group textarea {{
+  width:100%; padding:1rem 0; border:none;
+  border-bottom:1px solid var(--card-border); background:transparent;
+  color:var(--text); font-family:var(--font-body); font-size:1rem;
+  font-weight:300; transition:border-color 0.3s ease; outline:none;
+}}
+.form-group input:focus, .form-group textarea:focus {{ border-bottom-color:var(--accent); }}
+.form-group label {{
+  position:absolute; left:0; top:1rem; font-size:0.9rem;
+  font-weight:300; color:var(--muted); pointer-events:none;
+  transition:all 0.3s var(--ease-out-expo);
+}}
+.form-group input:focus + label, .form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label, .form-group textarea:not(:placeholder-shown) + label {{
+  top:-0.5rem; font-size:0.7rem; color:var(--accent);
+  letter-spacing:0.1em; text-transform:uppercase;
+}}
+.form-group textarea {{ resize:vertical; min-height:120px; }}
+.form-submit {{
+  padding:1rem 2.5rem; background:var(--btn-bg); color:var(--btn-text);
+  border:none; font-family:var(--font-body); font-size:0.85rem;
+  font-weight:400; letter-spacing:0.15em; text-transform:uppercase;
+  cursor:pointer; transition:all 0.4s var(--ease-out-expo); align-self:flex-start;
+}}
+.form-submit:hover {{
+  background:var(--btn-hover); transform:translateY(-2px);
+  box-shadow:0 8px 30px var(--shadow);
+}}
+
+footer {{
+  padding:4rem 3rem; text-align:center;
+  border-top:1px solid var(--card-border);
+}}
+.footer-logo {{
+  font-family:var(--font-heading); font-size:1.8rem; font-weight:300; margin-bottom:1rem;
+}}
+.footer-logo span {{ font-style:italic; color:var(--accent); }}
+footer p {{ font-size:0.8rem; color:var(--muted); font-weight:300; }}
+
+.lightbox {{
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.95); z-index:10000;
+  display:none; align-items:center; justify-content:center;
+  opacity:0; transition:opacity 0.4s ease; cursor:pointer;
+}}
+.lightbox.active {{ display:flex; opacity:1; }}
+.lightbox img {{ max-width:90vw; max-height:90vh; object-fit:contain; }}
+.lightbox-close {{
+  position:absolute; top:2rem; right:2rem; width:50px; height:50px;
+  border:1px solid rgba(255,255,255,0.3); border-radius:50%;
+  background:none; color:#fff; font-size:1.5rem; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.3s ease;
+}}
+.lightbox-close:hover {{ border-color:#fff; background:rgba(255,255,255,0.1); }}
+.lightbox-info {{
+  position:absolute; bottom:3rem; left:50%; transform:translateX(-50%);
+  text-align:center; color:#fff;
+}}
+.lightbox-info h4 {{ font-family:var(--font-heading); font-size:1.5rem; font-weight:400; margin-bottom:0.3rem; }}
+.lightbox-info span {{ font-size:0.85rem; color:rgba(255,255,255,0.6); font-weight:300; }}
+
+@keyframes fadeUp {{
+  from {{ opacity:0; transform:translateY(30px); }}
+  to {{ opacity:1; transform:translateY(0); }}
+}}
+@keyframes blobMorph {{
+  0%,100% {{ border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }}
+  25% {{ border-radius:30% 60% 70% 40% / 50% 60% 30% 60%; }}
+  50% {{ border-radius:50% 60% 30% 60% / 30% 60% 70% 40%; }}
+  75% {{ border-radius:60% 30% 60% 40% / 70% 40% 50% 60%; }}
+}}
+@keyframes scrollPulse {{
+  0%,100% {{ opacity:1; transform:scaleY(1); }}
+  50% {{ opacity:0.3; transform:scaleY(0.6); }}
+}}
+
+.reveal {{
+  opacity:0; transform:translateY(40px);
+  transition:all 0.8s var(--ease-out-expo);
+}}
+.reveal.visible {{ opacity:1; transform:translateY(0); }}
+
+@media (max-width:1024px) {{
+  section {{ padding:6rem 2rem; }}
+  .about-grid {{ gap:3rem; }}
+  .gallery-grid {{ grid-template-columns:repeat(2,1fr); }}
+  .gallery-item:nth-child(1) {{ grid-row:span 1; }}
+  .gallery-item:nth-child(4) {{ grid-column:span 1; }}
+  .gallery-item:nth-child(7) {{ grid-row:span 1; }}
+  .gallery-item:nth-child(10) {{ grid-column:span 1; }}
+  .featured-item-content {{ padding:3rem; }}
+}}
+@media (max-width:768px) {{
+  nav {{ padding:1rem 1.5rem; }}
+  .nav-links {{
+    position:fixed; top:0; left:0; width:100%; height:100vh;
+    background:var(--nav-bg); backdrop-filter:blur(30px);
+    flex-direction:column; justify-content:center; gap:2rem;
+    transform:translateX(100%); transition:transform 0.5s var(--ease-out-expo);
+  }}
+  .nav-links.open {{ transform:translateX(0); }}
+  .nav-links a {{ font-size:1.2rem; letter-spacing:0.2em; }}
+  .burger {{ display:flex; }}
+  .theme-switcher {{
+    top:auto; bottom:1rem; right:1rem; transform:none;
+    flex-direction:row; border-radius:12px; border:1px solid var(--card-border);
+  }}
+  .theme-switcher-btn .tooltip {{ display:none; }}
+  section {{ padding:5rem 1.5rem; }}
+  .about-grid {{ grid-template-columns:1fr; gap:3rem; }}
+  .about-image {{ max-width:400px; margin:0 auto; }}
+  .about-image::after {{ display:none; }}
+  .about-stats {{ gap:2rem; }}
+  .gallery-grid {{ grid-template-columns:1fr; gap:1.5rem; }}
+  .gallery-item:nth-child(n) {{ grid-row:span 1; grid-column:span 1; }}
+  .gallery-overlay {{ transform:translateY(0); padding:2rem 1.5rem 1.5rem; }}
+  .contact-grid {{ grid-template-columns:1fr; gap:3rem; }}
+  .featured-item {{ height:70vh; }}
+  .featured-item-content {{ padding:2rem; max-width:100%; }}
+  .featured-item-content h3 {{ font-size:1.8rem; }}
+  .quote-section {{ padding:5rem 1.5rem; }}
+  .hero-tagline {{ font-size:1rem; }}
+}}
+@media (max-width:480px) {{
+  html {{ font-size:14px; }}
+  .hero {{ min-height:600px; }}
+  .about-stats {{ flex-direction:column; gap:1.5rem; }}
+  .stat-number {{ font-size:2.2rem; }}
+  .theme-switcher {{ gap:4px; padding:8px 6px; }}
+  .theme-switcher-btn {{ width:26px; height:26px; }}
+}}
 </style>
 </head>
 <body>
-'''
+<div class="grain-overlay"></div>
 
-# ============================================================================
-# PART 2: Body content — Preloader, Cursor, Nav, Hero, About
-# ============================================================================
-part2 = r'''
-<!-- Preloader -->
-<div class="preloader" id="preloader">
-  <div class="preloader-title">Kárai Mihály</div>
-  <div class="preloader-line"></div>
-</div>
-
-<!-- Custom Cursor -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- Paint Drop Canvas -->
-<canvas id="paintCanvas"></canvas>
-
-<!-- Navigation -->
-<nav class="nav-pill" id="navPill">
-  <a href="#hero" class="active">Főoldal</a>
-  <a href="#gallery">Galéria</a>
-  <a href="#about">Rólam</a>
-  <a href="#quote">Idézet</a>
-  <a href="#contact">Kapcsolat</a>
-  <div class="theme-switcher">
-    <div class="theme-dot active" data-theme="vaszon" style="background: #f5f0e8;" title="Vászon"></div>
-    <div class="theme-dot" data-theme="est" style="background: #0a0a0c;" title="Éjszaka"></div>
-    <div class="theme-dot" data-theme="gal" style="background: #ffffff;" title="Galéria"></div>
-    <div class="theme-dot" data-theme="bohem" style="background: #b85c38;" title="Bohem"></div>
-    <div class="theme-dot" data-theme="meleg" style="background: #ff6b35;" title="Meleg"></div>
-    <div class="theme-dot" data-theme="erd" style="background: #7cb342;" title="Erdő"></div>
-    <div class="theme-dot" data-theme="sepia" style="background: #8b6914;" title="Sepia"></div>
-  </div>
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Kárai <span>Mihály</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#rolam">Rólam</a></li>
+    <li><a href="#kiállítások">Művek</a></li>
+    <li><a href="#galéria">Galéria</a></li>
+    <li><a href="#kapcsolat">Kapcsolat</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<button class="burger" id="burger" aria-label="Menü">
-  <span></span><span></span><span></span>
-</button>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#hero">Főoldal</a>
-  <a href="#gallery">Galéria</a>
-  <a href="#about">Rólam</a>
-  <a href="#quote">Idézet</a>
-  <a href="#contact">Kapcsolat</a>
-  <div class="mobile-themes">
-    <div class="theme-dot" data-theme="vaszon" style="background: #f5f0e8;" title="Vászon"></div>
-    <div class="theme-dot" data-theme="est" style="background: #0a0a0c;" title="Éjszaka"></div>
-    <div class="theme-dot" data-theme="gal" style="background: #ffffff;" title="Galéria"></div>
-    <div class="theme-dot" data-theme="bohem" style="background: #b85c38;" title="Bohem"></div>
-    <div class="theme-dot" data-theme="meleg" style="background: #ff6b35;" title="Meleg"></div>
-    <div class="theme-dot" data-theme="erd" style="background: #7cb342;" title="Erdő"></div>
-    <div class="theme-dot" data-theme="sepia" style="background: #8b6914;" title="Sepia"></div>
-  </div>
+<div class="theme-switcher" id="themeSwitcher">
+{theme_buttons}
 </div>
 
-<!-- Hero -->
 <section class="hero" id="hero">
-  <div class="hero-bg-blob"></div>
+  <div class="hero-bg"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Kortárs Absztrakt Festőművész</p>
-    <h1 class="hero-name">Kárai <em>Mihály</em></h1>
-    <p class="hero-subtitle">A szín és forma szabad tánca — ahol az érzelmes expresszionizmus találkozik a modern absztrakcióval</p>
+    <p class="hero-subtitle">Kortárs absztrakt expresszionizmus</p>
+    <h1 class="hero-title">Kárai<br><em>Mihály</em></h1>
+    <p class="hero-tagline">A festészet az érzelmek nyelve — minden ecsetvonás egy történet</p>
+    <a href="#galéria" class="hero-cta">
+      Galéria megtekintése
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </a>
   </div>
-  <div class="hero-scroll-indicator">
-    <span>Scroll</span>
+  <div class="scroll-indicator">
+    <span>Görgess</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- About -->
-<section class="about-section" id="about">
-  <div class="about-image-wrap reveal">
-    <img src="Karai_Mihaly_Portfolio.html" alt="Kárai Mihály műterem" onerror="this.src='interior_1.jpg'">
+<section class="section-alt" id="rolam">
+  <div class="section-header reveal">
+    <span class="section-label">A művész</span>
+    <h2 class="section-title">Kárai <em>Mihály</em></h2>
   </div>
-  <div class="about-text">
-    <div class="section-label reveal">A Művész</div>
-    <h2 class="section-title reveal reveal-delay-1">A festészet az <em>érzelem</em> nyelve</h2>
-    <p class="reveal reveal-delay-2">Született 1961-ben. Művei a kortárs absztrakt expresszionizmus és a lírai absztrakció határán mozognak, ahol az akril és olajfesték vastag impasto rétegei életre kelnek a vásznon.</p>
-    <p class="reveal reveal-delay-3">Műveiben a tűzpiros, kadmiumnarancs és napraforgósárga melegséget áraszt, míg a ciánkék és smaragdzöld kontrasztjai mélységet adnak kompozícióinak. Palettakéses technikával, expresszív ecsetvonásokkal dolgozik — minden darab egy érzelmileg töltött pillanat örökítése.</p>
-    <p class="reveal reveal-delay-4">A festmények témái a sivatagi naplementétől a városi tükröződésen át a női alak torzójáig terjednek, mindegyik egyedi atmoszférát teremtve a színek és textúrák varázslatával.</p>
-  </div>
-</section>
-'''
-
-# ============================================================================
-# PART 3: Gallery with all paintings
-# ============================================================================
-part3 = r'''
-<!-- Gallery -->
-<section class="gallery-section" id="gallery">
-  <div class="section-label reveal">Művek</div>
-  <h2 class="section-title reveal reveal-delay-1">Galéria</h2>
-
-  <div class="masonry-grid" id="masonryGrid">
-    <!-- Items will be injected by JS from the painting data -->
-  </div>
-</section>
-
-<!-- Quote -->
-<section class="quote-section" id="quote">
-  <div>
-    <p class="quote-text reveal">
-      „A festészet nem azt mutatja meg, amit látunk,<br>
-      hanem azt, amit láthatatlannak hiszünk."
-    </p>
-    <p class="quote-author reveal reveal-delay-2">Kárai Mihály</p>
-  </div>
-</section>
-
-<!-- Contact -->
-<section class="contact-section" id="contact">
-  <div class="section-label reveal">Kapcsolat</div>
-  <h2 class="section-title reveal reveal-delay-1">Írjon nekem</h2>
-  <form class="contact-form reveal reveal-delay-2" onsubmit="return false;">
-    <div class="form-group">
-      <input type="text" id="name" placeholder=" " required>
-      <label for="name">Név</label>
+  <div class="about-grid">
+    <div class="about-image reveal">
+      <div class="about-image-placeholder">KM</div>
     </div>
-    <div class="form-group">
-      <input type="email" id="email" placeholder=" " required>
-      <label for="email">E-mail</label>
+    <div class="about-text reveal">
+      <h3>A festészet az élet tükröze</h3>
+      <p>1961-ben született, élete során a festészet vált a létezés legmélyebb kifejezési formájává. Művészete a kortárs absztrakt expresszionizmus és a lírai absztrakció határán mozog, ahol a színek és textúrák saját nyelvet alkotnak.</p>
+      <p>Művei extrém meleg spektrumot használnak — tűzpirosat, kadmiumnarancsot, napraforgósárgát — melyeket erős kontrasztot képező hideg színek (ciánkék, sötétkék, smaragdzöld) metszenek át. Impasto technika, palettakéses kaparások és expresszív ecsetvonások jellemzik stílusát.</p>
+      <p>Kompozíciói térbeli mélységet varázsolnak a vászonra: rétegződés, elmosódó atmoszferikus horizontok, ritmikus geometriai blokkok és szétáradó organikus formák egyszerre jelennek meg műveiben.</p>
+      <div class="about-stats">
+        <div><div class="stat-number">1961</div><div class="stat-label">Születés</div></div>
+        <div><div class="stat-number">13+</div><div class="stat-label">Festmény</div></div>
+        <div><div class="stat-number">60+</div><div class="stat-label">Év alkotás</div></div>
+      </div>
     </div>
-    <div class="form-group">
-      <textarea id="message" placeholder=" " required></textarea>
-      <label for="message">Üzenet</label>
-    </div>
-    <button type="submit" class="submit-btn">Küldés</button>
-  </form>
+  </div>
 </section>
 
-<!-- Footer -->
+<section class="featured-section" id="kiállítások">
+  <div class="featured-scroll" id="featuredScroll">
+{featured_items}
+  </div>
+  <div class="featured-nav">
+    <button id="featuredPrev" aria-label="Előző">&#8592;</button>
+    <button id="featuredNext" aria-label="Következő">&#8594;</button>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="reveal">
+    <p class="quote-text">A festészet nem azt ábrázolja, ami látható, hanem amit láthatatlanná kell tenni.</p>
+    <p class="quote-author">— Paul Klee</p>
+  </div>
+</section>
+
+<section id="galéria">
+  <div class="section-header reveal">
+    <span class="section-label">Gyűjtemény</span>
+    <h2 class="section-title">Művek <em>galériája</em></h2>
+  </div>
+  <div class="gallery-grid">
+{gallery_items}
+  </div>
+</section>
+
+<section class="quote-section section-alt">
+  <div class="reveal">
+    <p class="quote-text">Minden festmény egy ajtó — ha elég nyitva van, beléphetsz egy másik világba.</p>
+    <p class="quote-author">— Kárai Mihály</p>
+  </div>
+</section>
+
+<section id="kapcsolat">
+  <div class="section-header reveal">
+    <span class="section-label">Kapcsolat</span>
+    <h2 class="section-title">Lépj <em>kapcsolatba</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Megosznám veled a művészeti világomat</h3>
+      <p>Bármilyen kérdésed van a művekkel, kiállításokkal vagy megrendelésekkel kapcsolatban, bátran keress!</p>
+      <div class="contact-detail"><div class="contact-icon">📍</div><span>Magyarország</span></div>
+      <div class="contact-detail"><div class="contact-icon">✉</div><span>kara.mihaly@email.hu</span></div>
+      <div class="contact-detail"><div class="contact-icon">📞</div><span>+36 30 123 4567</span></div>
+    </div>
+    <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Köszönjük az üzenetet!');">
+      <div class="form-group">
+        <input type="text" id="name" placeholder=" " required>
+        <label for="name">Név</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder=" " required>
+        <label for="email">E-mail</label>
+      </div>
+      <div class="form-group">
+        <textarea id="message" placeholder=" " required></textarea>
+        <label for="message">Üzenet</label>
+      </div>
+      <button type="submit" class="form-submit">Üzenet küldése</button>
+    </form>
+  </div>
+</section>
+
 <footer>
+  <div class="footer-logo">Kárai <span>Mihály</span></div>
   <p>&copy; 2026 Kárai Mihály — Minden jog fenntartva</p>
 </footer>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose">&times;</button>
-  <img src="" alt="" id="lightboxImg">
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)">&#10005;</button>
+  <img id="lightboxImg" src="" alt="">
   <div class="lightbox-info">
-    <h3 id="lightboxTitle"></h3>
-    <p id="lightboxMeta"></p>
+    <h4 id="lightboxTitle"></h4>
+    <span id="lightboxMeta"></span>
   </div>
 </div>
-'''
 
-# ============================================================================
-# PART 4: JavaScript — Painting data, theme engine, animations, interactions
-# ============================================================================
-part4 = r'''
 <script>
-// ═══════════════════════════════════════════════════════════
-// PAINTING DATA — 12 festmény a mappából
-// ═══════════════════════════════════════════════════════════
-const paintings = [
-  {
-    file: "014fb97bae01374ff673a7f51de018af-karai-mihaly-absztrakt-festmeny-kepmeret-80x60-cm.jpg",
-    title: "Absztrakt festmény",
-    size: "80×60 cm",
-    desc: "Meleg tónusú, textúrált kompozíció rácsszerkezetre épül. Impasto rétegek, expresszív karcolások."
-  },
-  {
-    file: "579ee3610e2f00108ae1ad3b4efe881f-karai-mihaly-a-kep-merete-80x60-cm.jpg",
-    title: "A kép mérete",
-    size: "80×60 cm",
-    desc: "Geometrikus color-blocking, ciánkék és tűzpiros dualitás. Mozaikszerű textúrák."
-  },
-  {
-    file: "732e9d819fbbee1e6b2126f580f51743-karai-mihaly-szines-modern-absztrakt-festmeny-90-x-90-cm.jpg",
-    title: "Színes modern absztrakt",
-    size: "90×90 cm",
-    desc: "Szürreális, organikus formák. Tűz és jég összecsapása — mélykék és lángnyelv piros."
-  },
-  {
-    file: "76a52a2610ed517750b4d73efabbe595-karai-mihaly-absztrakt-festmeny-140x40x4-cm.jpg",
-    title: "Panoráma absztrakt",
-    size: "140×40 cm",
-    desc: "Panorámaszerű függőleges elrendezés. Naplemente és éjszakai városi tükör."
-  },
-  {
-    file: "8548dfcda68a1463e1ed276bce0b0b0c-karai-mihaly-absztrakt-festmeny-kepmeret-140x40-cm.jpg",
-    title: "Városi tükör",
-    size: "140×40 cm",
-    desc: "Vérvörös égbolt, izzó torony, hullámzó rózsaszín tükörkép a vízen."
-  },
-  {
-    file: "9714f6cd20df8b60a6cfa68e340bdcb2-karai-mihaly-absztrakt-festmeny-40x70-cm.jpg",
-    title: "Sivatagi oázis",
-    size: "40×70 cm",
-    desc: "Horizontális tájkép-absztrakció. Arany napvihar és éles türkiz oázis vonal."
-  },
-  {
-    file: "c74fb23ff889ff7fc5bc22904e957ac7-karai-mihaly-kortars-absztrakt-festmeny-kepmeret-70x30-cm.jpg",
-    title: "Kortárs absztrakt",
-    size: "70×30 cm",
-    desc: "Felső rész: organikus körök, fénysugár. Alsó rész: borzongató víztükör."
-  },
-  {
-    file: "cf6c30f8ab61eea749199ee138ae02df-karai-mihaly-nyari-hoseg-kepmeret-100x70-cm.jpg",
-    title: "Nyári hőség",
-    size: "100×70 cm",
-    desc: "Figurális-absztrakt fúzió. Női torzó, beleolvadva a izzó narancs-vörös háttérbe."
-  },
-  {
-    file: "d0e8f21d863d3647ce7ce2705fbb0aeb-karai-mihaly-absztrakt-festmeny-kepmeret-70x70-cm.jpg",
-    title: "Szív motívum",
-    size: "70×70 cm",
-    desc: "Nyers, indusztriális textúra. Rozsdabarna háttér, élénk kadmiumpiros szív."
-  },
-  {
-    file: "d45190df18d013a48540242d4e02b588-karai-mihaly-szines-modern-absztrakt-festmeny-90x100-cm.jpg",
-    title: "Színes modern absztrakt",
-    size: "90×100 cm",
-    desc: "Finom, elegáns pasztell atmoszféra. Lazac, mályva, púderrózsaszín örvénylése."
-  },
-  {
-    file: "e862397c8ee36bfab0bbe2de56b503e2-karai-mihaly-absztrakt-festmeny-kepmeret-60x60-cm.jpg",
-    title: "Kozmikus mozaik",
-    size: "60×60 cm",
-    desc: "Kozmikus örvények, málnapiros sáv, lüktető városi mozaik az alján."
-  },
-  {
-    file: "keretnelkul_1.jpg",
-    title: "Dráma",
-    size: "~70×100 cm",
-    desc: "A gyűjtemény legagresszívebb darabja. Burgundi vörös, fehér kaparások, chiaroscuro."
-  }
-];
+const themes = {js_themes};
+let currentTheme = 'vaszon';
 
-// Additional images for variety
-const extraImages = [
-  { file: "keretezve_1.jpg", title: "Dráma (keretezve)", size: "~70×100 cm", desc: "Keretezett változat" },
-  { file: "keretnelkul_2.jpg", title: "Hangulat", size: "80×60 cm", desc: "Pulzáló vörös-magenta felhő, misztikus atmoszféra" },
-  { file: "keretezve_2.jpg", title: "Hangulat (keretezve)", size: "80×60 cm", desc: "Keretezett változat" }
-];
+function applyTheme(name) {{
+  if (!themes[name]) return;
+  const t = themes[name];
+  const root = document.documentElement;
+  const pairs = [
+    ['--bg', t.bg], ['--bg2', t.bg2], ['--text', t.text], ['--accent', t.accent],
+    ['--accent2', t.accent2], ['--card', t.card], ['--card-border', t.card_border],
+    ['--muted', t.muted], ['--light-text', t.light_text], ['--section-alt', t.section_alt],
+    ['--btn-bg', t.btn_bg], ['--btn-text', t.btn_text], ['--btn-hover', t.btn_hover],
+    ['--nav-bg', t.nav_bg], ['--shadow', t.shadow], ['--gradient1', t.gradient1],
+    ['--gradient2', t.gradient2], ['--blob1', t.blob1], ['--blob2', t.blob2],
+    ['--grain-opacity', t.grain_opacity], ['--hero-overlay', t.hero_overlay]
+  ];
+  pairs.forEach(function(p) {{ root.style.setProperty(p[0], p[1]); }});
+  currentTheme = name;
+  document.querySelectorAll('.theme-switcher-btn').forEach(function(btn) {{
+    btn.classList.toggle('active', btn.dataset.theme === name);
+  }});
+  localStorage.setItem('karai-theme', name);
+}}
 
-const allPaintings = [...paintings, ...extraImages];
+document.querySelectorAll('.theme-switcher-btn').forEach(function(btn) {{
+  btn.addEventListener('click', function() {{ applyTheme(btn.dataset.theme); }});
+}});
 
-// ═══════════════════════════════════════════════════════════
-// RENDER GALLERY
-// ═══════════════════════════════════════════════════════════
-const grid = document.getElementById('masonryGrid');
-
-allPaintings.forEach((p, i) => {
-  const item = document.createElement('div');
-  item.className = 'gallery-item reveal';
-  item.style.transitionDelay = (i % 4) * 0.08 + 's';
-  item.innerHTML = `
-    <img src="${p.file}" alt="${p.title}" loading="lazy">
-    <div class="gallery-item-overlay">
-      <div class="gallery-item-title">${p.title}</div>
-      <div class="gallery-item-meta">${p.size} — ${p.desc.substring(0, 40)}...</div>
-    </div>
-  `;
-  item.addEventListener('click', () => openLightbox(p));
-  grid.appendChild(item);
-});
-
-// ═══════════════════════════════════════════════════════════
-// THEME ENGINE
-// ═══════════════════════════════════════════════════════════
-function setTheme(themeName) {
-  document.documentElement.setAttribute('data-theme', themeName);
-  localStorage.setItem('karai-theme', themeName);
-
-  // Update all theme dots
-  document.querySelectorAll('.theme-dot').forEach(dot => {
-    dot.classList.toggle('active', dot.getAttribute('data-theme') === themeName);
-  });
-}
-
-// Load saved theme
 const saved = localStorage.getItem('karai-theme');
-if (saved) setTheme(saved);
+if (saved && themes[saved]) applyTheme(saved);
 
-// Theme dot clicks
-document.querySelectorAll('.theme-dot').forEach(dot => {
-  dot.addEventListener('click', (e) => {
-    e.stopPropagation();
-    setTheme(dot.getAttribute('data-theme'));
-  });
-});
+var navbar = document.getElementById('navbar');
+var burger = document.getElementById('burger');
+var navLinks = document.getElementById('navLinks');
 
-// ═══════════════════════════════════════════════════════════
-// CUSTOM CURSOR
-// ═══════════════════════════════════════════════════════════
-const cursorDot = document.getElementById('cursorDot');
-const cursorRing = document.getElementById('cursorRing');
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
+window.addEventListener('scroll', function() {{
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+}});
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursorDot.style.left = mouseX + 'px';
-  cursorDot.style.top = mouseY + 'px';
-});
-
-function animateCursorRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  cursorRing.style.left = ringX + 'px';
-  cursorRing.style.top = ringY + 'px';
-  requestAnimationFrame(animateCursorRing);
-}
-animateCursorRing();
-
-// Hover states
-document.querySelectorAll('a, button, .theme-dot, .gallery-item').forEach(el => {
-  el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
-  el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
-});
-
-// ═══════════════════════════════════════════════════════════
-// SCROLL REVEAL (Intersection Observer)
-// ═══════════════════════════════════════════════════════════
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// ═══════════════════════════════════════════════════════════
-// HERO ANIMATIONS
-// ═══════════════════════════════════════════════════════════
-function animateHero() {
-  const eyebrow = document.querySelector('.hero-eyebrow');
-  const name = document.querySelector('.hero-name');
-  const subtitle = document.querySelector('.hero-subtitle');
-  const scrollInd = document.querySelector('.hero-scroll-indicator');
-
-  setTimeout(() => {
-    eyebrow.style.transition = 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)';
-    eyebrow.style.opacity = '1';
-    eyebrow.style.transform = 'translateY(0)';
-  }, 1800);
-
-  setTimeout(() => {
-    name.style.transition = 'opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1)';
-    name.style.opacity = '1';
-    name.style.transform = 'translateY(0)';
-  }, 2100);
-
-  setTimeout(() => {
-    subtitle.style.transition = 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)';
-    subtitle.style.opacity = '1';
-    subtitle.style.transform = 'translateY(0)';
-  }, 2500);
-
-  setTimeout(() => {
-    scrollInd.style.transition = 'opacity 0.8s';
-    scrollInd.style.opacity = '1';
-  }, 3000);
-}
-
-// ═══════════════════════════════════════════════════════════
-// PRELOADER
-// ═══════════════════════════════════════════════════════════
-window.addEventListener('load', () => {
-  animateHero();
-  setTimeout(() => {
-    document.getElementById('preloader').classList.add('hidden');
-  }, 3200);
-});
-
-// ═══════════════════════════════════════════════════════════
-// ACTIVE NAV ON SCROLL
-// ═══════════════════════════════════════════════════════════
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-pill a:not(.theme-dot)');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(sec => {
-    const top = sec.offsetTop - 200;
-    if (scrollY >= top) current = sec.getAttribute('id');
-  });
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) {
-      link.classList.add('active');
-    }
-  });
-}, { passive: true });
-
-// ═══════════════════════════════════════════════════════════
-// SMOOTH SCROLL
-// ═══════════════════════════════════════════════════════════
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', (e) => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Close mobile menu if open
-      mobileMenu.classList.remove('open');
-      burger.classList.remove('open');
-    }
-  });
-});
-
-// ═══════════════════════════════════════════════════════════
-// MOBILE MENU
-// ═══════════════════════════════════════════════════════════
-const burger = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobileMenu');
-
-burger.addEventListener('click', () => {
+burger.addEventListener('click', function() {{
   burger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-});
+  navLinks.classList.toggle('open');
+}});
 
-// ═══════════════════════════════════════════════════════════
-// LIGHTBOX
-// ═══════════════════════════════════════════════════════════
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const lightboxTitle = document.getElementById('lightboxTitle');
-const lightboxMeta = document.getElementById('lightboxMeta');
-const lightboxClose = document.getElementById('lightboxClose');
+document.querySelectorAll('.nav-links a').forEach(function(link) {{
+  link.addEventListener('click', function() {{
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+  }});
+}});
 
-function openLightbox(painting) {
-  lightboxImg.src = painting.file;
-  lightboxImg.alt = painting.title;
-  lightboxTitle.textContent = painting.title;
-  lightboxMeta.textContent = painting.size;
-  lightbox.classList.add('open');
+(function() {{
+  var canvas = document.getElementById('heroCanvas');
+  var ctx = canvas.getContext('2d');
+  var w, h;
+  function resize() {{ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }}
+  resize();
+  window.addEventListener('resize', resize);
+  var particles = [];
+  for (var i = 0; i < 60; i++) {{
+    particles.push({{
+      x: Math.random() * w, y: Math.random() * h,
+      r: Math.random() * 2 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3, dy: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.5 + 0.1
+    }});
+  }}
+  function draw() {{
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(function(p) {{
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(200,160,120,' + p.opacity + ')';
+      ctx.fill();
+      p.x += p.dx; p.y += p.dy;
+      if (p.x < 0 || p.x > w) p.dx *= -1;
+      if (p.y < 0 || p.y > h) p.dy *= -1;
+    }});
+    requestAnimationFrame(draw);
+  }}
+  draw();
+}})();
+
+var revealObserver = new IntersectionObserver(function(entries) {{
+  entries.forEach(function(entry) {{
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  }});
+}}, {{ threshold: 0.1, rootMargin: '0px 0px -50px 0px' }});
+
+document.querySelectorAll('.reveal').forEach(function(el) {{ revealObserver.observe(el); }});
+
+var galleryObserver = new IntersectionObserver(function(entries) {{
+  entries.forEach(function(entry) {{
+    if (entry.isIntersecting) {{
+      var idx = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+      setTimeout(function() {{ entry.target.classList.add('visible'); }}, idx * 100);
+    }}
+  }});
+}}, {{ threshold: 0.05 }});
+
+document.querySelectorAll('.gallery-item').forEach(function(el) {{ galleryObserver.observe(el); }});
+
+(function() {{
+  var scroll = document.getElementById('featuredScroll');
+  var prev = document.getElementById('featuredPrev');
+  var next = document.getElementById('featuredNext');
+  if (!scroll || !prev || !next) return;
+  var itemWidth = scroll.querySelector('.featured-item').offsetWidth;
+  prev.addEventListener('click', function() {{ scroll.scrollBy({{ left: -itemWidth, behavior: 'smooth' }}); }});
+  next.addEventListener('click', function() {{ scroll.scrollBy({{ left: itemWidth, behavior: 'smooth' }}); }});
+}})();
+
+var paintings = [
+{lightbox_js}
+];
+
+function openLightbox(index) {{
+  var lb = document.getElementById('lightbox');
+  var img = document.getElementById('lightboxImg');
+  var title = document.getElementById('lightboxTitle');
+  var meta = document.getElementById('lightboxMeta');
+  var p = paintings[index];
+  img.src = p.src; img.alt = p.title;
+  title.textContent = p.title;
+  meta.textContent = p.meta;
+  lb.classList.add('active');
   document.body.style.overflow = 'hidden';
-}
+}}
 
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  document.body.style.overflow = '';
-}
+function closeLightbox(e) {{
+  if (e.target === document.getElementById('lightbox') || e.target.closest('.lightbox-close')) {{
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }}
+}}
 
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeLightbox();
-});
+document.addEventListener('keydown', function(e) {{
+  if (e.key === 'Escape') {{
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }}
+}});
 
-// ═══════════════════════════════════════════════════════════
-// PAINT DROP CANVAS — Subtle ambient particles
-// ═══════════════════════════════════════════════════════════
-const canvas = document.getElementById('paintCanvas');
-const ctx = canvas.getContext('2d');
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {{
+  anchor.addEventListener('click', function(e) {{
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+  }});
+}});
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-class PaintDrop {
-  constructor() { this.reset(); }
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = -20;
-    this.size = Math.random() * 4 + 1;
-    this.speedY = Math.random() * 0.5 + 0.1;
-    this.speedX = (Math.random() - 0.5) * 0.3;
-    this.opacity = Math.random() * 0.3 + 0.05;
-    this.life = 0;
-    this.maxLife = Math.random() * 400 + 200;
-    // Random accent color
-    const colors = ['193,68,14', '255,107,53', '139,105,20', '184,92,56', '124,179,66', '232,213,183'];
-    this.color = colors[Math.floor(Math.random() * colors.length)];
-  }
-  update() {
-    this.y += this.speedY;
-    this.x += this.speedX + Math.sin(this.life * 0.01) * 0.2;
-    this.life++;
-    const progress = this.life / this.maxLife;
-    this.currentOpacity = this.opacity * (1 - progress * progress);
-    if (this.life > this.maxLife || this.y > canvas.height + 20) this.reset();
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${this.color},${this.currentOpacity})`;
-    ctx.fill();
-  }
-}
-
-const drops = Array.from({ length: 35 }, () => {
-  const d = new PaintDrop();
-  d.y = Math.random() * canvas.height; // Spread initially
-  return d;
-});
-
-function animateDrops() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drops.forEach(d => { d.update(); d.draw(); });
-  requestAnimationFrame(animateDrops);
-}
-animateDrops();
-
-// ═══════════════════════════════════════════════════════════
-// PARALLAX BLOB ON MOUSE MOVE
-// ═══════════════════════════════════════════════════════════
-const heroBlob = document.querySelector('.hero-bg-blob');
-if (heroBlob) {
-  document.addEventListener('mousemove', (e) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 30;
-    const y = (e.clientY / window.innerHeight - 0.5) * 30;
-    heroBlob.style.transform = `translate(${x}px, ${y}px)`;
-  }, { passive: true });
-}
-
-// ═══════════════════════════════════════════════════════════
-// GALLERY ITEM TILT EFFECT
-// ═══════════════════════════════════════════════════════════
-document.querySelectorAll('.gallery-item').forEach(item => {
-  item.addEventListener('mousemove', (e) => {
-    const rect = item.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    item.style.transform = `translateY(-6px) perspective(800px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) scale(1.01)`;
-  });
-  item.addEventListener('mouseleave', () => {
-    item.style.transform = '';
-  });
-});
+var sections = document.querySelectorAll('section[id]');
+var navAnchors = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', function() {{
+  var current = '';
+  sections.forEach(function(section) {{
+    var sectionTop = section.offsetTop - 200;
+    if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+  }});
+  navAnchors.forEach(function(a) {{
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  }});
+}});
 </script>
 </body>
-</html>
-'''
+</html>"""
 
-# Write all parts
-with open(output_path, 'w', encoding='utf-8') as f:
-    f.write(part1)
-    f.write(part2)
-    f.write(part3)
-    f.write(part4)
+with open(output_path, "w", encoding="utf-8") as f:
+    f.write(html)
 
-print(f"✅ File written: {output_path}")
-print(f"   Size: {os.path.getsize(output_path):,} bytes")
+print(f"✅ Generated: {output_path}")
+print(f"   Size: {len(html)} bytes ({len(html)//1024} KB)")
+
+with open(output_path, "r", encoding="utf-8") as f:
+    verify = f.read()
+print(f"   Verified: {len(verify)} bytes read back")
